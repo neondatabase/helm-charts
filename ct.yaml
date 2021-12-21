@@ -3,7 +3,5 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts
-helm-extra-args: "--timeout 300s --debug"
+helm-extra-args: "--timeout 600s"
 validate-maintainers: false
-
-debug: true
