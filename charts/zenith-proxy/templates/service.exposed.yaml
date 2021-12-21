@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "zenith-proxy.fullname" . }}-exposed
+  {{- with .Values.exposedService.annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  labels:
+    {{- include "zenith-proxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.exposedService.type }}
+  ports:
+    - port: {{ .Values.exposedService.port }}
+      targetPort: proxy
+      protocol: TCP
+      name: proxy
+  selector:
+    {{- include "zenith-proxy.selectorLabels" . | nindent 4 }}

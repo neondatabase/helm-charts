@@ -3,7 +3,5 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts
-chart-repos:
-  - zenithdb=https://zenithdb.github.io/helm-charts
-helm-extra-args: --timeout 600s
+helm-extra-args: "--timeout 600s"
 validate-maintainers: false

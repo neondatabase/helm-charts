@@ -1,0 +1,23 @@
+{{ template "chart.header" . }}
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}
+
+{{ template "chart.description" . }}
+
+**Homepage:** {{ template "chart.homepage" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+## Installing the Chart
+
+To install the chart with the release name `zenith-proxy`:
+
+```console
+$ helm repo add zenithdb https://zenithdb.github.io/helm-charts
+$ helm install zenith-proxy zenithdb/{{ template "chart.name" . }}
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}
