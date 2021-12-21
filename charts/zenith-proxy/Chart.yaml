@@ -2,7 +2,7 @@ apiVersion: v2
 name: zenith-proxy
 description: Zenith Proxy
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "0.1.0"
 kubeVersion: "^1.18.0"
 home: https://zenith.tech
