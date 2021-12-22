@@ -2,9 +2,9 @@ apiVersion: v2
 name: zenith-proxy
 description: Zenith Proxy
 type: application
-version: 1.0.1
+version: 1.0.2
 appVersion: "0.1.0"
-kubeVersion: "^1.18.0"
+kubeVersion: ">=1.18"
 home: https://zenith.tech
 sources:
   - https://github.com/zenithdb/zenith
