@@ -1,6 +1,6 @@
 # zenith-proxy
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
 
 Zenith Proxy
 
@@ -21,7 +21,7 @@ $ helm install zenith-proxy zenithdb/zenith-proxy
 
 ## Requirements
 
-Kubernetes: `>=1.18`
+Kubernetes: `^1.18.x-x`
 
 ## Values
 
