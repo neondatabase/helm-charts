@@ -15,7 +15,7 @@ spec:
       targetPort: mgmt
       protocol: TCP
       name: mgmt
-    - port: {{ .Values.service.http-port }}
+    - port: {{ .Values.service.httpPort }}
       targetPort: http
       protocol: TCP
       name: http

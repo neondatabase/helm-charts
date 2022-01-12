@@ -44,7 +44,7 @@ Kubernetes: `^1.18.x-x`
 | resources | object | `{}` |  |
 | securityContext | object | `{}` | zenith-proxy's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
-| service.http-port | int | `9090` | Http management port |
+| service.httpPort | int | `9090` | Http management port |
 | service.port | int | `7000` | Service management port |
 | service.type | string | `"ClusterIP"` | Service type |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
