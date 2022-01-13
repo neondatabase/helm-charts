@@ -58,6 +58,9 @@ spec:
             - name: mgmt
               containerPort: 7000
               protocol: TCP
+            - name: http
+              containerPort: 9090
+              protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

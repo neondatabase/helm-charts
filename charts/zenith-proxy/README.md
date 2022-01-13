@@ -1,6 +1,6 @@
 # zenith-proxy
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
 
 Zenith Proxy
 
