@@ -15,5 +15,9 @@ spec:
       targetPort: mgmt
       protocol: TCP
       name: mgmt
+    - port: {{ .Values.service.httpPort }}
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
     {{- include "zenith-proxy.selectorLabels" . | nindent 4 }}

@@ -59,6 +59,8 @@ service:
   type: ClusterIP
   # service.port -- Service management port
   port: 7000
+  # service.httpPort -- Http management port
+  httpPort: 9090
 
 exposedService:
   # exposedService.annotations -- Annotations to add to the exposed service

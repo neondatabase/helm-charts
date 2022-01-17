@@ -39,6 +39,8 @@ spec:
             - 0.0.0.0:5432
             - --mgmt
             - 0.0.0.0:7000
+            - --http
+            - 0.0.0.0:9090
             {{- if .Values.settings }}
             {{- with .Values.settings.uri }}
             - -u
@@ -55,6 +57,9 @@ spec:
               protocol: TCP
             - name: mgmt
               containerPort: 7000
+              protocol: TCP
+            - name: http
+              containerPort: 9090
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
