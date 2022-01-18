@@ -98,3 +98,35 @@ tolerations: []
 
 # -- Affinity for pod assignment
 affinity: {}
+
+metrics:
+  # metrics.enabled -- Enable prometheus metrcis autodiscovery
+  enabled: false
+  ## Prometheus Operator ServiceMonitor configuration
+  ##
+  serviceMonitor:
+    # metrics.serviceMonitor.enabled -- Create ServiceMonitor resource
+    enabled: false
+
+    # metrics.serviceMonitor.namespace -- The namespace in which the ServiceMonitor will be created, if empty then Release.Namespace used
+    namespace: ""
+
+    ## Interval at which metrics should be scraped.
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
+    ##
+    # metrics.serviceMonitor.interval -- Interval in which prometheus scrapes
+    interval: 10s
+
+    ## Timeout after which the scrape is ended
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
+    ##
+    # metrics.serviceMonitor.scrapeTimeout -- Scrape Timeout duration for prometheus
+    scrapeTimeout: 10s
+
+    ## ServiceMonitor selector labels
+    ## ref: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#prometheusioscrape
+    ##
+    # metrics.serviceMonitor.selector -- Additional labels to attach (used by Prometheus operator)
+    selector: {}
+    # selector:
+    #   prometheus: zenith
