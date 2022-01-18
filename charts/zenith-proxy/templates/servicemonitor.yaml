@@ -17,7 +17,7 @@ spec:
     matchLabels:
       {{- include "zenith-proxy.selectorLabels" . | nindent 6 }}
   endpoints:
-    - port: metrics
+    - port: http
       path: /metrics
       {{- if .Values.metrics.serviceMonitor.interval }}
       interval: {{ .Values.metrics.serviceMonitor.interval }}
