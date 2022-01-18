@@ -1,6 +1,6 @@
 # zenith-proxy
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
 
 Zenith Proxy
 
@@ -36,6 +36,12 @@ Kubernetes: `^1.18.x-x`
 | image.repository | string | `"zenithdb/zenith"` | Zenithdb image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
+| metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
+| metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
+| metrics.serviceMonitor.interval | string | `"10s"` | Interval in which prometheus scrapes |
+| metrics.serviceMonitor.namespace | string | `""` | The namespace in which the ServiceMonitor will be created, if empty then Release.Namespace used |
+| metrics.serviceMonitor.scrapeTimeout | string | `"10s"` | Scrape Timeout duration for prometheus |
+| metrics.serviceMonitor.selector | object | `{}` | Additional labels to attach (used by Prometheus operator) |
 | nameOverride | string | `""` | String to partially override zenith-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | podAnnotations | object | `{}` | Annotations for zenith-proxy pods |
