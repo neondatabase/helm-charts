@@ -48,7 +48,6 @@ Selector labels
 {{- define "zenith-proxy.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "zenith-proxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-zenith/service: proxy
 {{- end }}
 
 {{/*

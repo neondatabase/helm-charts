@@ -1,6 +1,6 @@
 # zenith-proxy
 
-![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
 
 Zenith Proxy
 
@@ -45,6 +45,7 @@ Kubernetes: `^1.18.x-x`
 | nameOverride | string | `""` | String to partially override zenith-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | podAnnotations | object | `{}` | Annotations for zenith-proxy pods |
+| podLabels | object | `{}` | Additional labels for zenith-proxy pods |
 | podSecurityContext | object | `{}` | zenith-proxy's pods Security Context |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

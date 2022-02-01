@@ -39,6 +39,13 @@ serviceAccount:
 # -- Annotations for zenith-proxy pods
 podAnnotations: {}
 
+# -- Additional labels for zenith-proxy pods
+podLabels: {}
+  # zenith_service: proxy
+  # zenith_env: staging
+  # zenith_region: us-west-1
+  # zenith_region_slug: virginia
+
 # -- zenith-proxy's pods Security Context
 podSecurityContext: {}
   # fsGroup: 2000
