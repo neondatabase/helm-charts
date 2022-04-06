@@ -3,6 +3,20 @@ entries:
   zenith-proxy:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-04-06T14:49:52.201130633Z"
+    description: Zenith Proxy
+    digest: be13893e9821e323e1a57b738885ce1735e09e99fb4df148867158721e83ec58
+    home: https://zenith.tech
+    kubeVersion: ^1.18.x-x
+    name: zenith-proxy
+    sources:
+    - https://github.com/zenithdb/zenith
+    type: application
+    urls:
+    - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.2.1/zenith-proxy-1.2.1.tgz
+    version: 1.2.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-02-01T00:20:07.417394675Z"
     description: Zenith Proxy
     digest: 8ce5dcdec2ef89b94d5cfd36aa54807d33b776abdb1f36d956b3ba9257fbf210
@@ -99,4 +113,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2022-02-01T00:20:07.417423076Z"
+generated: "2022-04-06T14:49:52.201251738Z"
