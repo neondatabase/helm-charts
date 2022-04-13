@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "zenith-proxy.fullname" . }}
+  name: {{ include "neon-proxy.fullname" . }}
   {{- with .Values.service.annotations }}
   annotations:
     {{- toYaml . | nindent 8 }}
   {{- end }}
   labels:
-    {{- include "zenith-proxy.labels" . | nindent 4 }}
+    {{- include "neon-proxy.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -20,4 +20,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "zenith-proxy.selectorLabels" . | nindent 4 }}
+    {{- include "neon-proxy.selectorLabels" . | nindent 4 }}

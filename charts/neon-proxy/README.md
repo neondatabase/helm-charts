@@ -1,22 +1,22 @@
-# zenith-proxy
+# neon-proxy
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/zenithdb/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
-Zenith Proxy
+Neon Proxy
 
-**Homepage:** https://zenith.tech
+**Homepage:** https://neon.tech
 
 ## Source Code
 
-* <https://github.com/zenithdb/zenith>
+* <https://github.com/neondatabase/neon>
 
 ## Installing the Chart
 
-To install the chart with the release name `zenith-proxy`:
+To install the chart with the release name `neon-proxy`:
 
 ```console
-$ helm repo add zenithdb https://zenithdb.github.io/helm-charts
-$ helm install zenith-proxy zenithdb/zenith-proxy
+$ helm repo add neondatabase https://neondatabase.github.io/helm-charts
+$ helm install neon-proxy neondatabase/neon-proxy
 ```
 
 ## Requirements
@@ -31,9 +31,9 @@ Kubernetes: `^1.18.x-x`
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
-| fullnameOverride | string | `""` | String to fully override zenith-proxy.fullname template |
+| fullnameOverride | string | `""` | String to fully override neon-proxy.fullname template |
 | image.pullPolicy | string | `"Always"` | image pull policy |
-| image.repository | string | `"zenithdb/zenith"` | Zenithdb image repository |
+| image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
@@ -42,14 +42,14 @@ Kubernetes: `^1.18.x-x`
 | metrics.serviceMonitor.namespace | string | `""` | The namespace in which the ServiceMonitor will be created, if empty then Release.Namespace used |
 | metrics.serviceMonitor.scrapeTimeout | string | `"10s"` | Scrape Timeout duration for prometheus |
 | metrics.serviceMonitor.selector | object | `{}` | Additional labels to attach (used by Prometheus operator) |
-| nameOverride | string | `""` | String to partially override zenith-proxy.fullname template (will maintain the release name) |
+| nameOverride | string | `""` | String to partially override neon-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
-| podAnnotations | object | `{}` | Annotations for zenith-proxy pods |
-| podLabels | object | `{}` | Additional labels for zenith-proxy pods |
-| podSecurityContext | object | `{}` | zenith-proxy's pods Security Context |
+| podAnnotations | object | `{}` | Annotations for neon-proxy pods |
+| podLabels | object | `{}` | Additional labels for neon-proxy pods |
+| podSecurityContext | object | `{}` | neon-proxy's pods Security Context |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` | zenith-proxy's containers Security Context |
+| securityContext | object | `{}` | neon-proxy's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
 | service.httpPort | int | `9090` | Http management port |
 | service.port | int | `7000` | Service management port |
@@ -57,7 +57,7 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.zenith/authenticate_proxy_request/" |
+| settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.uri | string | `""` |  |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
