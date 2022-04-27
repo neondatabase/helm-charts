@@ -1,12 +1,12 @@
-# Default values for zenith-proxy.
+# Default values for neon-proxy.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  # -- Zenithdb image repository
-  repository: zenithdb/zenith
+  # -- Neondatabase image repository
+  repository: neondatabase/neon
   # -- image pull policy
   pullPolicy: Always
   # -- Overrides the image tag whose default is the chart appVersion.
@@ -15,16 +15,16 @@ image:
 # -- Specify docker-registry secret names as an array
 imagePullSecrets: []
 
-# -- String to partially override zenith-proxy.fullname template (will maintain the release name)
+# -- String to partially override neon-proxy.fullname template (will maintain the release name)
 nameOverride: ""
-# -- String to fully override zenith-proxy.fullname template
+# -- String to fully override neon-proxy.fullname template
 fullnameOverride: ""
 
-# Zenith proxy settings
+# Neon proxy settings
 settings:
-  # settings.authEndpoint -- auth endpoint, e.g. "http://console.zenith/authenticate_proxy_request/"
+  # settings.authEndpoint -- auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/"
   authEndpoint: ""
-  # settings.uri - psql session endpoint, e.g. "http://console.zenith/psql_session/"
+  # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
   uri: ""
 
 serviceAccount:
@@ -36,21 +36,21 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-# -- Annotations for zenith-proxy pods
+# -- Annotations for neon-proxy pods
 podAnnotations: {}
 
-# -- Additional labels for zenith-proxy pods
+# -- Additional labels for neon-proxy pods
 podLabels: {}
-  # zenith_service: proxy
-  # zenith_env: staging
-  # zenith_region: us-west-1
-  # zenith_region_slug: virginia
+  # neon_service: proxy
+  # neon_env: staging
+  # neon_region: us-west-1
+  # neon_region_slug: virginia
 
-# -- zenith-proxy's pods Security Context
+# -- neon-proxy's pods Security Context
 podSecurityContext: {}
   # fsGroup: 2000
 
-# -- zenith-proxy's containers Security Context
+# -- neon-proxy's containers Security Context
 securityContext: {}
   # capabilities:
   #   drop:
@@ -136,4 +136,4 @@ metrics:
     # metrics.serviceMonitor.selector -- Additional labels to attach (used by Prometheus operator)
     selector: {}
     # selector:
-    #   prometheus: zenith
+    #   prometheus: neon
