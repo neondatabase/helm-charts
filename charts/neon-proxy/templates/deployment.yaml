@@ -63,6 +63,10 @@ spec:
             - -a
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.authBackend }}
+            - --auth-backend
+            - {{ . }}
+            {{- end }}
             {{- end }}
           ports:
             - name: proxy

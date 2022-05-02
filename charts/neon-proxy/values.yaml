@@ -26,6 +26,8 @@ settings:
   authEndpoint: ""
   # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
   uri: ""
+  # settings.authBackend -- auth method used (legacy|console|link|postgres)
+  authBackend: "legacy"
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
