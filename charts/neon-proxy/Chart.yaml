@@ -2,7 +2,7 @@ apiVersion: v2
 name: neon-proxy
 description: Neon Proxy
 type: application
-version: 1.2.4
+version: 1.2.5
 appVersion: "0.1.0"
 kubeVersion: "^1.18.x-x"
 home: https://neon.tech

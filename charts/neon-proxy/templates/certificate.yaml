@@ -4,9 +4,9 @@ kind: Certificate
 metadata:
   name: {{ include "neon-proxy.certificate" . }}
 spec:
-  commonName: '{{ .Values.settings.domain | quote }}'
+  commonName: {{ .Values.settings.domain | quote }}
   dnsNames:
-  - '{{ .Values.settings.domain }}'
+  - {{ .Values.settings.domain | quote }}
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
