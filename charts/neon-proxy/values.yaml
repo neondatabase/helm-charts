@@ -28,6 +28,8 @@ settings:
   uri: ""
   # settings.authBackend -- auth method used (legacy|console|link|postgres)
   authBackend: "legacy"
+  # settings.domain -- domain used in TLS cert for client postgres connections
+  domain: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

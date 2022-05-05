@@ -68,6 +68,18 @@ spec:
             - {{ . }}
             {{- end }}
             {{- end }}
+            {{- if .Values.settings.domain }}
+            - --tls-key
+            - /certs/tls.key
+            - --tls-cert
+            - /certs/tls.crt
+            {{ end }}
+          {{- if .Values.settings.domain }}
+          volumeMounts:
+            - mountPath: "/certs"
+              name: certs
+              readOnly: true
+          {{- end }}
           ports:
             - name: proxy
               containerPort: 5432
@@ -100,6 +112,12 @@ spec:
             timeoutSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.settings.domain }}
+      volumes:
+        - name: certs
+          secret:
+            secretName: {{ include "neon-proxy.certificate-secret" . }}
+      {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

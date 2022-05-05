@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.2.4](https://img.shields.io/badge/Version-1.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -59,6 +59,7 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.name | string | `""` |  |
 | settings.authBackend | string | `"legacy"` | auth method used (legacy|console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
+| settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.uri | string | `""` |  |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
