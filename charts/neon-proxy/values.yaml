@@ -26,8 +26,8 @@ settings:
   authEndpoint: ""
   # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
   uri: ""
-  # settings.authBackend -- auth method used (legacy|console|link|postgres)
-  authBackend: "legacy"
+  # settings.authBackend -- auth method used (console|link|postgres)
+  authBackend: "link"
   # settings.domain -- domain used in TLS cert for client postgres connections
   domain: ""
 
