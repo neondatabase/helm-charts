@@ -134,4 +134,5 @@ ingress:
   #    hosts:
   #      - chart-example.local
   #
+# -- Additional manifests that are created with the chart
 extraManifests: []
