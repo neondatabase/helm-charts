@@ -1,4 +1,4 @@
-# neon-broker
+# neon-storage-broker
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
@@ -12,11 +12,11 @@ Neon storage broker
 
 ## Installing the Chart
 
-To install the chart with the release name `neon-broker`:
+To install the chart with the release name `neon-storage-broker`:
 
 ```console
 $ helm repo add neondatabase https://neondatabase.github.io/helm-charts
-$ helm install neon-broker neondatabase/neon-broker
+$ helm install neon-storage-broker neondatabase/neon-storage-broker
 ```
 
 ## Requirements
@@ -28,7 +28,7 @@ Kubernetes: `^1.18.x-x`
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity for pod assignment |
-| fullnameOverride | string | `""` | String to fully override neon-broker.fullname template |
+| fullnameOverride | string | `""` | String to fully override neon-storage-broker.fullname template |
 | image.pullPolicy | string | `"Always"` | image pull policy |
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
@@ -39,14 +39,14 @@ Kubernetes: `^1.18.x-x`
 | metrics.serviceMonitor.namespace | string | `""` | The namespace in which the ServiceMonitor will be created, if empty then Release.Namespace used |
 | metrics.serviceMonitor.scrapeTimeout | string | `"10s"` | Scrape Timeout duration for prometheus |
 | metrics.serviceMonitor.selector | object | `{}` | Additional labels to attach (used by Prometheus operator) |
-| nameOverride | string | `""` | String to partially override neon-broker.fullname template (will maintain the release name) |
+| nameOverride | string | `""` | String to partially override neon-storage-broker.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
-| podAnnotations | object | `{}` | Annotations for neon-broker pods |
-| podLabels | object | `{}` | Additional labels for neon-broker pods |
-| podSecurityContext | object | `{}` | neon-broker's pods Security Context |
+| podAnnotations | object | `{}` | Annotations for neon-storage-broker pods |
+| podLabels | object | `{}` | Additional labels for neon-storage-broker pods |
+| podSecurityContext | object | `{}` | neon-storage-broker's pods Security Context |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` | neon-broker's containers Security Context |
-| service.annotations | object | `{"external-dns.alpha.kubernetes.io/hostname":"neon-broker.local","service.beta.kubernetes.io/aws-load-balancer-nlb-target-type":"ip","service.beta.kubernetes.io/aws-load-balancer-scheme":"internal","service.beta.kubernetes.io/aws-load-balancer-type":"external"}` | Annotations to add to the service |
+| securityContext | object | `{}` | neon-storage-broker's containers Security Context |
+| service.annotations | object | `{"external-dns.alpha.kubernetes.io/hostname":"neon-storage-broker.local","service.beta.kubernetes.io/aws-load-balancer-nlb-target-type":"ip","service.beta.kubernetes.io/aws-load-balancer-scheme":"internal","service.beta.kubernetes.io/aws-load-balancer-type":"external"}` | Annotations to add to the service |
 | service.port | int | `50051` | broker listen port |
 | service.type | string | `"LoadBalancer"` | Service type |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |

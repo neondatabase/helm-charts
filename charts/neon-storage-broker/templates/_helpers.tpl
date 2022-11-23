@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "neon-broker.name" -}}
+{{- define "neon-storage-broker.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "neon-broker.fullname" -}}
+{{- define "neon-storage-broker.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "neon-broker.chart" -}}
+{{- define "neon-storage-broker.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common for Service and Deployment labels
 */}}
-{{- define "neon-broker.labels" -}}
-helm.sh/chart: {{ include "neon-broker.chart" . }}
-{{ include "neon-broker.selectorLabels" . }}
+{{- define "neon-storage-broker.labels" -}}
+helm.sh/chart: {{ include "neon-storage-broker.chart" . }}
+{{ include "neon-storage-broker.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "neon-broker.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "neon-broker.name" . }}
+{{- define "neon-storage-broker.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "neon-storage-broker.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "neon-broker.serviceAccountName" -}}
+{{- define "neon-storage-broker.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "neon-broker.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "neon-storage-broker.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

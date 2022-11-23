@@ -1,6 +1,6 @@
 Externally service is available at http://{{ index .Values.service.annotations "external-dns.alpha.kubernetes.io/hostname" }}:{{ .Values.service.port }}
 You can also get LoadBalancer URL by running these commands:
   NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-    You can watch the status of by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "neon-broker.fullname" . }}'
-export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "neon-broker.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+    You can watch the status of by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "neon-storage-broker.fullname" . }}'
+export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "neon-storage-broker.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
 echo http://$SERVICE_IP:{{ .Values.service.port }}
