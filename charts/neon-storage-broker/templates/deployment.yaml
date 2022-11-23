@@ -33,16 +33,6 @@ spec:
       serviceAccountName: {{ include "neon-storage-broker.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-      - name: sysctl
-        image: busybox:1.35.0
-        imagePullPolicy: IfNotPresent
-        securityContext:
-          privileged: true
-        args:
-        - /bin/sh
-        - -c
-        - 'sysctl -w net.ipv4.tcp_keepalive_time=60; sysctl -w net.ipv4.tcp_keepalive_intvl=30'
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
