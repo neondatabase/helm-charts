@@ -4,7 +4,7 @@ metadata:
   name: {{ include "neon-storage-broker.fullname" . }}
   {{- with .Values.service.annotations }}
   annotations:
-    {{- toYaml . | nindent 8 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   labels:
     {{- include "neon-storage-broker.labels" . | nindent 4 }}
