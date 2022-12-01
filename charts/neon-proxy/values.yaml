@@ -30,6 +30,8 @@ settings:
   authBackend: "link"
   # settings.domain -- domain used in TLS cert for client postgres connections
   domain: ""
+  # settings.sentryURL -- url used by sentry to collect error/panic events in neon-proxy
+  sentryURL: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

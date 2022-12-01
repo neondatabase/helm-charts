@@ -60,6 +60,7 @@ Kubernetes: `^1.18.x-x`
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| settings.sentryURL | string | `""` | url used by sentry to collect error/panic events in neon-proxy |
 | settings.uri | string | `""` |  |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
