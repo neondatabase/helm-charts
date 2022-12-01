@@ -67,6 +67,10 @@ spec:
             - --auth-backend
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.sentryURL }}
+            - --sentry-url
+            - {{ . }}
+            {{- end }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
