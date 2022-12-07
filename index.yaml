@@ -3,6 +3,20 @@ entries:
   neon-proxy:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-12-07T12:01:07.643497478Z"
+    description: Neon Proxy
+    digest: 29ba0537a03a8c437e45779fe48d16cde56d1694e9180da0255fcce229ada2a5
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-proxy
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-proxy-1.3.1/neon-proxy-1.3.1.tgz
+    version: 1.3.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-12-01T14:21:29.681718614Z"
     description: Neon Proxy
     digest: 39f4bd82495c4fc157a27de4c7951bdc139507509fd769dc1c5755204ac224ca
@@ -213,4 +227,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2022-12-01T14:21:29.681754715Z"
+generated: "2022-12-07T12:01:07.643975701Z"
