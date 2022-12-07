@@ -67,10 +67,6 @@ spec:
             - --auth-backend
             - {{ . }}
             {{- end }}
-            {{- with .Values.settings.sentryURL }}
-            - --sentry-url
-            - {{ . }}
-            {{- end }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
@@ -78,6 +74,13 @@ spec:
             - --tls-cert
             - /certs/tls.crt
             {{ end }}
+          env:
+            {{- if .Values.settings }}
+            {{- with .Values.settings.sentryURL }}
+            - name: SENTRY_DSN
+              value: {{ . }}
+            {{- end }}
+            {{- end }}
           {{- if .Values.settings.domain }}
           volumeMounts:
             - mountPath: "/certs"
