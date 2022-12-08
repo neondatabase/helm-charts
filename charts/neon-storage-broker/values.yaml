@@ -19,7 +19,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 # Neon broker settings
-settings: {}
+settings:
+  # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-broker
+  sentryUrl: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

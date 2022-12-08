@@ -74,13 +74,13 @@ spec:
             - --tls-cert
             - /certs/tls.crt
             {{ end }}
+          {{- if .Values.settings }}
           env:
-            {{- if .Values.settings }}
-            {{- with .Values.settings.sentryURL }}
+            {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
               value: {{ . }}
             {{- end }}
-            {{- end }}
+          {{- end }}
           {{- if .Values.settings.domain }}
           volumeMounts:
             - mountPath: "/certs"
