@@ -81,8 +81,8 @@ spec:
               value: {{ . }}
             {{- end }}
             {{- with .Values.settings.sentryEnvironment }}
-              - name: SENTRY_ENVIRONMENT
-                value: {{ . }}
+            - name: SENTRY_ENVIRONMENT
+              value: {{ . }}
             {{- end }}
           {{- end }}
           {{- if .Values.settings.domain }}
