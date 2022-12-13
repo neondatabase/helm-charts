@@ -50,6 +50,10 @@ spec:
             - name: SENTRY_DSN
               value: {{ . }}
             {{- end }}
+            {{- with .Values.settings.sentryEnvironment }}
+            - name: SENTRY_ENVIRONMENT
+              value: {{ . }}
+            {{- end }}
           {{- end }}
           ports:
             - name: broker

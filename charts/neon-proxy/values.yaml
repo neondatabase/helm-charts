@@ -32,6 +32,8 @@ settings:
   domain: ""
   # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy
   sentryUrl: ""
+  # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
+  sentryEnvironment: "development"
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
