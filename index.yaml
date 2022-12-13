@@ -3,6 +3,20 @@ entries:
   neon-proxy:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-12-13T13:52:19.107196743Z"
+    description: Neon Proxy
+    digest: 91fdf568f7163ddc9bc1218c07002d994c4ee3432fe77f3dc52546388ca02b8f
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-proxy
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-proxy-1.3.3/neon-proxy-1.3.3.tgz
+    version: 1.3.3
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-12-08T15:14:06.123530735Z"
     description: Neon Proxy
     digest: 7c898b205ae960a62f568bf20edcf4e58821d22df62cdc4f8f085517d6871b67
@@ -114,6 +128,20 @@ entries:
     - https://github.com/neondatabase/helm-charts/releases/download/neon-proxy-1.2.2/neon-proxy-1.2.2.tgz
     version: 1.2.2
   neon-storage-broker:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-12-13T13:52:19.334731032Z"
+    description: Neon storage broker
+    digest: a1381c35d1699fb8fbff499749be980645ca15e8688617c1845bb8e24751f4ed
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-storage-broker
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-storage-broker-1.1.1/neon-storage-broker-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2022-12-08T15:14:06.279354808Z"
@@ -255,4 +283,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2022-12-08T15:14:06.27951622Z"
+generated: "2022-12-13T13:52:19.334813032Z"
