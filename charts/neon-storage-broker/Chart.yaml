@@ -2,7 +2,7 @@ apiVersion: v2
 name: neon-storage-broker
 description: Neon storage broker
 type: application
-version: 1.1.0
+version: 1.1.1
 appVersion: "0.1.0"
 kubeVersion: "^1.18.x-x"
 home: https://neon.tech
