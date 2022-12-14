@@ -145,3 +145,6 @@ metrics:
     selector: {}
     # selector:
     #   prometheus: neon
+
+# -- Additional manifests that are created with the chart
+extraManifests: []

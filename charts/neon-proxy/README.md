@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.4.4](https://img.shields.io/badge/Version-1.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -31,6 +31,7 @@ Kubernetes: `^1.18.x-x`
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
+| extraManifests | list | `[]` | Additional manifests that are created with the chart |
 | fullnameOverride | string | `""` | String to fully override neon-proxy.fullname template |
 | image.pullPolicy | string | `"Always"` | image pull policy |
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
