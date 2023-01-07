@@ -34,7 +34,7 @@ settings:
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
   sentryEnvironment: "development"
-  # settings.wssPort -- numeric port used for wss/https connections. If null, wss server will not be started
+  # settings.wssPort -- (int) numeric port used for wss/https connections. If null, wss server will not be started
   wssPort: null
 
 serviceAccount:
@@ -90,7 +90,7 @@ exposedService:
   type: LoadBalancer
   # exposedService.port -- Exposed Service proxy port
   port: 5432
-  # exposedService.httpsPort -- Exposed Service https port. If null, https server will not be exposed.
+  # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
   httpsPort: null
 
 resources: {}
