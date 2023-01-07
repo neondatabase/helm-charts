@@ -15,5 +15,11 @@ spec:
       targetPort: proxy
       protocol: TCP
       name: proxy
+    {{- with .Values.exposedService.httpsPort }}
+    - port: {{ . }}
+      targetPort: https
+      protocol: TCP
+      name: https
+    {{- end }}
   selector:
     {{- include "neon-proxy.selectorLabels" . | nindent 4 }}
