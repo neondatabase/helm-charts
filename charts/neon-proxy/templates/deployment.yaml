@@ -55,6 +55,10 @@ spec:
             - --http
             - 0.0.0.0:9090
             {{- if .Values.settings }}
+            {{- with .Values.settings.wssPort }}
+            - --wss
+            - 0.0.0.0:{{ . }}
+            {{- end }}
             {{- with .Values.settings.uri }}
             - -u
             - {{ . }}
@@ -101,6 +105,13 @@ spec:
             - name: http
               containerPort: 9090
               protocol: TCP
+            {{- if .Values.settings }}
+            {{- with .Values.settings.wssPort }}
+            - name: https
+              containerPort: {{ . }}
+              protocol: TCP
+            {{- end }}
+            {{- end }}
           startupProbe:
             httpGet:
               path: /v1/status
