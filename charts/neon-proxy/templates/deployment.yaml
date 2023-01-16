@@ -71,7 +71,7 @@ spec:
             - --auth-backend
             - {{ . }}
             {{- end }}
-             {{- with .Values.settings.metricsCollectionEndpoint }}
+           {{- with .Values.settings.metricsCollectionEndpoint }}
             - --metric-collection-endpoint
             - {{ . }}
             {{- end }}
