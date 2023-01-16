@@ -71,6 +71,14 @@ spec:
             - --auth-backend
             - {{ . }}
             {{- end }}
+           {{- with .Values.settings.metricsCollectionEndpoint }}
+            - --metric-collection-endpoint
+            - {{ . }}
+            {{- end }}
+            {{- with .Values.settings.metricsCollectionInterval }}
+            - --metric-collection-interval
+            - {{ . }}
+            {{- end }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
