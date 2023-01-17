@@ -71,11 +71,11 @@ spec:
             - --auth-backend
             - {{ . }}
             {{- end }}
-            {{- with .Values.settings.metricsCollectionEndpoint }}
+            {{- with .Values.settings.metricCollectionEndpoint }}
             - --metric-collection-endpoint
             - {{ . }}
             {{- end }}
-            {{- with .Values.settings.metricsCollectionInterval }}
+            {{- with .Values.settings.metricCollectionInterval }}
             - --metric-collection-interval
             - {{ . }}
             {{- end }}
