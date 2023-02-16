@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.5.2](https://img.shields.io/badge/Version-1.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.6.2](https://img.shields.io/badge/Version-1.6.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -28,6 +28,8 @@ Kubernetes: `^1.18.x-x`
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity for pod assignment |
+| containerLifecycle | object | `{}` | container lifecycle hooks specification for neon-proxy container |
+| deploymentStrategy | object | `{"type":"Recreate"}` | strategy override for deployment |
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
@@ -68,6 +70,7 @@ Kubernetes: `^1.18.x-x`
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
 | settings.uri | string | `""` |  |
 | settings.wssPort | int | `nil` | numeric port used for wss/https connections. If null, wss server will not be started |
+| terminationGracePeriodSeconds | int | `30` | Deployment's terminationGracePeriodSeconds |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------

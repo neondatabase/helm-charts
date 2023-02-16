@@ -6,7 +6,7 @@ metadata:
     {{- include "neon-proxy.labels" . | nindent 4 }}
 spec:
   strategy:
-    type: Recreate
+    {{- toYaml .Values.deploymentStrategy | nindent 4 }}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -40,6 +40,7 @@ spec:
         - /bin/sh
         - -c
         - 'sysctl -w net.ipv4.tcp_keepalive_time=60; sysctl -w net.ipv4.tcp_keepalive_intvl=30'
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -140,6 +141,10 @@ spec:
               port: http
             periodSeconds: 15
             timeoutSeconds: 10
+          {{- if .Values.containerLifecycle }}
+          lifecycle:
+            {{- toYaml .Values.containerLifecycle | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- if .Values.settings.domain }}
