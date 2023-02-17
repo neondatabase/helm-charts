@@ -4,6 +4,13 @@
 
 replicaCount: 1
 
+# -- strategy override for deployment
+deploymentStrategy:
+  type: Recreate
+
+# -- Deployment's terminationGracePeriodSeconds
+terminationGracePeriodSeconds: 30
+
 image:
   # -- Neondatabase image repository
   repository: neondatabase/neon
@@ -63,6 +70,9 @@ podLabels: {}
 # -- neon-proxy's pods Security Context
 podSecurityContext: {}
   # fsGroup: 2000
+
+# -- container lifecycle hooks specification for neon-proxy container
+containerLifecycle: {}
 
 # -- neon-proxy's containers Security Context
 securityContext: {}
