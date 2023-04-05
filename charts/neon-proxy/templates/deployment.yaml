@@ -112,7 +112,6 @@ spec:
               readOnly: true
             {{- end }}
           {{- end }}
-
           ports:
             - name: proxy
               containerPort: 5432
@@ -167,7 +166,6 @@ spec:
             secretName: {{ . | replace "." "-" | replace "*" "wildcard" }}-tls
         {{- end }}
       {{ end }}
-
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
