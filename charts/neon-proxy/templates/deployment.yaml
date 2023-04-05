@@ -159,11 +159,11 @@ spec:
       volumes:
         - name: certs
           secret:
-            secretName: {{ include "neon-proxy.certificate-secret" . }}
+            secretName: {{ include "neon-proxy.certificate-secret" .Values.settings.domain }}
         {{- range .Values.settings.extraDomains }}
         - name: {{ include "neon-proxy.certificate-name" . }}
           secret:
-            secretName: {{ include "neon-proxy.certificate-name" . }}
+            secretName: {{ include "neon-proxy.certificate-secret" . }}
         {{- end }}
       {{ end }}
       {{- with .Values.nodeSelector }}
