@@ -64,6 +64,7 @@ Kubernetes: `^1.18.x-x`
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
 | settings.metricCollectionInterval | string | `""` | (string) how often metrics should be sent. |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
