@@ -86,7 +86,10 @@ spec:
             - /certs/tls.key
             - --tls-cert
             - /certs/tls.crt
-            {{ end }}
+            {{- end }}
+            {{- if .Values.settings.extraDomains }}
+            - --certs-dir /certs-extra
+            {{- end }}
           {{- if .Values.settings }}
           env:
             {{- with .Values.settings.sentryUrl }}
@@ -103,7 +106,13 @@ spec:
             - mountPath: "/certs"
               name: certs
               readOnly: true
+            {{- range .Values.settings.extraDomains }}
+            - mountPath: '/certs-extra/{{ . | replace "." "-" | replace "*" "wildcard" }}'
+              name: {{ . | replace "." "-" | replace "*" "wildcard" }}-tls
+              readOnly: true
+            {{- end }}
           {{- end }}
+
           ports:
             - name: proxy
               containerPort: 5432
@@ -152,7 +161,13 @@ spec:
         - name: certs
           secret:
             secretName: {{ include "neon-proxy.certificate-secret" . }}
+        {{- range .Values.settings.extraDomains }}
+        - name: {{ . | replace "." "-" | replace "*" "wildcard" }}-tls
+          secret:
+            secretName: {{ . | replace "." "-" | replace "*" "wildcard" }}-tls
+        {{- end }}
       {{ end }}
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -1,0 +1,17 @@
+{{ range .Values.settings.extraDomains }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ . | replace "." "-" | replace "*" "wildcard" }}
+spec:
+  commonName: {{ . | quote }}
+  dnsNames:
+  - {{ . | quote }}
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: cert-manager-clusterissuer
+  secretName: {{ . | replace "." "-" | replace "*" "wildcard" }}-tls
+  privateKey: 
+    encoding: PKCS8
+{{ end }}
