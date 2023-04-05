@@ -64,8 +64,11 @@ Create the name of the service account to use
 {{/*
 Create the name for TLS certificate and it's secret
 */}}
+{{- define "neon-proxy.certificate-name" -}}
+{{- . | replace "." "-" | replace "*" "wildcard" -}}
+{{- end -}}
 {{- define "neon-proxy.certificate" -}}
-{{- .Values.settings.domain | replace "." "-" | replace "*" "wildcard" }}
+{{- include "neon-proxy.certificate-name" .Values.settings.domain }}
 {{- end }}
 {{- define "neon-proxy.certificate-secret" -}}
 {{ include "neon-proxy.certificate" . }}-tls
