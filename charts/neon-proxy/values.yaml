@@ -37,6 +37,8 @@ settings:
   authBackend: "link"
   # settings.domain -- domain used in TLS cert for client postgres connections
   domain: ""
+  # settings.extraDomains -- domains used in extra TLS certs for client postgres connections
+  extraDomains: []
   # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues

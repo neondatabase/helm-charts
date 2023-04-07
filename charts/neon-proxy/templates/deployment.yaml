@@ -86,7 +86,11 @@ spec:
             - /certs/tls.key
             - --tls-cert
             - /certs/tls.crt
-            {{ end }}
+            {{- end }}
+            {{- if .Values.settings.extraDomains }}
+            - --certs-dir
+            - /certs-extra
+            {{- end }}
           {{- if .Values.settings }}
           env:
             {{- with .Values.settings.sentryUrl }}
@@ -103,6 +107,11 @@ spec:
             - mountPath: "/certs"
               name: certs
               readOnly: true
+            {{- range .Values.settings.extraDomains }}
+            - mountPath: '/certs-extra/{{ include "neon-proxy.certificate-name" . }}'
+              name: {{ include "neon-proxy.certificate-name" . }}
+              readOnly: true
+            {{- end }}
           {{- end }}
           ports:
             - name: proxy
@@ -151,7 +160,12 @@ spec:
       volumes:
         - name: certs
           secret:
+            secretName: {{ include "neon-proxy.certificate-secret" .Values.settings.domain }}
+        {{- range .Values.settings.extraDomains }}
+        - name: {{ include "neon-proxy.certificate-name" . }}
+          secret:
             secretName: {{ include "neon-proxy.certificate-secret" . }}
+        {{- end }}
       {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
