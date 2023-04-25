@@ -93,6 +93,10 @@ spec:
             {{- end }}
           {{- if .Values.settings }}
           env:
+            {{- with .Values.settings.otelExporterOtlpEndpoint }}
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: {{ . }}
+            {{- end }}
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
               value: {{ . }}
