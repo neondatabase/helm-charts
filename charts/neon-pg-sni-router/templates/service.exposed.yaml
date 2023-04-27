@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "neon-proxy.fullname" . }}-exposed
+  {{- with .Values.exposedService.annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  labels:
+    {{- include "neon-proxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.exposedService.type }}
+  ports:
+    - port: {{ .Values.exposedService.port }}
+      targetPort: router
+      protocol: TCP
+      name: proxy
+  selector:
+    {{- include "neon-proxy.selectorLabels" . | nindent 4 }}
