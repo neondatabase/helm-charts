@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: {{ include "neon-proxy.certificate" . }}
+  name: {{ include "neon-pg-sni-router.certificate" . }}
 spec:
   commonName: {{ .Values.settings.domain | quote }}
   dnsNames:
@@ -11,7 +11,7 @@ spec:
     group: cert-manager.io
     kind: ClusterIssuer
     name: cert-manager-clusterissuer
-  secretName: {{ include "neon-proxy.certificate-secret" . }}
+  secretName: {{ include "neon-pg-sni-router.certificate-secret" . }}
   privateKey:
     encoding: PKCS8
 {{- end }}

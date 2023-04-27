@@ -1,3 +1,7 @@
+image:
+  tag: "chapsonv1"
+  pullPolicy: Always
+
 exposedService:
   # exposedService.port -- Exposed Service proxy port
   port: 4432
@@ -12,4 +16,3 @@ imagePullSecrets:
 
 metrics:
   enabled: false
-

@@ -26,9 +26,9 @@ image:
 # -- Specify docker-registry secret names as an array
 imagePullSecrets: []
 
-# -- String to partially override neon-proxy.fullname template (will maintain the release name)
+# -- String to partially override neon-pg-sni-router.fullname template (will maintain the release name)
 nameOverride: ""
-# -- String to fully override neon-proxy.fullname template
+# -- String to fully override neon-pg-sni-router.fullname template
 fullnameOverride: ""
 
 # Neon proxy settings
@@ -43,7 +43,7 @@ settings:
   authBackend: "link"
   # settings.domain -- domain used in TLS cert for client postgres connections
   domain: ""
-  # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy
+  # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
   sentryEnvironment: "development"
@@ -63,24 +63,24 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-# -- Annotations for neon-proxy pods
+# -- Annotations for neon-pg-sni-router pods
 podAnnotations: {}
 
-# -- Additional labels for neon-proxy pods
+# -- Additional labels for neon-pg-sni-router pods
 podLabels: {}
   # neon_service: proxy
   # neon_env: staging
   # neon_region: us-west-1
   # neon_region_slug: virginia
 
-# -- neon-proxy's pods Security Context
+# -- neon-pg-sni-router's pods Security Context
 podSecurityContext: {}
   # fsGroup: 2000
 
-# -- container lifecycle hooks specification for neon-proxy container
+# -- container lifecycle hooks specification for neon-pg-sni-router container
 containerLifecycle: {}
 
-# -- neon-proxy's containers Security Context
+# -- neon-pg-sni-router's containers Security Context
 securityContext: {}
   # capabilities:
   #   drop:

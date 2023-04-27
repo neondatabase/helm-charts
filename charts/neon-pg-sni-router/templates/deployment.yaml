@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "neon-proxy.fullname" . }}
+  name: {{ include "neon-pg-sni-router.fullname" . }}
   labels:
-    {{- include "neon-proxy.labels" . | nindent 4 }}
+    {{- include "neon-pg-sni-router.labels" . | nindent 4 }}
 spec:
   strategy:
     {{- toYaml .Values.deploymentStrategy | nindent 4 }}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "neon-proxy.selectorLabels" . | nindent 6 }}
+      {{- include "neon-pg-sni-router.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "neon-proxy.selectorLabels" . | nindent 8 }}
+        {{- include "neon-pg-sni-router.selectorLabels" . | nindent 8 }}
       {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "neon-proxy.serviceAccountName" . }}
+      serviceAccountName: {{ include "neon-pg-sni-router.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
@@ -116,7 +116,7 @@ spec:
       volumes:
         - name: certs
           secret:
-            secretName: {{ include "neon-proxy.certificate-secret" . }}
+            secretName: {{ include "neon-pg-sni-router.certificate-secret" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
