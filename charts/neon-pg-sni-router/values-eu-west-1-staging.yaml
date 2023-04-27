@@ -1,3 +1,5 @@
+useCertManager: true
+
 image:
   tag: "chapsonv1"
   pullPolicy: Always
