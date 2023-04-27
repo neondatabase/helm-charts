@@ -77,9 +77,11 @@ spec:
             {{- end }}
           {{- end }}
           volumeMounts:
+{{- if ne .Values.settings.domain "" }}
             - mountPath: "/certs"
               name: certs
               readOnly: true
+{{- end }}
           ports:
             - name: router
               containerPort: 4432
@@ -113,10 +115,12 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+{{- if ne .Values.settings.domain "" }}
       volumes:
         - name: certs
           secret:
             secretName: {{ include "neon-pg-sni-router.certificate-secret" . }}
+{{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
