@@ -39,7 +39,7 @@ Kubernetes: `^1.18.x-x`
 | fullnameOverride | string | `""` | String to fully override neon-pg-sni-router.fullname template |
 | image.pullPolicy | string | `"Always"` | image pull policy |
 | image.repository | string | `"neondatabase/pg-sni-router"` | Neondatabase image repository |
-| image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `"chapsonv1"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
 | metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
