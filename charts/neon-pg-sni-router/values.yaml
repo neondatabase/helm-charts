@@ -58,30 +58,30 @@ serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
   create: true
   # serviceAccount.annotations -- Annotations to add to the service account
-  annotations: { }
+  annotations: {}
   # serviceAccount.name - The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
 # -- Annotations for neon-pg-sni-router pods
-podAnnotations: { }
+podAnnotations: {}
 
 # -- Additional labels for neon-pg-sni-router pods
-podLabels: { }
+podLabels: {}
   # neon_service: proxy
   # neon_env: staging
   # neon_region: us-west-1
 # neon_region_slug: virginia
 
 # -- neon-pg-sni-router's pods Security Context
-podSecurityContext: { }
+podSecurityContext: {}
 # fsGroup: 2000
 
 # -- container lifecycle hooks specification for neon-pg-sni-router container
-containerLifecycle: { }
+containerLifecycle: {}
 
 # -- neon-pg-sni-router's containers Security Context
-securityContext: { }
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -91,7 +91,7 @@ securityContext: { }
 
 service:
   # service.annotations -- Annotations to add to the service
-  annotations: { }
+  annotations: {}
   # service.type -- Service type
   type: ClusterIP
   # service.port -- Service management port
@@ -101,7 +101,7 @@ service:
 
 exposedService:
   # exposedService.annotations -- Annotations to add to the exposed service
-  annotations: { }
+  annotations: {}
     # service.beta.kubernetes.io/aws-load-balancer-type: external
     # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
     # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
@@ -113,7 +113,7 @@ exposedService:
   # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
   httpsPort: null
 
-resources: { }
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -130,13 +130,13 @@ resources: { }
 #   memory: 128Mi
 
 # -- Node labels for pod assignment.
-nodeSelector: { }
+nodeSelector: {}
 
 # -- Tolerations for pod assignment.
 tolerations: []
 
 # -- Affinity for pod assignment
-affinity: { }
+affinity: {}
 
 metrics:
   # metrics.enabled -- Enable prometheus metrcis autodiscovery
@@ -166,7 +166,7 @@ metrics:
     ## ref: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#prometheusioscrape
     ##
     # metrics.serviceMonitor.selector -- Additional labels to attach (used by Prometheus operator)
-    selector: { }
+    selector: {}
     # selector:
     #   prometheus: neon
 # -- Additional manifests that are created with the chart
