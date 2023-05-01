@@ -133,7 +133,7 @@ resources: { }
 nodeSelector: { }
 
 # -- Tolerations for pod assignment.
-tolerations: [ ]
+tolerations: []
 
 # -- Affinity for pod assignment
 affinity: { }
@@ -170,4 +170,4 @@ metrics:
     # selector:
     #   prometheus: neon
 # -- Additional manifests that are created with the chart
-extraManifests: [ ]
+extraManifests: []
