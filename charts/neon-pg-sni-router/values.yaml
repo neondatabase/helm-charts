@@ -24,7 +24,7 @@ image:
   tag: "3113"  # replace me with "latest" when we release to prod once
 
 # -- Specify docker-registry secret names as an array
-imagePullSecrets: [ ]
+imagePullSecrets: []
 
 # -- String to partially override neon-pg-sni-router.fullname template (will maintain the release name)
 nameOverride: ""
