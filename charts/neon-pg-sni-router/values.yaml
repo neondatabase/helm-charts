@@ -1,0 +1,173 @@
+# Default values for neon-pg-sni-router.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Use cert-manager to generate TLS certificates
+# otherwise, you need to provide your own certificates
+useCertManager: false
+
+replicaCount: 1
+
+# -- strategy override for deployment
+deploymentStrategy:
+  type: Recreate
+
+# -- Deployment's terminationGracePeriodSeconds
+terminationGracePeriodSeconds: 30
+
+image:
+  # -- Neondatabase image repository
+  repository: neondatabase/neon
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: "3113"  # replace me with "latest" when we release to prod once
+
+# -- Specify docker-registry secret names as an array
+imagePullSecrets: []
+
+# -- String to partially override neon-pg-sni-router.fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override neon-pg-sni-router.fullname template
+fullnameOverride: ""
+
+# Neon proxy settings
+settings:
+  # settings.destination -- append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local"
+  destination: "svc.cluster.local"
+  # settings.authEndpoint -- auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/"
+  authEndpoint: ""
+  # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
+  uri: ""
+  # settings.authBackend -- auth method used (console|link|postgres)
+  authBackend: "link"
+  # settings.domain -- domain used in TLS cert for client postgres connections
+  domain: "dummy"
+  # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router
+  sentryUrl: ""
+  # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
+  sentryEnvironment: "development"
+  # settings.wssPort -- (int) numeric port used for wss/https connections. If null, wss server will not be started
+  wssPort: null
+  # settings.metricCollectionEndpoint -- (url) endpoint used to send metrics to. If null, metrics will not be sent.
+  metricCollectionEndpoint: ""
+  # settings.metricCollectionInterval -- (string) how often metrics should be sent.
+  metricCollectionInterval: ""
+
+serviceAccount:
+  # serviceAccount.create - Specifies whether a service account should be created
+  create: true
+  # serviceAccount.annotations -- Annotations to add to the service account
+  annotations: {}
+  # serviceAccount.name - The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# -- Annotations for neon-pg-sni-router pods
+podAnnotations: {}
+
+# -- Additional labels for neon-pg-sni-router pods
+podLabels: {}
+  # neon_service: proxy
+  # neon_env: staging
+  # neon_region: us-west-1
+# neon_region_slug: virginia
+
+# -- neon-pg-sni-router's pods Security Context
+podSecurityContext: {}
+# fsGroup: 2000
+
+# -- container lifecycle hooks specification for neon-pg-sni-router container
+containerLifecycle: {}
+
+# -- neon-pg-sni-router's containers Security Context
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  # service.annotations -- Annotations to add to the service
+  annotations: {}
+  # service.type -- Service type
+  type: ClusterIP
+  # service.port -- Service management port
+  port: 7000
+  # service.httpPort -- Http management port
+  httpPort: 9090
+
+exposedService:
+  # exposedService.annotations -- Annotations to add to the exposed service
+  annotations: {}
+    # service.beta.kubernetes.io/aws-load-balancer-type: external
+    # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  # external-dns.alpha.kubernetes.io/hostname: chart-example.local
+  # exposedService.type -- Exposed service type
+  type: LoadBalancer
+  # exposedService.port -- Exposed Service proxy port
+  port: 5432
+  # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
+  httpsPort: null
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #
+  # resources.limits -- The resources limits for the container
+  # resources.requests The requested resources for the container
+  #
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+#   memory: 128Mi
+
+# -- Node labels for pod assignment.
+nodeSelector: {}
+
+# -- Tolerations for pod assignment.
+tolerations: []
+
+# -- Affinity for pod assignment
+affinity: {}
+
+metrics:
+  # metrics.enabled -- Enable prometheus metrcis autodiscovery
+  enabled: false
+  ## Prometheus Operator ServiceMonitor configuration
+  ##
+  serviceMonitor:
+    # metrics.serviceMonitor.enabled -- Create ServiceMonitor resource
+    enabled: false
+
+    # metrics.serviceMonitor.namespace -- The namespace in which the ServiceMonitor will be created, if empty then Release.Namespace used
+    namespace: ""
+
+    ## Interval at which metrics should be scraped.
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
+    ##
+    # metrics.serviceMonitor.interval -- Interval in which prometheus scrapes
+    interval: 10s
+
+    ## Timeout after which the scrape is ended
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
+    ##
+    # metrics.serviceMonitor.scrapeTimeout -- Scrape Timeout duration for prometheus
+    scrapeTimeout: 10s
+
+    ## ServiceMonitor selector labels
+    ## ref: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#prometheusioscrape
+    ##
+    # metrics.serviceMonitor.selector -- Additional labels to attach (used by Prometheus operator)
+    selector: {}
+    # selector:
+    #   prometheus: neon
+# -- Additional manifests that are created with the chart
+extraManifests: []

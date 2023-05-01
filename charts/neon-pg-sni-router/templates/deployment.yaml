@@ -1,0 +1,128 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "neon-pg-sni-router.fullname" . }}
+  labels:
+    {{- include "neon-pg-sni-router.labels" . | nindent 4 }}
+spec:
+  strategy:
+    {{- toYaml .Values.deploymentStrategy | nindent 4 }}
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "neon-pg-sni-router.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "neon-pg-sni-router.selectorLabels" . | nindent 8 }}
+      {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "neon-pg-sni-router.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: sysctl
+        image: busybox:1.35.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        args:
+        - /bin/sh
+        - -c
+        - 'sysctl -w net.ipv4.tcp_keepalive_time=60; sysctl -w net.ipv4.tcp_keepalive_intvl=30'
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /usr/local/bin/pg_sni_router
+            - --listen
+            - 0.0.0.0:4432
+            - --destination
+            - {{ .Values.settings.destination }}
+            {{- with .Values.settings.metricCollectionEndpoint }}
+            - --metric-collection-endpoint
+            - {{ . }}
+            {{- end }}
+            {{- with .Values.settings.metricCollectionInterval }}
+            - --metric-collection-interval
+            - {{ . }}
+            {{- end }}
+            - --tls-key
+            - /certs/tls.key
+            - --tls-cert
+            - /certs/tls.crt
+          {{- if .Values.settings }}
+          env:
+            {{- with .Values.settings.sentryUrl }}
+            - name: SENTRY_DSN
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.settings.sentryEnvironment }}
+            - name: SENTRY_ENVIRONMENT
+              value: {{ . }}
+            {{- end }}
+          {{- end }}
+          volumeMounts:
+            - mountPath: "/certs"
+              name: certs
+              readOnly: true
+          ports:
+            - name: router
+              containerPort: 4432
+              protocol: TCP
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+          startupProbe:
+            tcpSocket:
+              port: router
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 30
+          livenessProbe:
+            tcpSocket:
+              port: router
+            periodSeconds: 15
+            timeoutSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: router
+            periodSeconds: 15
+            timeoutSeconds: 10
+          {{- if .Values.containerLifecycle }}
+          lifecycle:
+            {{- toYaml .Values.containerLifecycle | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: certs
+          secret:
+            secretName: {{ include "neon-pg-sni-router.certificate-secret" . }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
