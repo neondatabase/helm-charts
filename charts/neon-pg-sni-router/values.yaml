@@ -17,11 +17,11 @@ terminationGracePeriodSeconds: 30
 
 image:
   # -- Neondatabase image repository
-  repository: neondatabase/pg-sni-router
+  repository: neondatabase/neon
   # -- image pull policy
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: "chapsonv1"
+  tag: "latest"
 
 # -- Specify docker-registry secret names as an array
 imagePullSecrets: []

@@ -1,8 +1,9 @@
 useCertManager: true
 
+replicaCount: 3
+
 image:
-  tag: "chapsonv1"
-  pullPolicy: Always
+  tag: "3113"
 
 exposedService:
   # exposedService.port -- Exposed Service proxy port

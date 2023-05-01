@@ -1,6 +1,6 @@
 image:
-  repository: neondatabase/console
-  tag: pg-sni-router-1
+  repository: neondatabase/neon
+  tag: latest
 
 exposedService:
   # exposedService.port -- Exposed Service proxy port
