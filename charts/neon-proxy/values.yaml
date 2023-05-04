@@ -29,6 +29,8 @@ fullnameOverride: ""
 
 # Neon proxy settings
 settings:
+  # settings.useCertManager if true, will use cert-manager to generate TLS certs for client postgres connections
+  useCertManager: true
   # settings.authEndpoint -- auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/"
   authEndpoint: ""
   # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
