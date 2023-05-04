@@ -29,6 +29,8 @@ fullnameOverride: ""
 
 # Neon proxy settings
 settings:
+  # settings.useCertManager if true, will use cert-manager to generate TLS certs for client postgres connections
+  useCertManager: true
   # settings.authEndpoint -- auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/"
   authEndpoint: ""
   # settings.uri - psql session endpoint, e.g. "http://console.neon/psql_session/"
@@ -69,11 +71,11 @@ podLabels: {}
   # neon_service: proxy
   # neon_env: staging
   # neon_region: us-west-1
-  # neon_region_slug: virginia
+# neon_region_slug: virginia
 
 # -- neon-proxy's pods Security Context
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 # -- container lifecycle hooks specification for neon-proxy container
 containerLifecycle: {}
@@ -85,7 +87,7 @@ securityContext: {}
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
-  # runAsUser: 1000
+# runAsUser: 1000
 
 service:
   # service.annotations -- Annotations to add to the service
@@ -103,7 +105,7 @@ exposedService:
     # service.beta.kubernetes.io/aws-load-balancer-type: external
     # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
     # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-    # external-dns.alpha.kubernetes.io/hostname: chart-example.local
+  # external-dns.alpha.kubernetes.io/hostname: chart-example.local
   # exposedService.type -- Exposed service type
   type: LoadBalancer
   # exposedService.port -- Exposed Service proxy port
@@ -125,7 +127,7 @@ resources: {}
   #   memory: 128Mi
   # requests:
   #   cpu: 100m
-  #   memory: 128Mi
+#   memory: 128Mi
 
 # -- Node labels for pod assignment.
 nodeSelector: {}
