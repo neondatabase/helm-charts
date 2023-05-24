@@ -21,7 +21,7 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: "3113"  # replace me with "latest" when we release to prod once
+  tag: "latest"
 
 # -- Specify docker-registry secret names as an array
 imagePullSecrets: []
