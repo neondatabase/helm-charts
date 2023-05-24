@@ -1,6 +1,6 @@
 # neon-pg-sni-router
 
-![Version: 0.0.0](https://img.shields.io/badge/Version-0.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Postgres SNI Router
 
@@ -39,7 +39,7 @@ Kubernetes: `^1.18.x-x`
 | fullnameOverride | string | `""` | String to fully override neon-pg-sni-router.fullname template |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
-| image.tag | string | `"3113"` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
 | metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
