@@ -1,6 +1,6 @@
 # neon-pg-sni-router
 
-![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Postgres SNI Router
 
@@ -30,7 +30,7 @@ Kubernetes: `^1.18.x-x`
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity for pod assignment |
 | containerLifecycle | object | `{}` | container lifecycle hooks specification for neon-pg-sni-router container |
-| deploymentStrategy | object | `{"type":"Recreate"}` | strategy override for deployment |
+| deploymentStrategy | object | `{"rollingUpdate":{"maxSurge":"100%","maxUnavailable":"50%"},"type":"RollingUpdate"}` | strategy override for deployment |
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
