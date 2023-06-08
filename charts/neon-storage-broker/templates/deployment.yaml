@@ -6,7 +6,10 @@ metadata:
     {{- include "neon-storage-broker.labels" . | nindent 4 }}
 spec:
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   replicas: 1
   # Which pods the Deployment is managing (duplicates template.metadata.labels).
   selector:
