@@ -10,7 +10,10 @@ replicaCount: 1
 
 # -- strategy override for deployment
 deploymentStrategy:
-  type: Recreate
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 100%
+    maxUnavailable: 50%
 
 # -- Deployment's terminationGracePeriodSeconds
 terminationGracePeriodSeconds: 30
