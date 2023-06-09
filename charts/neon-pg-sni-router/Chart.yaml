@@ -2,7 +2,7 @@ apiVersion: v2
 name: neon-pg-sni-router
 description: Neon Postgres SNI Router
 type: application
-version: 0.0.2
+version: 0.0.3
 appVersion: "0.1.0"
 kubeVersion: "^1.18.x-x"
 home: https://neon.tech
