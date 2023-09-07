@@ -53,6 +53,8 @@ settings:
   metricCollectionEndpoint: ""
   # settings.metricCollectionInterval -- (string) how often metrics should be sent.
   metricCollectionInterval: ""
+  # settings.controlplane_token -- (string) JWT token to pass to control plane management API
+  controlplane_token: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

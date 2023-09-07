@@ -105,6 +105,10 @@ spec:
             - name: SENTRY_ENVIRONMENT
               value: {{ . }}
             {{- end }}
+            {{- with .Values.settings.controlplane_token }}
+            - name: NEON_PROXY_TO_CONTROLPLANE_TOKEN
+              value: {{ . }}
+            {{- end }}
           {{- end }}
           {{- if .Values.settings.domain }}
           volumeMounts:
