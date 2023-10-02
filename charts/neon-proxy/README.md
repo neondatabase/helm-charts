@@ -74,6 +74,7 @@ Kubernetes: `^1.18.x-x`
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |
 | settings.wssPort | int | `nil` | numeric port used for wss/https connections. If null, wss server will not be started |
+| settings.requireClientIP | bool | `false` | terminate any connections that don't begin with a ProxyProtocol V2 header, or those that don't contain an IP address. |
 | terminationGracePeriodSeconds | int | `30` | Deployment's terminationGracePeriodSeconds |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 

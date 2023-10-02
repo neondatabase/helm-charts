@@ -55,6 +55,9 @@ settings:
   metricCollectionInterval: ""
   # settings.controlplane_token -- (string) JWT token to pass to control plane management API
   controlplane_token: ""
+  # settings.requireClientIP if true, will terminate any connections that don't begin with a ProxyProtocol V2 header,
+  # or those that don't contain an IP address.
+  requireClientIP: false
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
