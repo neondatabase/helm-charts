@@ -80,6 +80,10 @@ spec:
             - --metric-collection-interval
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.requireClientIP }}
+            - --require-client-ip
+            - {{ . }}
+            {{- end }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
