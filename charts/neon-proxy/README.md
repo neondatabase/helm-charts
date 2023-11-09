@@ -73,6 +73,7 @@ Kubernetes: `^1.18.x-x`
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |
+| settings.wakeComputeLock | string | `"permits=0"` | (string) Configures the locking of wake_compute per endpoint |
 | settings.wssPort | int | `nil` | numeric port used for wss/https connections. If null, wss server will not be started |
 | terminationGracePeriodSeconds | int | `30` | Deployment's terminationGracePeriodSeconds |
 | tolerations | list | `[]` | Tolerations for pod assignment. |

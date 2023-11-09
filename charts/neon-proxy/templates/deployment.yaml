@@ -91,6 +91,10 @@ spec:
             - --certs-dir
             - /certs-extra
             {{- end }}
+            {{- with .Values.settings.wakeComputeLock }}
+            - --wake-compute-lock
+            - {{ . }}
+            {{- end }}
           {{- if .Values.settings }}
           env:
             {{- with .Values.settings.otelExporterOtlpEndpoint }}
