@@ -55,6 +55,8 @@ settings:
   metricCollectionInterval: ""
   # settings.controlplane_token -- (string) JWT token to pass to control plane management API
   controlplane_token: ""
+  # settings.wakeComputeLock -- (string) Configures the locking of wake_compute per endpoint
+  wakeComputeLock: "permits=0"
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
