@@ -1,0 +1,82 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "aws-cost-reporter.fullname" . }}
+  labels:
+    {{- include "aws-cost-reporter.labels" . | nindent 4 }}
+spec:
+  #timeZone: "Etc/UTC"
+  schedule: '0 12 * * *'
+  jobTemplate:
+    metadata:
+      name: {{ include "aws-cost-reporter.fullname" . }}
+      labels:
+        {{- include "aws-cost-reporter.labels" . | nindent 8 }}
+    spec:
+      template:
+        metadata:
+          {{- with .Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels:
+            {{- include "aws-cost-reporter.selectorLabels" . | nindent 12 }}
+        spec:
+          restartPolicy: Never
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "aws-cost-reporter.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+                - name: SLACK_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "aws-cost-reporter.fullname" . }}
+                      key: slackToken
+                - name: SLACK_CHANNEL_ID
+                  value: {{ .Values.slack.channelID | quote }}
+                - name: SLACK_MESSAGE_HEADER
+                  value: {{ .Values.slack.header | quote }}
+              {{- if .Values.aws }}
+              {{- if .Values.aws.awsAccessKey }}
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "aws-cost-reporter.fullname" . }}
+                      key: awsAccessKey
+              {{- end }}
+              {{- if .Values.aws.awsSecretKey }}
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "aws-cost-reporter.fullname" . }}
+                      key: awsSecretKey
+              {{- end }}
+              {{- if .Values.aws.awsRegion }}
+                - name: AWS_REGION
+                  value: {{ .Values.aws.awsRegion }}
+              {{- end }}
+              {{- end }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}

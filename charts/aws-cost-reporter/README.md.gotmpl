@@ -1,0 +1,37 @@
+{{ template "chart.header" . }}
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}[![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+
+{{ template "chart.description" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+## Installing the Chart
+
+Add Neondatabase chart repository:
+```console
+$ helm repo add neondatabase https://neondatabase.github.io/helm-charts
+```
+
+Install the chart with the release name `{{ template "chart.name" . }}` using IRSA to access AWS resources:
+
+```console
+$ helm install {{ template "chart.name" . }} neondatabase/aws-cost-reporter \
+  --set slack.token="<Slack App token>" \
+  --set serviceAccount.roleArn="arn:aws:iam::<AWS account id>:role/<IRSA role name>"
+```
+
+Install the chart with the release name `{{ template "chart.name" . }}` using AWS credentials to access AWS resources:
+
+```console
+$ helm install {{ template "chart.name" . }} neondatabase/aws-cost-reporter \
+  --set slack.token="<Slack App token>" \
+  --set aws.awsAccessKey="<AWS access key id>" \
+  --set aws.awsSecretKey="<AWS secret access key>" \
+  --set aws.awsRegion="eu-east-1"
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}
