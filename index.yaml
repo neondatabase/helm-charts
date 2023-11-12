@@ -3,6 +3,18 @@ entries:
   aws-cost-reporter:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-11-12T21:25:10.944337654Z"
+    description: AWS Cost Reporter
+    digest: 343da941de1178af9d559e8021eefd5c6ec598ecc9d1fe62eed0bc55888cb473
+    name: aws-cost-reporter
+    sources:
+    - https://github.com/neondatabase/aws-cost-reporter
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/aws-cost-reporter-1.0.1/aws-cost-reporter-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2023-11-12T13:47:47.448568658Z"
     description: AWS Cost Reporter
     digest: c137691619875d73e013cc64357758e0d38535f1c9f31beef2adf92b30ed92f9
@@ -553,4 +565,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2023-11-12T13:47:47.448863459Z"
+generated: "2023-11-12T21:25:10.944717255Z"
