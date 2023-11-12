@@ -5,6 +5,3 @@ chart-dirs:
   - charts
 helm-extra-args: "--timeout 600s"
 validate-maintainers: false
-
-# aws-cost-reporter chart install cronjob resource that impossible test with ct
-excluded-charts: aws-cost-reporter
