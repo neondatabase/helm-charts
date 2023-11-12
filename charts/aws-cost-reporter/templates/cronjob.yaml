@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "aws-cost-reporter.labels" . | nindent 4 }}
 spec:
-  #timeZone: "Etc/UTC"
-  schedule: '0 12 * * *'
+  timeZone: "Etc/UTC"
+  schedule: '0 18 * * *'
   jobTemplate:
     metadata:
       name: {{ include "aws-cost-reporter.fullname" . }}
