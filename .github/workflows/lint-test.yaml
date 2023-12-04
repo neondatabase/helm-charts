@@ -37,8 +37,11 @@ jobs:
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml
 
-      - name: Create k8s Kind cluster
-        uses: helm/kind-action@v1.8.0
+      - name: Create k3d cluster
+        uses: nolar/setup-k3d-k3s@v1
+        with:
+          version: v1.25
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml

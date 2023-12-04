@@ -81,6 +81,13 @@ spec:
             - {{ . }}
             {{- end }}
             {{- end }}
+            {{- if .Values.settings.httpPoolOptIn }}
+            - --sql-over-http-pool-opt-in
+            - "true"
+            {{- else}}
+            - --sql-over-http-pool-opt-in
+            - "false"
+            {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
             - /certs/tls.key
