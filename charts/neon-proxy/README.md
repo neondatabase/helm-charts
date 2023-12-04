@@ -66,6 +66,7 @@ Kubernetes: `^1.18.x-x`
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
+| settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
 | settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
 | settings.metricCollectionInterval | string | `""` | (string) how often metrics should be sent. |
 | settings.otelExporterOtlpEndpoint | string | `""` | OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable) |

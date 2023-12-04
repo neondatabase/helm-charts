@@ -80,6 +80,10 @@ spec:
             - --metric-collection-interval
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.httpPoolOptIn }}
+            - --sql-over-http-pool-opt-in
+            - {{ . }}
+            {{- end }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
