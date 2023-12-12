@@ -64,6 +64,7 @@ Kubernetes: `^1.18.x-x`
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
+| settings.disableDynamicRateLimiter | bool | `false` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
