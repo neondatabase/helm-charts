@@ -59,6 +59,8 @@ settings:
   wakeComputeLock: "permits=0"
   # settings.httpPoolOptIn -- (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always
   httpPoolOptIn: true
+  # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
+  disableDynamicRateLimiter: false
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
