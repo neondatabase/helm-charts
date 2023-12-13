@@ -97,7 +97,7 @@ spec:
             {{- end }}
             {{- if .Values.settings.aimdMaxLimit }}
             - --aimd-max-limit
-            - {{ .Values.settings.aimdMaxLimit }}
+            - {{ .Values.settings.aimdMaxLimit | quote }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
