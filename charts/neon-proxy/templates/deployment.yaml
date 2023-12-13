@@ -95,7 +95,7 @@ spec:
             - --disable-dynamic-rate-limiter
             - "false"
             {{- end }}
-            {{- if .Values.settings.disableDynamicRateLimiter }}
+            {{- with .Values.settings.aimdMaxLimit }}
             - --aimd-max-limit
             - {{ . }}
             {{- end }}
