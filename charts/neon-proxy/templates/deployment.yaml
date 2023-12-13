@@ -95,9 +95,9 @@ spec:
             - --disable-dynamic-rate-limiter
             - "false"
             {{- end }}
-            {{- with .Values.settings.aimdMaxLimit }}
+            {{- if .Values.settings.aimdMaxLimit }}
             - --aimd-max-limit
-            - {{ . }}
+            - {{ .Values.settings.aimdMaxLimit }}
             {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
