@@ -88,6 +88,17 @@ spec:
             - --sql-over-http-pool-opt-in
             - "false"
             {{- end }}
+            {{- if .Values.settings.disableDynamicRateLimiter }}
+            - --disable-dynamic-rate-limiter
+            - "true"
+            {{- else}}
+            - --disable-dynamic-rate-limiter
+            - "false"
+            {{- end }}
+            {{- if .Values.settings.disableDynamicRateLimiter }}
+            - --aimd-max-limit
+            - {{ . }}
+            {{- end }}
             {{- if .Values.settings.domain }}
             - --tls-key
             - /certs/tls.key
