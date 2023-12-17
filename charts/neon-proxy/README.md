@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.7](https://img.shields.io/badge/Version-1.7.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.8](https://img.shields.io/badge/Version-1.7.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -66,6 +66,8 @@ Kubernetes: `^1.18.x-x`
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| settings.endpointRpsLimits[0] | string | `"300@1s"` |  |
+| settings.endpointRpsLimits[1] | string | `"250@10m"` |  |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
 | settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
