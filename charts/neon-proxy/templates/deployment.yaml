@@ -110,7 +110,7 @@ spec:
             - {{ . }}
             {{- end }}
             {{- range .Values.settings.endpointRpsLimits }}
-              - "--endpoint-rps-limit={{ . | quote }}"
+              --endpoint-rps-limit={{ . | quote }}
             {{- end }}
           {{- if .Values.settings }}
           env:
