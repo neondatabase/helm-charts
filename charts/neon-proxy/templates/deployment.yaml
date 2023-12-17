@@ -105,12 +105,12 @@ spec:
             - --certs-dir
             - /certs-extra
             {{- end }}
+            {{- range .Values.settings.endpointRpsLimits }}
+            - --endpoint-rps-limit={{ . }}
+            {{- end }}
             {{- with .Values.settings.wakeComputeLock }}
             - --wake-compute-lock
             - {{ . }}
-            {{- end }}
-            {{- range .Values.settings.endpointRpsLimits }}
-              --endpoint-rps-limit={{ . | quote }}
             {{- end }}
           {{- if .Values.settings }}
           env:
