@@ -61,6 +61,10 @@ settings:
   httpPoolOptIn: true
   # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
   disableDynamicRateLimiter: true
+  # settings.endpointRpsLimit -- (list) list of rate limiters over different time intervals
+  endpointRpsLimits:
+  - 300@1s
+  - 250@10m
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

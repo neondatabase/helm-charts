@@ -109,6 +109,9 @@ spec:
             - --wake-compute-lock
             - {{ . }}
             {{- end }}
+            {{- range .Values.settings.endpointRpsLimits }}
+              - "--endpoint-rps-limit={{ . | quote }}"
+            {{- end }}
           {{- if .Values.settings }}
           env:
             {{- with .Values.settings.otelExporterOtlpEndpoint }}
