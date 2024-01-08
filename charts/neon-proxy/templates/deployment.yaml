@@ -108,6 +108,9 @@ spec:
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}
+            {{- with .Values.settings.region }}
+            - --region={{ . }}
+            {{ end }}
             {{- with .Values.settings.parquetUploadRemoteStorage }}
             - --parquet-upload-remote-storage={{ . }}
             {{ end }}

@@ -77,6 +77,8 @@ settings:
   parquetUploadMaximumDuration: "20m"
   # settings.parquetUploadCompression -- (string) What level of compression to use
   parquetUploadCompression: uncompressed
+  # settings.region -- (string) Region this proxy service is deployed into
+  region: ""
   # settings.awsAccessKeyId -- (string) AWS Access Key ID
   awsAccessKeyId: ""
   # settings.awsSecretAccessKey -- (string) AWS Secret Access Key
