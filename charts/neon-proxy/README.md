@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.10](https://img.shields.io/badge/Version-1.7.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.11](https://img.shields.io/badge/Version-1.7.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -63,6 +63,8 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.name | string | `""` |  |
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
+| settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
+| settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
@@ -73,6 +75,13 @@ Kubernetes: `^1.18.x-x`
 | settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
 | settings.metricCollectionInterval | string | `""` | (string) how often metrics should be sent. |
 | settings.otelExporterOtlpEndpoint | string | `""` | OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable) |
+| settings.parquetUploadCompression | string | `"uncompressed"` | (string) What level of compression to use |
+| settings.parquetUploadMaximumDuration | string | `"20m"` | (string) How long to wait before forcing a file upload |
+| settings.parquetUploadPageSize | string | `"1048576"` | (string) How large each column page should be in bytes |
+| settings.parquetUploadRemoteStorage | string | `""` | (string) Storage location to upload the parquet files to. |
+| settings.parquetUploadRowGroupSize | string | `"8192"` | (string) How many rows to include in a row group |
+| settings.parquetUploadSize | string | `"100000000"` | (string) How large the total parquet file should be in bytes |
+| settings.region | string | `""` | (string) Region this proxy service is deployed into |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
 | settings.uri | string | `""` |  |

@@ -108,6 +108,27 @@ spec:
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}
+            {{- with .Values.settings.region }}
+            - --region={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadRemoteStorage }}
+            - --parquet-upload-remote-storage={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadRowGroupSize }}
+            - --parquet-upload-row-group-size={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadPageSize }}
+            - --parquet-upload-page-size={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadSize }}
+            - --parquet-upload-size={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadMaximumDuration }}
+            - --parquet-upload-maximum-duration={{ . }}
+            {{ end }}
+            {{- with .Values.settings.parquetUploadCompression }}
+            - --parquet-upload-compression={{ . }}
+            {{ end }}
             {{- with .Values.settings.wakeComputeLock }}
             - --wake-compute-lock
             - {{ . }}
@@ -128,6 +149,14 @@ spec:
             {{- end }}
             {{- with .Values.settings.controlplane_token }}
             - name: NEON_PROXY_TO_CONTROLPLANE_TOKEN
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.settings.awsAccessKeyId }}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ . }}
+            {{- end }}
+            {{- with .Values.settings.awsSecretAccessKey }}
+            - name: AWS_SECRET_ACCESS_KEY
               value: {{ . }}
             {{- end }}
           {{- end }}
