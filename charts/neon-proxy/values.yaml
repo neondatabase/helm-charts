@@ -65,6 +65,24 @@ settings:
   endpointRpsLimits:
   - 300@1s
   - 250@10m
+  # settings.parquetUploadRemoteStorage -- (string) Storage location to upload the parquet files to.
+  parquetUploadRemoteStorage: ""
+  # settings.parquetUploadRowGroupSize -- (string) How many rows to include in a row group
+  parquetUploadRowGroupSize: "8192"
+  # settings.parquetUploadPageSize -- (string) How large each column page should be in bytes
+  parquetUploadPageSize: "1048576"
+  # settings.parquetUploadSize -- (string) How large the total parquet file should be in bytes
+  parquetUploadSize: "100000000"
+  # settings.parquetUploadMaximumDuration -- (string) How long to wait before forcing a file upload
+  parquetUploadMaximumDuration: "20m"
+  # settings.parquetUploadCompression -- (string) What level of compression to use
+  parquetUploadCompression: uncompressed
+  # settings.region -- (string) Region this proxy service is deployed into
+  region: ""
+  # settings.awsAccessKeyId -- (string) AWS Access Key ID
+  awsAccessKeyId: ""
+  # settings.awsSecretAccessKey -- (string) AWS Secret Access Key
+  awsSecretAccessKey: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
