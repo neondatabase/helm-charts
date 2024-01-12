@@ -159,6 +159,10 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               value: {{ . }}
             {{- end }}
+            {{- with .Values.settings.awsWebIdentityTokenFile }}
+            - name: AWS_WEB_IDENTITY_TOKEN_FILE
+              value: {{ . }}
+            {{- end }}
           {{- end }}
           {{- if .Values.settings.domain }}
           volumeMounts:

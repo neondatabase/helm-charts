@@ -83,6 +83,8 @@ settings:
   awsAccessKeyId: ""
   # settings.awsSecretAccessKey -- (string) AWS Secret Access Key
   awsSecretAccessKey: ""
+  # settings.awsWebIdentityTokenFile -- (string) AWS Web Identity Token File Path
+  awsWebIdentityTokenFile: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

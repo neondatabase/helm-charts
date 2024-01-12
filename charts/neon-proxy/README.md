@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.13](https://img.shields.io/badge/Version-1.7.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.14](https://img.shields.io/badge/Version-1.7.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -65,6 +65,7 @@ Kubernetes: `^1.18.x-x`
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
+| settings.awsWebIdentityTokenFile | string | `""` | (string) AWS Web Identity Token File Path |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
