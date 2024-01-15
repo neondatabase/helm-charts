@@ -118,11 +118,10 @@ exposedService:
 
 resources:
   limits:
-    cpu: 400m
     memory: 1Gi
   requests:
     cpu: 200m
-  memory: 512Mi
+    memory: 512Mi
 
 # -- Node labels for pod assignment.
 nodeSelector: {}

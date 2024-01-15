@@ -145,8 +145,7 @@ exposedService:
 
 resources:
   limits:
-    cpu: 1
-    memory: 8Gi
+    memory: 32Gi
   requests:
     cpu: 400m
     memory: 2Gi
