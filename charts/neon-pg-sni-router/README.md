@@ -1,6 +1,6 @@
 # neon-pg-sni-router
 
-![Version: 0.0.3](https://img.shields.io/badge/Version-0.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 0.0.4](https://img.shields.io/badge/Version-0.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Postgres SNI Router
 
@@ -53,7 +53,9 @@ Kubernetes: `^1.18.x-x`
 | podLabels | object | `{}` | Additional labels for neon-pg-sni-router pods |
 | podSecurityContext | object | `{}` | neon-pg-sni-router's pods Security Context |
 | replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
+| resources.limits.memory | string | `"1Gi"` |  |
+| resources.requests.cpu | string | `"200m"` |  |
+| resources.requests.memory | string | `"512Mi"` |  |
 | securityContext | object | `{}` | neon-pg-sni-router's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
 | service.httpPort | int | `9090` | Http management port |

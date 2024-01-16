@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.13](https://img.shields.io/badge/Version-1.7.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.14](https://img.shields.io/badge/Version-1.7.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -52,7 +52,9 @@ Kubernetes: `^1.18.x-x`
 | podLabels | object | `{}` | Additional labels for neon-proxy pods |
 | podSecurityContext | object | `{}` | neon-proxy's pods Security Context |
 | replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
+| resources.limits.memory | string | `"32Gi"` |  |
+| resources.requests.cpu | string | `"400m"` |  |
+| resources.requests.memory | string | `"2Gi"` |  |
 | securityContext | object | `{}` | neon-proxy's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
 | service.httpPort | int | `9090` | Http management port |

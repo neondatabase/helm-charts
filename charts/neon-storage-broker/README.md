@@ -1,6 +1,6 @@
 # neon-storage-broker
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage broker
 
@@ -52,7 +52,9 @@ Kubernetes: `^1.18.x-x`
 | podAnnotations | object | `{}` | Annotations for neon-storage-broker pods |
 | podLabels | object | `{}` | Additional labels for neon-storage-broker pods |
 | podSecurityContext | object | `{}` | neon-storage-broker's pods Security Context |
-| resources | object | `{}` |  |
+| resources.limits.memory | string | `"4Gi"` |  |
+| resources.requests.cpu | string | `"200m"` |  |
+| resources.requests.memory | string | `"1Gi"` |  |
 | securityContext | object | `{}` | neon-storage-broker's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
 | service.port | int | `50051` | broker listen port |
