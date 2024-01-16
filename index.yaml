@@ -28,6 +28,21 @@ entries:
   neon-pg-sni-router:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2024-01-16T09:21:23.685564596Z"
+    description: Neon Postgres SNI Router
+    digest: 4e259ca0617352c95d70fe7705b326cbec7694b291be1a20bf7d82876d1fbf5e
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-pg-sni-router
+    sources:
+    - https://github.com/neondatabase/neon
+    - https://github.com/neondatabase/helm-charts
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-pg-sni-router-0.0.4/neon-pg-sni-router-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-06-09T13:03:33.103793385Z"
     description: Neon Postgres SNI Router
     digest: e42b6ef4296c4e30fe888495280efb6e228695899532ed6ec0463f98122b8878
@@ -87,6 +102,20 @@ entries:
     - https://github.com/neondatabase/helm-charts/releases/download/neon-pg-sni-router-0.0.0/neon-pg-sni-router-0.0.0.tgz
     version: 0.0.0
   neon-proxy:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-01-16T09:21:23.83706502Z"
+    description: Neon Proxy
+    digest: 4239548716b4ca0a02d7ef657950a6d1e5b17fb75f3e325370b0c95921bfc263
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-proxy
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-proxy-1.7.14/neon-proxy-1.7.14.tgz
+    version: 1.7.14
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2024-01-11T19:27:31.197663119Z"
@@ -538,6 +567,20 @@ entries:
   neon-storage-broker:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2024-01-16T09:21:24.012962117Z"
+    description: Neon storage broker
+    digest: 5a879594ec0a98dafc11b64c5f6367efac87c69773f925d259b524e28ed166e9
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-storage-broker
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-storage-broker-1.2.1/neon-storage-broker-1.2.1.tgz
+    version: 1.2.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-06-08T16:30:05.048960862Z"
     description: Neon storage broker
     digest: ebf906d57d8af08cc52c24abdf369d6a2a2c67823c80ce34fb2d325bba3fe817
@@ -705,4 +748,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-11T19:27:31.197948405Z"
+generated: "2024-01-16T09:21:24.013469307Z"
