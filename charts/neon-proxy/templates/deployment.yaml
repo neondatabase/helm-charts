@@ -133,6 +133,11 @@ spec:
             - --wake-compute-lock
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.redisNotifications}}
+            - --redis-notifications
+            - {{ . }}
+            {{- end }}
+
           {{- if .Values.settings }}
           env:
             {{- with .Values.settings.otelExporterOtlpEndpoint }}
