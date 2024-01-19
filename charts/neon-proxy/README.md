@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.14](https://img.shields.io/badge/Version-1.7.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.15](https://img.shields.io/badge/Version-1.7.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -89,6 +89,7 @@ Kubernetes: `^1.18.x-x`
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |
 | settings.wakeComputeLock | string | `"permits=0"` | (string) Configures the locking of wake_compute per endpoint |
+| settings.redisNotifications | string | `""` | (url) Configures redis client | 
 | settings.wssPort | int | `nil` | numeric port used for wss/https connections. If null, wss server will not be started |
 | terminationGracePeriodSeconds | int | `30` | Deployment's terminationGracePeriodSeconds |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
