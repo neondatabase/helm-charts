@@ -57,6 +57,8 @@ settings:
   controlplane_token: ""
   # settings.wakeComputeLock -- (string) Configures the locking of wake_compute per endpoint
   wakeComputeLock: "permits=0"
+  # settings.redisNotifications -- (url) Configures redis client
+  redisNotifications: ""
   # settings.httpPoolOptIn -- (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always
   httpPoolOptIn: true
   # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
