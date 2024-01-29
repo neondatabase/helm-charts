@@ -1,0 +1,23 @@
+{{ template "chart.header" . }}
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}[![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+
+{{ template "chart.description" . }}
+
+**Homepage:** {{ template "chart.homepage" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+## Installing the Chart
+
+To install the chart with the release name `neon-storage-controller`:
+
+```console
+$ helm repo add neondatabase https://neondatabase.github.io/helm-charts
+$ helm install {{ template "chart.name" . }} neondatabase/{{ template "chart.name" . }}
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}
