@@ -43,12 +43,26 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - storage_controller
-            - --listen-addr
+            - attachment_service
+            - -l
             # In the container, use the same port as service.
             - 0.0.0.0:{{ .Values.service.port }}
-          {{- if .Values.settings }}
+          {{- if .Values.settings.databaseUrl }}
+            - --database-url
+            - {{ .Values.settings.databaseUrl }}
+          {{- end }}
+          {{- if .Values.settings.jwtToken }}
+            - --jwt
+            - {{ .Values.settings.jwtToken }}
+          {{- end }}
+          {{- if .Values.settings.publicKey }}
+            - --public-key
+            - {{ .Values.settings.publicKey }}
+          {{- end }}
           env:
+            - name: LD_LIBRARY_PATH
+              value: /usr/local/v16/lib
+          {{- if .Values.settings }}
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
               value: {{ . }}
@@ -64,7 +78,7 @@ spec:
               protocol: TCP
           startupProbe:
             httpGet:
-              path: /metrics
+              path: /status
               port: controller
             initialDelaySeconds: 10
             timeoutSeconds: 5
@@ -72,13 +86,13 @@ spec:
             failureThreshold: 30
           livenessProbe:
             httpGet:
-              path: /metrics
+              path: /status
               port: controller
             periodSeconds: 15
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
-              path: /metrics
+              path: /status
               port: controller
             periodSeconds: 15
             timeoutSeconds: 10
