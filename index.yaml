@@ -28,6 +28,21 @@ entries:
   neon-pg-sni-router:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2024-01-31T22:29:58.810297676Z"
+    description: Neon Postgres SNI Router
+    digest: 413bf7778568ef99bf989ada90c70a0c26ed72573179b0a37d613b53c14c91dc
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-pg-sni-router
+    sources:
+    - https://github.com/neondatabase/neon
+    - https://github.com/neondatabase/helm-charts
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-pg-sni-router-0.0.5/neon-pg-sni-router-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2024-01-16T09:21:23.685564596Z"
     description: Neon Postgres SNI Router
     digest: 4e259ca0617352c95d70fe7705b326cbec7694b291be1a20bf7d82876d1fbf5e
@@ -790,4 +805,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-31T14:13:00.725987781Z"
+generated: "2024-01-31T22:29:58.810889417Z"
