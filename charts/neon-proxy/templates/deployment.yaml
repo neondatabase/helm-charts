@@ -144,6 +144,10 @@ spec:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: {{ . }}
             {{- end }}
+            {{- if .Values.settings.otelExporterDisabled }}
+            - name: OTEL_SDK_DISABLED
+              value: "true"
+            {{- end }}
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
               value: {{ . }}
