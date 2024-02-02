@@ -34,13 +34,6 @@ Kubernetes: `^1.18.x-x`
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
-| ingress.annotations | object | `{}` |  |
-| ingress.className | string | `""` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.tls | list | `[]` |  |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
 | metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
 | metrics.serviceMonitor.interval | string | `"10s"` | Interval in which prometheus scrapes |
