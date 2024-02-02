@@ -43,6 +43,8 @@ settings:
   extraDomains: []
   # settings.otelExporterOtlpEndpoint -- OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable)
   otelExporterOtlpEndpoint: ""
+  # settings.otelExporterDisabled -- Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable)
+  otelExporterDisabled: false
   # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
