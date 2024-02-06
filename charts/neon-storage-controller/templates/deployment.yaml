@@ -52,12 +52,19 @@ spec:
             - {{ .Values.settings.databaseUrl }}
           {{- end }}
           {{- if .Values.settings.jwtToken }}
-            - --jwt
+            - --jwt-token
             - {{ .Values.settings.jwtToken }}
           {{- end }}
           {{- if .Values.settings.publicKey }}
-            - --public-key
-            - {{ .Values.settings.publicKey }}
+            - --public-key={{ .Values.settings.publicKey | toJson }}
+          {{- end }}
+          {{- if .Values.settings.controlPlaneJwtToken }}
+            - --control-plane-jwt-token
+            - {{ .Values.settings.controlPlaneJwtToken }}
+          {{- end }}
+          {{- if .Values.settings.computeHookUrl }}
+            - --compute-hook-url
+            - {{ .Values.settings.computeHookUrl }}
           {{- end }}
           env:
             - name: LD_LIBRARY_PATH
@@ -92,7 +99,7 @@ spec:
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
-              path: /status
+              path: /ready
               port: controller
             periodSeconds: 15
             timeoutSeconds: 10
