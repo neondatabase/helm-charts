@@ -30,6 +30,10 @@ settings:
   jwtToken: ""
   # May be set if AWS Secrets Manager is not being used: public key for authenticating incoming HTTP requests
   publicKey: ""
+  # May be set if AWS Secrets Manager is not being used: JWT token for authenticating calls to computeHookUrl
+  controlPlaneJwtToken: ""
+  # URL for compute notifications
+  computeHookUrl: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
