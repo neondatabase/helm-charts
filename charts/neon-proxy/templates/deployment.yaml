@@ -140,6 +140,10 @@ spec:
 
           {{- if .Values.settings }}
           env:
+            {{- with .Values.settings.rustLog }}
+            - name: RUST_LOG
+              value: {{ . }}
+            {{- end }}
             {{- with .Values.settings.otelExporterOtlpEndpoint }}
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: {{ . }}
