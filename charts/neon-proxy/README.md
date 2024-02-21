@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.17](https://img.shields.io/badge/Version-1.7.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.18](https://img.shields.io/badge/Version-1.7.18-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -86,6 +86,7 @@ Kubernetes: `^1.18.x-x`
 | settings.parquetUploadSize | string | `"100000000"` | (string) How large the total parquet file should be in bytes |
 | settings.redisNotifications | string | `""` | (url) Configures redis client |
 | settings.region | string | `""` | (string) Region this proxy service is deployed into |
+| settings.rustLog | string | `"INFO"` | Proxy log level |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
 | settings.uri | string | `""` |  |

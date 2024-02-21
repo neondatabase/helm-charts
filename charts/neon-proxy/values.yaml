@@ -41,6 +41,8 @@ settings:
   domain: ""
   # settings.extraDomains -- domains used in extra TLS certs for client postgres connections
   extraDomains: []
+  # settings.rustLog -- Proxy log level
+  rustLog: "INFO"
   # settings.otelExporterOtlpEndpoint -- OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable)
   otelExporterOtlpEndpoint: ""
   # settings.otelExporterDisabled -- Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable)
