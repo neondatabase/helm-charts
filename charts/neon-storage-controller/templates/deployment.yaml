@@ -47,21 +47,7 @@ spec:
             - -l
             # In the container, use the same port as service.
             - 0.0.0.0:{{ .Values.service.port }}
-          {{- if .Values.settings.databaseUrl }}
-            - --database-url
-            - {{ .Values.settings.databaseUrl }}
-          {{- end }}
-          {{- if .Values.settings.jwtToken }}
-            - --jwt-token
-            - {{ .Values.settings.jwtToken }}
-          {{- end }}
-          {{- if .Values.settings.publicKey }}
             - --public-key={{ .Values.settings.publicKey | toJson }}
-          {{- end }}
-          {{- if .Values.settings.controlPlaneJwtToken }}
-            - --control-plane-jwt-token
-            - {{ .Values.settings.controlPlaneJwtToken }}
-          {{- end }}
           {{- if .Values.settings.computeHookUrl }}
             - --compute-hook-url
             - {{ .Values.settings.computeHookUrl }}
@@ -79,6 +65,9 @@ spec:
               value: {{ . }}
             {{- end }}
           {{- end }}
+          envFrom:
+          - secretRef:
+              name: {{ include "neon-storage-controller.fullname" . }}-env-vars
           ports:
             - name: controller
               containerPort: {{ .Values.service.port }}
