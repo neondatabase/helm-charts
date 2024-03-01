@@ -1,0 +1,84 @@
+{{- if .Values.registerControlPlane.enable -}}
+{{ if (empty .Values.registerControlPlane.region_id ) }}
+  {{- fail (printf "Value for .Values.registerControlPlane.region_id is empty") }}
+{{- end }}
+{{ if (empty .Values.registerControlPlane.global_cplane_url) }}
+  {{- fail (printf "Value for .Values.registerControlPlane.global_cplane_url is empty") }}
+{{- end }}
+{{ if (empty .Values.registerControlPlane.local_cplane_url) }}
+  {{- fail (printf "Value for .Values.registerControlPlane.local_cplane_url is empty") }}
+{{- end }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "neon-storage-controller.fullname" . }}-register-job
+  labels:
+    {{- include "neon-storage-controller.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+     # Delete the previous resource before a new hook is launche
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    spec:
+      serviceAccountName: "{{ include "neon-storage-controller.fullname" . }}-node-describe"
+      initContainers:
+      - name: set-envs
+        image: public.ecr.aws/bitnami/kubectl:1.26 
+        resources:
+          {{- toYaml .Values.registerControlPlane.resources | nindent 10 }}
+        command: ["sh", "-c"]
+        args:
+        - |
+          ZONE=$(kubectl get node "$NODE_NAME" -o=jsonpath='{.metadata.labels.topology\.kubernetes\.io/zone}')
+          echo export ZONE=$ZONE > /node/env.sh
+        volumeMounts:
+          - name: node-info
+            mountPath: /node
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+      containers:
+      - name: register-storage-controller 
+        image: public.ecr.aws/docker/library/python:3.12.2-slim-bullseye 
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash", "-c"]
+        args: ["source /node/env.sh && /usr/local/bin/python /opt/scripts/register-storage-controller.py"]
+        resources:
+          {{- toYaml .Values.registerControlPlane.resources | nindent 10 }}
+        volumeMounts:
+          - name: config-volume
+            mountPath: /opt/scripts
+          - name: node-info
+            mountPath: /node
+        env:
+        - name: HOST
+          value: {{ index .Values.service.annotations "external-dns.alpha.kubernetes.io/hostname" | quote }}
+        - name: PORT
+          value: {{ .Values.service.port | quote }}
+        - name: GLOBAL_CPLANE_URL
+          value: {{ .Values.registerControlPlane.global_cplane_url | quote }}
+        - name: LOCAL_CPLANE_URL
+          value: {{ .Values.registerControlPlane.local_cplane_url | quote }}
+        - name: CONSOLE_URL
+          value: {{ .Values.registerControlPlane.console_url | quote }}
+        - name: REGION_ID
+          value: {{ .Values.registerControlPlane.region_id | quote }}
+        envFrom:
+        - secretRef:
+            name: {{ include "neon-storage-controller.fullname" . }}-env-vars
+      volumes:
+        - name: config-volume
+          secret:
+            secretName: {{ include "neon-storage-controller.fullname" . }}-post-install-script
+            defaultMode: 0755
+        - name: node-info
+          emptyDir: {}
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 0
+{{- end }}

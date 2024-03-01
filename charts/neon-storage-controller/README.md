@@ -45,6 +45,11 @@ Kubernetes: `^1.18.x-x`
 | podAnnotations | object | `{}` | Annotations for neon-storage-controller pods |
 | podLabels | object | `{}` | Additional labels for neon-storage-controller pods |
 | podSecurityContext | object | `{}` | neon-storage-controller's pods Security Context |
+| registerControlPlane.enable | bool | `false` |  |
+| registerControlPlane.resources.limits.cpu | string | `"100m"` |  |
+| registerControlPlane.resources.limits.memory | string | `"128M"` |  |
+| registerControlPlane.resources.requests.cpu | string | `"100m"` |  |
+| registerControlPlane.resources.requests.memory | string | `"128M"` |  |
 | resources.limits.memory | string | `"4Gi"` |  |
 | resources.requests.cpu | string | `"200m"` |  |
 | resources.requests.memory | string | `"1Gi"` |  |
