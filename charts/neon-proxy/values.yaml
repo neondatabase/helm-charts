@@ -63,6 +63,8 @@ settings:
   wakeComputeLock: "permits=0"
   # settings.redisNotifications -- (url) Configures redis client
   redisNotifications: ""
+  # settings.sqlOverHttpTimeout -- (string) timeout for http connection requests
+  sqlOverHttpTimeout: "15s"
   # settings.httpPoolOptIn -- (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always
   httpPoolOptIn: true
   # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
