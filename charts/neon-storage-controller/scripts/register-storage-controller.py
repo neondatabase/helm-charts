@@ -65,7 +65,7 @@ def get_data(url, token, host=None):
 def get_pageserver_id(url, token):
     data = get_data(url, token, HOST)
     if "node_id" in data:
-        return data["node_id"]
+        return int(data["node_id"])
 
 
 def get_pageserver_version():
@@ -97,7 +97,7 @@ def register(url, token, payload):
         response = json.loads(resp.read())
     log.info(response)
     if "node_id" in response:
-        return response["node_id"]
+        return int(response["node_id"])
 
 
 if __name__ == "__main__":
@@ -152,8 +152,8 @@ if __name__ == "__main__":
     log.info("check if pageserver already registered or not in cplane")
     node_id_in_cplane = get_pageserver_id(LOCAL_CPLANE_URL, LOCAL_CPLANE_JWT_TOKEN)
 
-    if node_id_in_cplane is None:
-        PAYLOAD.update(dict(node_id=str(node_id_in_console)))
+    if node_id_in_cplane is None and node_id_in_console is not None:
+        PAYLOAD.update(dict(node_id=node_id_in_console))
         log.info("Registering storage controller in cplane")
         node_id_in_cplane = register(LOCAL_CPLANE_URL, LOCAL_CPLANE_JWT_TOKEN, PAYLOAD)
         log.info(
