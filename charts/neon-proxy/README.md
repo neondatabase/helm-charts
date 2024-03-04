@@ -89,7 +89,7 @@ Kubernetes: `^1.18.x-x`
 | settings.rustLog | string | `"INFO"` | Proxy log level |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
-| settings.sqlOverHttpTimeout | string | `"15s"` | timeout for http connection requests |
+| settings.sqlOverHttpTimeout | string | `"15s"` | (string) timeout for http connection requests |
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |
 | settings.wakeComputeLock | string | `"permits=0"` | (string) Configures the locking of wake_compute per endpoint |
