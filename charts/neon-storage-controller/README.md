@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -45,6 +45,11 @@ Kubernetes: `^1.18.x-x`
 | podAnnotations | object | `{}` | Annotations for neon-storage-controller pods |
 | podLabels | object | `{}` | Additional labels for neon-storage-controller pods |
 | podSecurityContext | object | `{}` | neon-storage-controller's pods Security Context |
+| registerControlPlane.enable | bool | `false` |  |
+| registerControlPlane.resources.limits.cpu | string | `"100m"` |  |
+| registerControlPlane.resources.limits.memory | string | `"128M"` |  |
+| registerControlPlane.resources.requests.cpu | string | `"100m"` |  |
+| registerControlPlane.resources.requests.memory | string | `"128M"` |  |
 | resources.limits.memory | string | `"4Gi"` |  |
 | resources.requests.cpu | string | `"200m"` |  |
 | resources.requests.memory | string | `"1Gi"` |  |
@@ -55,6 +60,7 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| settings.apiKey | string | `""` |  |
 | settings.computeHookUrl | string | `""` |  |
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.databaseUrl | string | `""` |  |
