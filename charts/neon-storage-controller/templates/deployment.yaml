@@ -43,7 +43,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - attachment_service
+            - storage_controller
             - -l
             # In the container, use the same port as service.
             - 0.0.0.0:{{ .Values.service.port }}
@@ -55,6 +55,10 @@ spec:
           env:
             - name: LD_LIBRARY_PATH
               value: /usr/local/v16/lib
+            - name: RUST_LOG
+              value: INFO
+            - name: RUST_BACKTRACE
+              value: 1
           {{- if .Values.settings }}
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
@@ -90,8 +94,10 @@ spec:
             httpGet:
               path: /ready
               port: controller
-            periodSeconds: 15
-            timeoutSeconds: 10
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            failureThreshold: 24
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
