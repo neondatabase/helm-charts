@@ -43,7 +43,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - attachment_service
+            - storage_controller
             - -l
             # In the container, use the same port as service.
             - 0.0.0.0:{{ .Values.service.port }}
