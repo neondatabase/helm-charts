@@ -45,28 +45,30 @@ spec:
           command:
             - storage_controller
             - -l
+            {{- /*
             # In the container, use the same port as service.
+            */}}
             - 0.0.0.0:{{ .Values.service.port }}
             - --public-key={{ .Values.settings.publicKey | toJson }}
           {{- if .Values.settings.computeHookUrl }}
             - --compute-hook-url
-            - {{ .Values.settings.computeHookUrl }}
+            - {{ .Values.settings.computeHookUrl | quote }}
           {{- end }}
           env:
             - name: LD_LIBRARY_PATH
-              value: /usr/local/v16/lib
+              value: "/usr/local/v16/lib"
             - name: RUST_LOG
-              value: INFO
+              value: "INFO"
             - name: RUST_BACKTRACE
-              value: 1
+              value: "1"
           {{- if .Values.settings }}
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
-              value: {{ . }}
+              value: {{ . | quote }}
             {{- end }}
             {{- with .Values.settings.sentryEnvironment }}
             - name: SENTRY_ENVIRONMENT
-              value: {{ . }}
+              value: {{ . | quote }}
             {{- end }}
           {{- end }}
           envFrom:
