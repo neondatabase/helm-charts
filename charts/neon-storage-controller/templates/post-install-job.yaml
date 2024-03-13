@@ -71,7 +71,7 @@ spec:
           value: {{ .Values.registerControlPlane.region_id | quote }}
         envFrom:
         - secretRef:
-            name: {{ include "neon-storage-controller.fullname" . }}-env-vars
+            name: {{ include "neon-storage-controller.fullname" . }}-registration-env-vars
       volumes:
         - name: config-volume
           secret:
