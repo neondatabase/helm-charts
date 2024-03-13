@@ -14,7 +14,7 @@ ZONE = os.environ["ZONE"]
 HOST = os.environ["HOST"]
 PORT = os.getenv("PORT", 50051)
 
-GLOBAL_CPLANE_JWT_TOKEN = os.environ["JWT_TOKEN"]
+GLOBAL_CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
 LOCAL_CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
 CONSOLE_API_KEY = os.environ["CONSOLE_API_KEY"]
 
