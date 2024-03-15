@@ -34,8 +34,6 @@ settings:
   controlPlaneJwtToken: ""
   # URL for compute notifications
   computeHookUrl: ""
-  # Console API key to list existing pageserver to get version
-  apiKey: ""
 
 # Enable auto register to control plane
 # This will run postinstall job
@@ -48,6 +46,9 @@ registerControlPlane:
   #   -H "Content-Type: application/json" \
   #   -H "Authorization: Bearer $NEON_API_KEY" \
   #   -X POST -d '{"ttl_seconds": 31536000, "scope": "infra"}'
+  controlPlaneJwtToken: ""
+  # Console API key to list existing pageserver to get version
+  apiKey: ""
   # global_cplane_url: "http://neon-internal-api.aws.neon.build"
   # local_cplane_url: "https://control-plane.zeta.us-east-2.internal.aws.neon.build"
   # console_url: ""

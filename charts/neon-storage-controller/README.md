@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -45,6 +45,8 @@ Kubernetes: `^1.18.x-x`
 | podAnnotations | object | `{}` | Annotations for neon-storage-controller pods |
 | podLabels | object | `{}` | Additional labels for neon-storage-controller pods |
 | podSecurityContext | object | `{}` | neon-storage-controller's pods Security Context |
+| registerControlPlane.apiKey | string | `""` |  |
+| registerControlPlane.controlPlaneJwtToken | string | `""` |  |
 | registerControlPlane.enable | bool | `false` |  |
 | registerControlPlane.resources.limits.cpu | string | `"100m"` |  |
 | registerControlPlane.resources.limits.memory | string | `"128M"` |  |
@@ -60,7 +62,6 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| settings.apiKey | string | `""` |  |
 | settings.computeHookUrl | string | `""` |  |
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.databaseUrl | string | `""` |  |
