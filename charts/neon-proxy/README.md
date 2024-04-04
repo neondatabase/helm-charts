@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.19](https://img.shields.io/badge/Version-1.7.19-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.20](https://img.shields.io/badge/Version-1.7.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -74,6 +74,9 @@ Kubernetes: `^1.18.x-x`
 | settings.endpointRpsLimits[1] | string | `"250@10m"` |  |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
+| settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |
+| settings.metricBackupCollectionInterval | string | `"10m"` |  |
+| settings.metricBackupCollectionRemoteStorage | string | `""` | (string) Storage location to upload the metric backup files to |
 | settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
 | settings.metricCollectionInterval | string | `""` | (string) how often metrics should be sent. |
 | settings.otelExporterDisabled | bool | `false` | Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable) |

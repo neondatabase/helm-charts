@@ -91,6 +91,12 @@ settings:
   awsAccessKeyId: ""
   # settings.awsSecretAccessKey -- (string) AWS Secret Access Key
   awsSecretAccessKey: ""
+  # settings.metricBackupCollectionRemoteStorage -- (string) Storage location to upload the metric backup files to
+  metricBackupCollectionRemoteStorage: ""
+  # settings.metrickBackupCollectionInterval -- (string) How often to upload the metric backup files
+  metricBackupCollectionInterval: "10m"
+  # settings.metricBackupCollectionChunkSize -- (string) How large each chunk of the metric backup files should be in bytes
+  metricBackupCollectionChunkSize: "4194304"
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

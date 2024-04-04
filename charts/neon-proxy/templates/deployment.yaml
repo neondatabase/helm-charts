@@ -140,6 +140,15 @@ spec:
             - --redis-notifications
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.metricBackupCollectionInterval }}
+            - --metric-backup-collection-interval={{ . }}
+            {{ end }}
+            {{- with .Values.settings.metricBackupCollectionRemoteStorage }}
+            - --metric-backup-collection-remote-storage={{ . }}
+            {{ end }}
+            {{- with .Values.settings.metricBackupCollectionChunkSize }}
+            - --metric-backup-collection-chunk-size={{ . }}
+            {{ end }}
 
           {{- if .Values.settings }}
           env:
