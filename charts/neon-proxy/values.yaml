@@ -98,17 +98,17 @@ settings:
   # settings.metricBackupCollectionChunkSize -- (string) How large each chunk of the metric backup files should be in bytes
   metricBackupCollectionChunkSize: "4194304"
   # settings.endpointCacheConfig -- (string) Config for cache for all valid endpoints 
-  endpointCacheConfig: 
+  endpointCacheConfig: ""
   # settings.redisHost -- (string) Redis host for streaming connections (might be different from the notifications host)
-  redisHost: 
+  redisHost: ""
   # settings.redisPort -- (string) Redis port for streaming connections
-  redisPort: 
+  redisPort: "6379"
   # settings.redisClusterName -- (string) Redis cluster name, used in aws elasticache
-  redisClusterName: 
+  redisClusterName: "regional-control-plane-redis"
   # settings.redisUserId -- (string) Redis user_id, used in aws elasticache
-  redisUserId: 
+  redisUserId: "neon"
   # settings.awsRegion -- (string) Aws region to retrieve credentials
-  awsRegion: 
+  awsRegion: ""
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
