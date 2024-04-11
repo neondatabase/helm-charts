@@ -102,7 +102,7 @@ settings:
   # settings.redisHost -- (string) Redis host for streaming connections (might be different from the notifications host)
   redisHost: ""
   # settings.redisPort -- (string) Redis port for streaming connections
-  redisPort: "6379"
+  redisPort: ""
   # settings.redisClusterName -- (string) Redis cluster name, used in aws elasticache
   redisClusterName: "regional-control-plane-redis"
   # settings.redisUserId -- (string) Redis user_id, used in aws elasticache

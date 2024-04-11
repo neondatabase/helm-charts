@@ -92,7 +92,7 @@ Kubernetes: `^1.18.x-x`
 | settings.redisClusterName | string | `"regional-control-plane-redis"` | (string) Redis cluster name, used in aws elasticache |
 | settings.redisHost | string | `""` | (string) Redis host for streaming connections (might be different from the notifications host) |
 | settings.redisNotifications | string | `""` | (url) Configures redis client |
-| settings.redisPort | string | `"6379"` | (string) Redis port for streaming connections |
+| settings.redisPort | string | `""` | (string) Redis port for streaming connections |
 | settings.redisUserId | string | `"neon"` | (string) Redis user_id, used in aws elasticache |
 | settings.region | string | `""` | (string) Region this proxy service is deployed into |
 | settings.rustLog | string | `"INFO"` | Proxy log level |
