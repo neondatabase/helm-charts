@@ -149,6 +149,25 @@ spec:
             {{- with .Values.settings.metricBackupCollectionChunkSize }}
             - --metric-backup-collection-chunk-size={{ . }}
             {{ end }}
+            {{- with .Values.settings.endpointCacheConfig }}
+            - --endpoint-cache-config={{ . }}
+            {{ end }}
+            {{- with .Values.settings.redisHost }}
+            - --redis-host={{ . }}
+            {{ end }}
+            {{- with .Values.settings.redisPort }}
+            - --redis-port={{ . }}
+            {{ end }}
+            {{- with .Values.settings.redisClusterName }}
+            - --redis-cluster-name={{ . }}
+            {{ end }}
+            {{- with .Values.settings.redisUserId }}
+            - --redis-user-id={{ . }}
+            {{ end }}
+            {{- with .Values.settings.awsRegion }}
+            - --aws-region={{ . }}
+            {{ end }}
+            
 
           {{- if .Values.settings }}
           env:

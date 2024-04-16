@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.20](https://img.shields.io/badge/Version-1.7.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.21](https://img.shields.io/badge/Version-1.7.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -66,10 +66,12 @@ Kubernetes: `^1.18.x-x`
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
+| settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
 | settings.endpointRpsLimits[0] | string | `"300@1s"` |  |
 | settings.endpointRpsLimits[1] | string | `"250@10m"` |  |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
@@ -87,7 +89,11 @@ Kubernetes: `^1.18.x-x`
 | settings.parquetUploadRemoteStorage | string | `""` | (string) Storage location to upload the parquet files to. |
 | settings.parquetUploadRowGroupSize | string | `"8192"` | (string) How many rows to include in a row group |
 | settings.parquetUploadSize | string | `"100000000"` | (string) How large the total parquet file should be in bytes |
+| settings.redisClusterName | string | `"regional-control-plane-redis"` | (string) Redis cluster name, used in aws elasticache |
+| settings.redisHost | string | `""` | (string) Redis host for streaming connections (might be different from the notifications host) |
 | settings.redisNotifications | string | `""` | (url) Configures redis client |
+| settings.redisPort | string | `""` | (string) Redis port for streaming connections |
+| settings.redisUserId | string | `"neon"` | (string) Redis user_id, used in aws elasticache |
 | settings.region | string | `""` | (string) Region this proxy service is deployed into |
 | settings.rustLog | string | `"INFO"` | Proxy log level |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
