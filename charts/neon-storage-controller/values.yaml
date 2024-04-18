@@ -52,13 +52,14 @@ registerControlPlane:
   # global_cplane_url: "http://neon-internal-api.aws.neon.build"
   # local_cplane_url: "https://control-plane.zeta.us-east-2.internal.aws.neon.build"
   # console_url: ""
-  resources:
-    limits:
-      cpu: 100m
-      memory: 128M
-    requests:
-      cpu: 100m
-      memory: 128M
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1024M
+  requests:
+    cpu: 500m
+    memory: 512M
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
@@ -98,13 +99,6 @@ service:
   type: ClusterIP
   # service.port -- controller listen port
   port: 50051
-
-resources:
-  limits:
-    memory: 4Gi
-  requests:
-    cpu: 200m
-    memory: 1Gi
 
 # -- Node labels for pod assignment.
 nodeSelector: {}
