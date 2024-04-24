@@ -69,10 +69,14 @@ settings:
   httpPoolOptIn: true
   # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
   disableDynamicRateLimiter: true
-  # settings.endpointRpsLimit -- (list) list of rate limiters over different time intervals
+  # settings.endpointRpsLimit -- (list) list of rate limiters for wake_compute over different time intervals
   endpointRpsLimits:
   - 300@1s
   - 250@10m
+  # settings.authRateLimitsEnabled -- (bool) Whether to enable the authentication rate limiter
+  authRateLimitsEnabled: null
+  # settings.authRateLimit -- (list) list of rate limiters over different time intervals for authentication hash iterations per IP,EP
+  authRateLimits: null
   # settings.parquetUploadRemoteStorage -- (string) Storage location to upload the parquet files to.
   parquetUploadRemoteStorage: ""
   # settings.parquetUploadRowGroupSize -- (string) How many rows to include in a row group

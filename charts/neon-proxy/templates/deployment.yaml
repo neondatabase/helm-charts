@@ -111,6 +111,12 @@ spec:
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}
+            {{- if .Values.settings.authRateLimitsEnabled }}
+            - --auth-rate-limit-enabled
+            {{- end }}
+            {{- range .Values.settings.authRateLimits }}
+            - --auth-rate-limit={{ . }}
+            {{- end }}
             {{- with .Values.settings.region }}
             - --region={{ . }}
             {{ end }}
