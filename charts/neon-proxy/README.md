@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.21](https://img.shields.io/badge/Version-1.7.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.22](https://img.shields.io/badge/Version-1.7.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -65,6 +65,8 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.name | string | `""` |  |
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
+| settings.authRateLimits | string | `nil` |  |
+| settings.authRateLimitsEnabled | bool | `nil` | Whether to enable the authentication rate limiter |
 | settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
 | settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
