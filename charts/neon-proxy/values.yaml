@@ -79,6 +79,8 @@ settings:
   authRateLimits: null
   # settings.parquetUploadRemoteStorage -- (string) Storage location to upload the parquet files to.
   parquetUploadRemoteStorage: ""
+  # settings.parquetUploadDisconnectEventsRemoteStorage -- (string) Storage location to upload the parquet files with disconnect events to.
+  parquetUploadDisconnectEventsRemoteStorage: ""
   # settings.parquetUploadRowGroupSize -- (string) How many rows to include in a row group
   parquetUploadRowGroupSize: "8192"
   # settings.parquetUploadPageSize -- (string) How large each column page should be in bytes

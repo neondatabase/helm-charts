@@ -123,6 +123,9 @@ spec:
             {{- with .Values.settings.parquetUploadRemoteStorage }}
             - --parquet-upload-remote-storage={{ . }}
             {{ end }}
+            {{- with .Values.settings.parquetUploadDisconnectEventsRemoteStorage }}
+            - --parquet-upload-disconnect-events-remote-storage={{ . }}
+            {{ end }}
             {{- with .Values.settings.parquetUploadRowGroupSize }}
             - --parquet-upload-row-group-size={{ . }}
             {{ end }}
