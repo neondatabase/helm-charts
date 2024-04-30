@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.22](https://img.shields.io/badge/Version-1.7.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.23](https://img.shields.io/badge/Version-1.7.23-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -86,6 +86,7 @@ Kubernetes: `^1.18.x-x`
 | settings.otelExporterDisabled | bool | `false` | Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable) |
 | settings.otelExporterOtlpEndpoint | string | `""` | OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable) |
 | settings.parquetUploadCompression | string | `"uncompressed"` | (string) What level of compression to use |
+| settings.parquetUploadDisconnectEventsRemoteStorage | string | `""` | (string) Storage location to upload the parquet files with disconnect events to. |
 | settings.parquetUploadMaximumDuration | string | `"20m"` | (string) How long to wait before forcing a file upload |
 | settings.parquetUploadPageSize | string | `"1048576"` | (string) How large each column page should be in bytes |
 | settings.parquetUploadRemoteStorage | string | `""` | (string) Storage location to upload the parquet files to. |
