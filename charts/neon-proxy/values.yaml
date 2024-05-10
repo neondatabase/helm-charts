@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-# HorizontalPodAutoscaling configurations
+# -- HorizontalPodAutoscaling configurations
 hpa: {}
   # minReplicas: 1
   # maxReplicas: 10

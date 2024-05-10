@@ -36,6 +36,7 @@ Kubernetes: `^1.18.x-x`
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |
 | fullnameOverride | string | `""` | String to fully override neon-proxy.fullname template |
+| hpa | object | `{}` | HorizontalPodAutoscaling configurations |
 | image.pullPolicy | string | `"Always"` | image pull policy |
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
