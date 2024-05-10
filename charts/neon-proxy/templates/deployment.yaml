@@ -111,6 +111,9 @@ spec:
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}
+            {{- range .Values.settings.wakeComputeLimits }}
+            - --wake-compute-limit={{ . }}
+            {{- end }}
             {{- if .Values.settings.authRateLimitsEnabled }}
             - --auth-rate-limit-enabled
             {{- end }}
