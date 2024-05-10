@@ -1,0 +1,51 @@
+{{ with .Values.hpa }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-apache
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "neon-proxy.fullname" . }}
+    labels:
+      {{- include "neon-proxy.labels" . | nindent 4 }}
+  minReplicas: {{ .minReplicas }}
+  maxReplicas: {{ .maxReplicas }}
+  metrics:
+  # With this metric the HPA controller will keep the average utilization of the pods in the scaling target at 50%.
+  # Utilization is the ratio between the current usage of resource to the requested resources of the pod
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .cpuUtilisation }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .memoryUtilisation }}
+  behavior:
+    scaleDown:
+      # wait one day before scaling down
+      stabilizationWindowSeconds: 86400
+      policies:
+      # only scale down 10% of pods in a 5 minute window
+      - type: Percent
+        value: 10
+        periodSeconds: 300
+      # only scale down 1 pod every minute
+      - type: Pods
+        value: 1
+        periodSeconds: 60
+      selectPolicy: Min
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      # double the number of pods every minute
+      - type: Percent
+        value: 100
+        periodSeconds: 60
+{{ end }}
