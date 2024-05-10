@@ -145,6 +145,10 @@ spec:
             - --wake-compute-lock
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.connectComputeLock }}
+            - --connect-compute-lock
+            - {{ . }}
+            {{- end }}
             {{- with .Values.settings.redisNotifications}}
             - --redis-notifications
             - {{ . }}

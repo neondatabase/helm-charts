@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.23](https://img.shields.io/badge/Version-1.7.23-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.24](https://img.shields.io/badge/Version-1.7.24-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -70,12 +70,12 @@ Kubernetes: `^1.18.x-x`
 | settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
 | settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
+| settings.connectComputeLock | string | `""` | (string) Configures the locking of connect_compute per compute |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
-| settings.endpointRpsLimits[0] | string | `"300@1s"` |  |
-| settings.endpointRpsLimits[1] | string | `"250@10m"` |  |
+| settings.endpointRpsLimits | list | `["300@1s","250@10m"]` | (list) list of rate limiters for wake_compute over different time intervals |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
 | settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |

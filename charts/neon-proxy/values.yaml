@@ -61,6 +61,8 @@ settings:
   controlplane_token: ""
   # settings.wakeComputeLock -- (string) Configures the locking of wake_compute per endpoint
   wakeComputeLock: "permits=0"
+  # settings.connectComputeLock -- (string) Configures the locking of connect_compute per compute
+  connectComputeLock: ""
   # settings.redisNotifications -- (url) Configures redis client
   redisNotifications: ""
   # settings.sqlOverHttpTimeout -- (string) timeout for http connection requests
@@ -69,7 +71,7 @@ settings:
   httpPoolOptIn: true
   # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
   disableDynamicRateLimiter: true
-  # settings.endpointRpsLimit -- (list) list of rate limiters for wake_compute over different time intervals
+  # settings.endpointRpsLimits -- (list) list of rate limiters for wake_compute over different time intervals
   endpointRpsLimits:
   - 300@1s
   - 250@10m
