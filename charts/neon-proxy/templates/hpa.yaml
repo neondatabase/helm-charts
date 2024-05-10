@@ -27,25 +27,10 @@ spec:
       target:
         type: Utilization
         averageUtilization: {{ .memoryUtilisation }}
-  behavior:
-    scaleDown:
-      # wait one day before scaling down
-      stabilizationWindowSeconds: 86400
-      policies:
-      # only scale down 10% of pods in a 5 minute window
-      - type: Percent
-        value: 10
-        periodSeconds: 300
-      # only scale down 1 pod every minute
-      - type: Pods
-        value: 1
-        periodSeconds: 60
-      selectPolicy: Min
-    scaleUp:
-      stabilizationWindowSeconds: 0
-      policies:
-      # double the number of pods every minute
-      - type: Percent
-        value: 100
-        periodSeconds: 60
+  {{- range .otherMetrics }}
+  - {{ . }}
+  {{- end }}
+  {{- with .behaviour }}
+  {{ . }}
+  {{- end }}
 {{ end }}

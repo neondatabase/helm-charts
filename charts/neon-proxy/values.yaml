@@ -2,13 +2,36 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# replicaCount: 1
+replicaCount: 1
 
-hpa:
-  minReplicas: 1
-  maxReplicas: 10
-  cpuUtilisation: 50
-  memoryUtilisation: 50
+# HorizontalPodAutoscaling configurations
+hpa: {}
+  # minReplicas: 1
+  # maxReplicas: 10
+  # cpuUtilisation: 50
+  # memoryUtilisation: 50
+  # otherMetrics: []
+  # behavior:
+  #   scaleDown:
+  #     # wait one day before scaling down
+  #     stabilizationWindowSeconds: 86400
+  #     policies:
+  #     # only scale down 10% of pods in a 5 minute window
+  #     - type: Percent
+  #       value: 10
+  #       periodSeconds: 300
+  #     # only scale down 1 pod every minute
+  #     - type: Pods
+  #       value: 1
+  #       periodSeconds: 60
+  #     selectPolicy: Min
+  #   scaleUp:
+  #     stabilizationWindowSeconds: 0
+  #     policies:
+  #     # double the number of pods every minute
+  #     - type: Percent
+  #       value: 100
+  #       periodSeconds: 60
 
 # -- strategy override for deployment
 deploymentStrategy:
