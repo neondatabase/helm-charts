@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -48,13 +48,10 @@ Kubernetes: `^1.18.x-x`
 | registerControlPlane.apiKey | string | `""` |  |
 | registerControlPlane.controlPlaneJwtToken | string | `""` |  |
 | registerControlPlane.enable | bool | `false` |  |
-| registerControlPlane.resources.limits.cpu | string | `"100m"` |  |
-| registerControlPlane.resources.limits.memory | string | `"128M"` |  |
-| registerControlPlane.resources.requests.cpu | string | `"100m"` |  |
-| registerControlPlane.resources.requests.memory | string | `"128M"` |  |
-| resources.limits.memory | string | `"4Gi"` |  |
-| resources.requests.cpu | string | `"200m"` |  |
-| resources.requests.memory | string | `"1Gi"` |  |
+| resources.limits.cpu | string | `"1000m"` |  |
+| resources.limits.memory | string | `"1024M"` |  |
+| resources.requests.cpu | string | `"500m"` |  |
+| resources.requests.memory | string | `"512M"` |  |
 | securityContext | object | `{}` | neon-storage-controller's containers Security Context |
 | service.annotations | object | `{}` | Annotations to add to the service |
 | service.port | int | `50051` | controller listen port |
