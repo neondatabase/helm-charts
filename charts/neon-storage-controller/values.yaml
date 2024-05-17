@@ -34,6 +34,8 @@ settings:
   controlPlaneJwtToken: ""
   # URL for compute notifications
   computeHookUrl: ""
+  # settings.splitThreshold -- Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default)
+  splitThreshold: ""
 
 # Enable auto register to control plane
 # This will run postinstall job
