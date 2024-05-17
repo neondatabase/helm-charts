@@ -51,6 +51,10 @@ spec:
             - --compute-hook-url
             - {{ .Values.settings.computeHookUrl | quote }}
           {{- end }}
+          {{- if .Values.settings.splitThreshold }}
+            - --split-threshold
+            - {{ .Values.settings.splitThreshold | quote }}
+          {{- end }}
           env:
             - name: LD_LIBRARY_PATH
               value: "/usr/local/v16/lib"
