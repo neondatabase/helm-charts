@@ -53,7 +53,7 @@ spec:
           {{- end }}
           {{- if .Values.settings.splitThreshold }}
             - --split-threshold
-            - {{ .Values.settings.splitThreshold | quote }}
+            - {{ .Values.settings.splitThreshold }}
           {{- end }}
           env:
             - name: LD_LIBRARY_PATH
