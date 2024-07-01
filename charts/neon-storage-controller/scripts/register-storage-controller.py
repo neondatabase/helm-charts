@@ -57,12 +57,14 @@ def get_data(url, token, host=None):
         with urllib.request.urlopen(req) as response:
             code = response.getcode()
             response_body = response.read()
-            if code == 200:
-                return json.loads(response_body)
-
-            raise Exception(f'GET {url} returned unexpected response: {code} {response_body}')
     except urllib.error.HTTPError as e:
-        raise Exception(f'GET {e.url} returned unexpected response: {e.code}') from e
+        code = e.code
+        response_body = e.read()
+
+    if code == 200:
+        return json.loads(response_body)
+
+    raise Exception(f'GET {url} returned unexpected response: {code} {response_body}')
 
 
 def get_pageserver_id(url, token):
