@@ -41,18 +41,11 @@ settings:
 # This will run postinstall job
 registerControlPlane:
   enable: false
-  # region_id: "aws-us-east-2"
-  # generate using
-  # curl https://console.stage.neon.tech/regions/console/api/v1/admin/issue_token \
-  #   -H "Accept: application/json" \
-  #   -H "Content-Type: application/json" \
-  #   -H "Authorization: Bearer $NEON_API_KEY" \
-  #   -X POST -d '{"ttl_seconds": 31536000, "scope": "infra"}'
+  # region_id: "<region-id>"
   controlPlaneJwtToken: ""
   # Console API key to list existing pageserver to get version
   apiKey: ""
-  # global_cplane_url: "http://neon-internal-api.aws.neon.build"
-  # local_cplane_url: "https://control-plane.zeta.us-east-2.internal.aws.neon.build"
+  # cplane_url: "<control-plane-url>"
   # console_url: ""
   resources:
     limits:

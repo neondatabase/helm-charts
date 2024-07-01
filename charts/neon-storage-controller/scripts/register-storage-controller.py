@@ -14,17 +14,15 @@ ZONE = os.environ["ZONE"]
 HOST = os.environ["HOST"]
 PORT = os.getenv("PORT", 50051)
 
-GLOBAL_CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
-LOCAL_CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
+CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
 CONSOLE_API_KEY = os.environ["CONSOLE_API_KEY"]
 
 # To register new pageservers
 URL_PATH = "management/api/v2/pageservers"
 # To get pageservers
-ADMIN_URL_PATH = "api/v1/admin/pageservers"
+ADMIN_URL_PATH = f"regions/{REGION}/api/v1/admin/pageservers"
 
-GLOBAL_CPLANE_URL = f"{os.environ['GLOBAL_CPLANE_URL'].strip('/')}/{URL_PATH}"
-LOCAL_CPLANE_URL = f"{os.environ['LOCAL_CPLANE_URL'].strip('/')}/{URL_PATH}"
+CPLANE_MANAGEMENT_URL = f"{os.environ['CPLANE_URL'].strip('/')}/{URL_PATH}"
 CONSOLE_URL = f"{os.environ['CONSOLE_URL']}/{ADMIN_URL_PATH}"
 
 PAYLOAD = dict(
@@ -43,7 +41,7 @@ PAYLOAD = dict(
 )
 
 
-def get_data(url, token, host=None):
+def get_data(url, token, host=None, method="GET", data=None, raise_on_error=True):
     if host is not None:
         url = f"{url}/{host}"
     headers = {
@@ -52,7 +50,7 @@ def get_data(url, token, host=None):
         "Content-Type": "application/json",
     }
     # Check if the server is already registered
-    req = urllib.request.Request(url=url, headers=headers, method="GET")
+    req = urllib.request.Request(url=url, headers=headers, method=method, data=data)
     try:
         with urllib.request.urlopen(req) as response:
             code = response.getcode()
@@ -64,11 +62,14 @@ def get_data(url, token, host=None):
     if code == 200:
         return json.loads(response_body)
 
-    raise Exception(f'GET {url} returned unexpected response: {code} {response_body}')
+    if raise_on_error:
+        raise Exception(f'{method} {url} returned unexpected response: {code} {response_body}')
+
+    return {}
 
 
 def get_pageserver_id(url, token):
-    data = get_data(url, token, HOST)
+    data = get_data(url, token, HOST, raise_on_error=False)
     if "node_id" in data:
         return int(data["node_id"])
 
@@ -85,21 +86,8 @@ def get_pageserver_version():
 
 
 def register(url, token, payload):
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "User-Agent": "Python script 1.0",
-    }
     data = str(json.dumps(payload)).encode()
-    req = urllib.request.Request(
-        url=url,
-        data=data,
-        headers=headers,
-        method="POST",
-    )
-    with urllib.request.urlopen(req) as resp:
-        response = json.loads(resp.read())
+    response = get_data(url, token, data=data, method="POST")
     log.info(response)
     if "node_id" in response:
         return int(response["node_id"])
@@ -117,8 +105,7 @@ if __name__ == "__main__":
     log.info(
         json.dumps(
             dict(
-                GLOBAL_CPLANE_URL=GLOBAL_CPLANE_URL,
-                LOCAL_CPLANE_URL=LOCAL_CPLANE_URL,
+                CPLANE_MANAGEMENT_URL=CPLANE_MANAGEMENT_URL,
                 CONSOLE_URL=CONSOLE_URL,
                 **PAYLOAD,
             ),
@@ -136,43 +123,20 @@ if __name__ == "__main__":
     log.info(f"found latest version={version} for region={REGION}")
     PAYLOAD.update(dict(version=version))
 
-    log.info("check if pageserver already registered or not in console")
-    node_id_in_console = get_pageserver_id(
-        GLOBAL_CPLANE_URL, GLOBAL_CPLANE_JWT_TOKEN
+    log.info("check if pageserver already registered")
+    node_id = get_pageserver_id(
+        CPLANE_MANAGEMENT_URL, CPLANE_JWT_TOKEN
     )
 
-    if node_id_in_console is None:
-        log.info("Registering storage controller in console")
-        node_id_in_console = register(
-            GLOBAL_CPLANE_URL, GLOBAL_CPLANE_JWT_TOKEN, PAYLOAD
+    if node_id is None:
+        log.info("Registering storage controller")
+        node_id = register(
+            CPLANE_MANAGEMENT_URL, CPLANE_JWT_TOKEN, PAYLOAD
         )
         log.info(
-            f"Storage controller registered in console with node_id \
-            {node_id_in_console}"
+            f"Storage controller registered with node_id {node_id}"
         )
     else:
         log.info(
-            f"Storage controller already registered in console with node_id \
-            {node_id_in_console}"
-        )
-
-    log.info("check if pageserver already registered or not in cplane")
-    node_id_in_cplane = get_pageserver_id(
-        LOCAL_CPLANE_URL, LOCAL_CPLANE_JWT_TOKEN
-    )
-
-    if node_id_in_cplane is None and node_id_in_console is not None:
-        PAYLOAD.update(dict(node_id=node_id_in_console))
-        log.info("Registering storage controller in cplane")
-        node_id_in_cplane = register(
-            LOCAL_CPLANE_URL, LOCAL_CPLANE_JWT_TOKEN, PAYLOAD
-        )
-        log.info(
-            f"Storage controller registered in cplane with node_id \
-            {node_id_in_cplane}"
-        )
-    else:
-        log.info(
-            f"Storage controller already registered in cplane with node_id \
-            {node_id_in_cplane}"
+            f"Storage controller already registered with node_id {node_id}"
         )
