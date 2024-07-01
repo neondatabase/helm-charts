@@ -53,13 +53,13 @@ def get_data(url, token, host=None):
     }
     # Check if the server is already registered
     req = urllib.request.Request(url=url, headers=headers, method="GET")
-    try:
-        with urllib.request.urlopen(req) as response:
-            if response.getcode() == 200:
-                return json.loads(response.read())
-    except urllib.error.URLError:
-        pass
-    return {}
+    with urllib.request.urlopen(req) as response:
+        code = response.getcode()
+        response_body = response.read()
+        if code == 200:
+            return json.loads(response_body)
+
+        raise Exception(f'GET {url} returned unexpected response: {code} {response_body}')
 
 
 def get_pageserver_id(url, token):
