@@ -2,11 +2,8 @@
 {{ if (empty .Values.registerControlPlane.region_id ) }}
   {{- fail (printf "Value for .Values.registerControlPlane.region_id is empty") }}
 {{- end }}
-{{ if (empty .Values.registerControlPlane.global_cplane_url) }}
-  {{- fail (printf "Value for .Values.registerControlPlane.global_cplane_url is empty") }}
-{{- end }}
-{{ if (empty .Values.registerControlPlane.local_cplane_url) }}
-  {{- fail (printf "Value for .Values.registerControlPlane.local_cplane_url is empty") }}
+{{ if (empty .Values.registerControlPlane.cplane_url) }}
+  {{- fail (printf "Value for .Values.registerControlPlane.cplane_url is empty") }}
 {{- end }}
 apiVersion: batch/v1
 kind: Job
@@ -61,10 +58,8 @@ spec:
           value: {{ index .Values.service.annotations "external-dns.alpha.kubernetes.io/hostname" | quote }}
         - name: PORT
           value: {{ .Values.service.port | quote }}
-        - name: GLOBAL_CPLANE_URL
-          value: {{ .Values.registerControlPlane.global_cplane_url | quote }}
-        - name: LOCAL_CPLANE_URL
-          value: {{ .Values.registerControlPlane.local_cplane_url | quote }}
+        - name: CPLANE_URL
+          value: {{ .Values.registerControlPlane.cplane_url | quote }}
         - name: CONSOLE_URL
           value: {{ .Values.registerControlPlane.console_url | quote }}
         - name: REGION_ID
