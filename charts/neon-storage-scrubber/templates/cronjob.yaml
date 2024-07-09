@@ -1,0 +1,68 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "neon-storage-scrubber.fullname" . }}
+  labels:
+    {{- include "neon-storage-scrubber.labels" . | nindent 4 }}
+spec:
+  timeZone: "Etc/UTC"
+  schedule: '0 18 * * *' # Runs every day at 6pm
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid # Only runs one instance
+  jobTemplate:
+    metadata:
+      name: {{ include "neon-storage-scrubber.fullname" . }}
+      labels:
+        {{- include "neon-storage-scrubber.labels" . | nindent 8 }}
+    spec:
+      backoffLimit: 0 # Do not restart if the task fails
+      template:
+        metadata:
+          {{- with .Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels:
+            {{- include "neon-storage-scrubber.selectorLabels" . | nindent 12 }}
+        spec:
+          restartPolicy: Never # Do not restart if the task fails
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "neon-storage-scrubber.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command:
+                - /usr/local/bin/storage_scrubber
+                - pageserver-physical-gc
+                - --min-age=1week
+              env:
+                - name: BUCKET
+                  value: {{ .Values.storageScrubber.awsBucket }}
+                - name: REGION
+                  value: {{ .Values.storageScrubber.awsRegion }}
+                - name: RUST_BACKTRACE
+                  value: '1'
+                - name: PAGESERVER_DISABLE_FILE_LOGGING
+                  value: '1'
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}

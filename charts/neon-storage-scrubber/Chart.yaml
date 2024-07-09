@@ -1,0 +1,8 @@
+apiVersion: v2
+name: neon-storage-scrubber
+description: AWS Cost Reporter
+type: application
+version: 1.0.1
+appVersion: "v0.1.0"
+sources:
+  - https://github.com/neondatabase/neon-storage-scrubber

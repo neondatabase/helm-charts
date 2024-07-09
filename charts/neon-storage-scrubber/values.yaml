@@ -1,0 +1,72 @@
+# Default values for neon-storage-scrubber.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  # -- Image repository
+  repository: neondatabase/neon
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+# -- Specify docker-registry secret names as an array
+imagePullSecrets: []
+# -- String to partially override neon-storage-scrubber.fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override neon-storage-scrubber.fullname template
+fullnameOverride: ""
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # -- The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+storageScrubber:
+  # -- The AWS region to run the scrubber
+  awsRegion: ""
+  # -- The AWS bucket for the pageserver storage
+  awsBucket: ""
+
+# -- Annotations for neon-storage-scrubber pods
+podAnnotations: {}
+
+# -- neon-storage-scrubber's pods Security Context
+podSecurityContext: {}
+  # fsGroup: 2000
+
+# -- neon-storage-scrubber's containers Security Context
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# -- Node labels for pod assignment.
+nodeSelector: {}
+
+# -- Tolerations for pod assignment.
+tolerations: []
+
+# -- Affinity for pod assignment
+affinity: {}
