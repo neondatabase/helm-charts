@@ -67,48 +67,48 @@ Kubernetes: `^1.18.x-x`
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
 | settings.authRateLimits | string | `nil` |  |
 | settings.authRateLimitsEnabled | bool | `nil` | Whether to enable the authentication rate limiter |
-| settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
-| settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
-| settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
-| settings.connectComputeLock | string | `""` | (string) Configures the locking of connect_compute per compute |
-| settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
-| settings.disableDynamicRateLimiter | bool | `true` | (bool) Disable dynamic rate limiter |
+| settings.awsAccessKeyId | string | `""` | AWS Access Key ID |
+| settings.awsRegion | string | `""` | Aws region to retrieve credentials |
+| settings.awsSecretAccessKey | string | `""` | AWS Secret Access Key |
+| settings.connectComputeLock | string | `""` | Configures the locking of connect_compute per compute |
+| settings.controlplane_token | string | `""` | JWT token to pass to control plane management API |
+| settings.disableDynamicRateLimiter | bool | `true` | Disable dynamic rate limiter |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
-| settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
-| settings.endpointRpsLimits | list | `[]` | (list) list of rate limiters for connection attempts over different time intervals |
+| settings.endpointCacheConfig | string | `""` | Config for cache for all valid endpoints |
+| settings.endpointRpsLimits | list | `[]` | list of rate limiters for connection attempts over different time intervals |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
-| settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
-| settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |
+| settings.httpPoolOptIn | bool | `true` | Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
+| settings.metricBackupCollectionChunkSize | string | `"4194304"` | How large each chunk of the metric backup files should be in bytes |
 | settings.metricBackupCollectionInterval | string | `"10m"` |  |
-| settings.metricBackupCollectionRemoteStorage | string | `""` | (string) Storage location to upload the metric backup files to |
-| settings.metricCollectionEndpoint | string | `""` | (url) endpoint used to send metrics to. If null, metrics will not be sent. |
-| settings.metricCollectionInterval | string | `""` | (string) how often metrics should be sent. |
+| settings.metricBackupCollectionRemoteStorage | string | `""` | Storage location to upload the metric backup files to |
+| settings.metricCollectionEndpoint | url | `""` | endpoint used to send metrics to. If null, metrics will not be sent. |
+| settings.metricCollectionInterval | string | `""` | how often metrics should be sent. |
 | settings.otelExporterDisabled | bool | `false` | Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable) |
 | settings.otelExporterOtlpEndpoint | string | `""` | OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable) |
-| settings.parquetUploadCompression | string | `"uncompressed"` | (string) What level of compression to use |
-| settings.parquetUploadDisconnectEventsRemoteStorage | string | `""` | (string) Storage location to upload the parquet files with disconnect events to. |
-| settings.parquetUploadMaximumDuration | string | `"20m"` | (string) How long to wait before forcing a file upload |
-| settings.parquetUploadPageSize | string | `"1048576"` | (string) How large each column page should be in bytes |
-| settings.parquetUploadRemoteStorage | string | `""` | (string) Storage location to upload the parquet files to. |
-| settings.parquetUploadRowGroupSize | string | `"8192"` | (string) How many rows to include in a row group |
-| settings.parquetUploadSize | string | `"100000000"` | (string) How large the total parquet file should be in bytes |
-| settings.redisClusterName | string | `"regional-control-plane-redis"` | (string) Redis cluster name, used in aws elasticache |
-| settings.redisHost | string | `""` | (string) Redis host for streaming connections (might be different from the notifications host) |
-| settings.redisNotifications | string | `""` | (url) Configures redis client |
-| settings.redisPort | string | `""` | (string) Redis port for streaming connections |
-| settings.redisUserId | string | `"neon"` | (string) Redis user_id, used in aws elasticache |
-| settings.region | string | `""` | (string) Region this proxy service is deployed into |
+| settings.parquetUploadCompression | string | `"uncompressed"` | What level of compression to use |
+| settings.parquetUploadDisconnectEventsRemoteStorage | string | `""` | Storage location to upload the parquet files with disconnect events to. |
+| settings.parquetUploadMaximumDuration | string | `"20m"` | How long to wait before forcing a file upload |
+| settings.parquetUploadPageSize | string | `"1048576"` | How large each column page should be in bytes |
+| settings.parquetUploadRemoteStorage | string | `""` | Storage location to upload the parquet files to. |
+| settings.parquetUploadRowGroupSize | string | `"8192"` | How many rows to include in a row group |
+| settings.parquetUploadSize | string | `"100000000"` | How large the total parquet file should be in bytes |
+| settings.redisClusterName | string | `"regional-control-plane-redis"` | Redis cluster name, used in aws elasticache |
+| settings.redisHost | string | `""` | Redis host for streaming connections (might be different from the notifications host) |
+| settings.redisNotifications | url | `""` | Configures redis client |
+| settings.redisPort | string | `""` | Redis port for streaming connections |
+| settings.redisUserId | string | `"neon"` | Redis user_id, used in aws elasticache |
+| settings.region | string | `""` | Region this proxy service is deployed into |
 | settings.rustLog | string | `"INFO"` | Proxy log level |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
-| settings.sqlOverHttpTimeout | string | `"15s"` | (string) timeout for http connection requests |
+| settings.sqlOverHttpTimeout | string | `"15s"` | timeout for http connection requests |
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |
-| settings.wakeComputeLimits | list | `[]` | (list) list of rate limiters for wake_compute over different time intervals |
-| settings.wakeComputeLock | string | `"permits=0"` | (string) Configures the locking of wake_compute per endpoint |
+| settings.wakeComputeLimits | list | `[]` | list of rate limiters for wake_compute over different time intervals |
+| settings.wakeComputeLock | string | `"permits=0"` | Configures the locking of wake_compute per endpoint |
 | settings.wssPort | int | `nil` | numeric port used for wss/https connections. If null, wss server will not be started |
 | terminationGracePeriodSeconds | int | `30` | Deployment's terminationGracePeriodSeconds |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------
-Autogenerated from chart metadata using [helm-docs v1.9.1](https://github.com/norwoodj/helm-docs/releases/v1.9.1)
+Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)
