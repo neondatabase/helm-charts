@@ -8,7 +8,7 @@ neon-storage-scrubber
 
 ## Source Code
 
-* <https://github.com/neondatabase/neon-storage-scrubber>
+* <https://github.com/neondatabase/neon>
 
 ## Installing the Chart
 
