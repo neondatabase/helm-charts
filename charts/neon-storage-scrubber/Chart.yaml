@@ -5,4 +5,4 @@ type: application
 version: 1.0.0
 appVersion: "v0.1.0"
 sources:
-  - https://github.com/neondatabase/neon
+  - https://github.com/neondatabase/neon/tree/main/storage_scrubber
