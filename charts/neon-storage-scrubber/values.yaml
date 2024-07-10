@@ -37,6 +37,10 @@ storageScrubber:
   awsRegion: ""
   # -- The AWS bucket for the pageserver storage
   awsBucket: ""
+  # -- The timezone for the cron job
+  timeZone: "Etc/UTC"
+  # -- The schedule for the cron job
+  schedule: '0 18 * * *' # Runs every day at 6pm
 
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}

@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "neon-storage-scrubber.labels" . | nindent 4 }}
 spec:
-  timeZone: "Etc/UTC"
-  schedule: '0 18 * * *' # Runs every day at 6pm
+  timeZone: {{ .Values.storageScrubber.timeZone }}
+  schedule: {{ .Values.storageScrubber.schedule }}
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid # Only runs one instance
   jobTemplate:
