@@ -52,6 +52,16 @@ spec:
                   value: '1'
                 - name: PAGESERVER_DISABLE_FILE_LOGGING
                   value: '1'
+                {{- if .Values.settings }}
+                {{- with .Values.settings.sentryUrl }}
+                - name: SENTRY_DSN
+                  value: {{ . }}
+                {{- end }}
+                {{- with .Values.settings.sentryEnvironment }}
+                - name: SENTRY_ENVIRONMENT
+                  value: {{ . }}
+                {{- end }}
+                {{- end }}
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
           {{- with .Values.nodeSelector }}

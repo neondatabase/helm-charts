@@ -33,12 +33,14 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | podAnnotations | object | `{}` | Annotations for neon-storage-scrubber pods |
 | podSecurityContext | object | `{}` | neon-storage-scrubber's pods Security Context |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
+| resources.limits.cpu | string | `"200m"` |  |
+| resources.limits.memory | string | `"2Gi"` |  |
 | securityContext | object | `{}` | neon-storage-scrubber's containers Security Context |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
+| settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
+| settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router |
 | storageScrubber.awsBucket | string | `""` | The AWS bucket for the pageserver storage |
 | storageScrubber.awsRegion | string | `""` | The AWS region to run the scrubber |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
