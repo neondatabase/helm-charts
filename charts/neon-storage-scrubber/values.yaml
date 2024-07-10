@@ -39,8 +39,8 @@ storageScrubber:
   awsBucket: ""
   # -- The timezone for the cron job
   timeZone: "Etc/UTC"
-  # -- The schedule for the cron job
-  schedule: "0 18 * * *" # Runs every day at 6pm
+  # -- The schedule for the cron job -- By default runs every day at 6pm
+  schedule: "0 18 * * *"
   # -- The command to run
   command:
     - /usr/local/bin/storage_scrubber
