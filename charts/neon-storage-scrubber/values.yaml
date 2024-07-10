@@ -40,7 +40,12 @@ storageScrubber:
   # -- The timezone for the cron job
   timeZone: "Etc/UTC"
   # -- The schedule for the cron job
-  schedule: '0 18 * * *' # Runs every day at 6pm
+  schedule: "0 18 * * *" # Runs every day at 6pm
+  # -- The command to run
+  command:
+    - /usr/local/bin/storage_scrubber
+    - pageserver-physical-gc
+    - --min-age=1week
 
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}

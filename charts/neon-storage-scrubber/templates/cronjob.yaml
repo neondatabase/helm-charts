@@ -40,9 +40,7 @@ spec:
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command:
-                - /usr/local/bin/storage_scrubber
-                - pageserver-physical-gc
-                - --min-age=1week
+                {{- toYaml .Values.storageScrubber.command | nindent 16 }}
               env:
                 - name: BUCKET
                   value: {{ .Values.storageScrubber.awsBucket }}

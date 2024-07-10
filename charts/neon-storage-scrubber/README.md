@@ -43,6 +43,7 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router |
 | storageScrubber.awsBucket | string | `""` | The AWS bucket for the pageserver storage |
 | storageScrubber.awsRegion | string | `""` | The AWS region to run the scrubber |
+| storageScrubber.command | list | `["/usr/local/bin/storage_scrubber","pageserver-physical-gc","--min-age=1week"]` | The command to run |
 | storageScrubber.schedule | string | `"0 18 * * *"` | The schedule for the cron job |
 | storageScrubber.timeZone | string | `"Etc/UTC"` | The timezone for the cron job |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
