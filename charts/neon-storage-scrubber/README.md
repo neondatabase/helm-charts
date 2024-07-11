@@ -39,12 +39,13 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
+| settings.extraEnvs | list | `[{"name":"RUST_BACKTRACE","value":"1"},{"name":"PAGESERVER_DISABLE_FILE_LOGGING","value":"1"}]` | extra env variables when running the job |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router |
 | storageScrubber.awsBucket | string | `""` | The AWS bucket for the pageserver storage |
 | storageScrubber.awsRegion | string | `""` | The AWS region to run the scrubber |
 | storageScrubber.command | list | `["/usr/local/bin/storage_scrubber","pageserver-physical-gc","--min-age=1week"]` | The command to run |
-| storageScrubber.schedule | string | `"0 18 * * *"` | The schedule for the cron job |
+| storageScrubber.schedule | string | `"0 18 * * *"` |  |
 | storageScrubber.timeZone | string | `"Etc/UTC"` | The timezone for the cron job |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 

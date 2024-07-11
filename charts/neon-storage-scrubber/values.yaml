@@ -31,6 +31,12 @@ settings:
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
   sentryEnvironment: "development"
+  # -- extra env variables when running the job
+  extraEnvs:
+    - name: RUST_BACKTRACE
+      value: '1'
+    - name: PAGESERVER_DISABLE_FILE_LOGGING
+      value: '1'
 
 storageScrubber:
   # -- The AWS region to run the scrubber
