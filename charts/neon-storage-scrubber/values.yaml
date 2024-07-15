@@ -1,0 +1,89 @@
+# Default values for neon-storage-scrubber.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  # -- Image repository
+  repository: neondatabase/neon
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+# -- Specify docker-registry secret names as an array
+imagePullSecrets: []
+# -- String to partially override neon-storage-scrubber.fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override neon-storage-scrubber.fullname template
+fullnameOverride: ""
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # -- The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+settings:
+  # settings.sentryUrl -- url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router
+  sentryUrl: ""
+  # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
+  sentryEnvironment: "development"
+  # -- extra env variables when running the job
+  extraEnvs:
+    - name: RUST_BACKTRACE
+      value: '1'
+    - name: PAGESERVER_DISABLE_FILE_LOGGING
+      value: '1'
+
+storageScrubber:
+  # -- The AWS region to run the scrubber
+  awsRegion: ""
+  # -- The AWS bucket for the pageserver storage
+  awsBucket: ""
+  # -- The timezone for the cron job
+  timeZone: "Etc/UTC"
+  # -- The schedule for the cron job -- By default runs every day at 6pm
+  schedule: "0 18 * * *"
+  # -- The command to run
+  command:
+    - /usr/local/bin/storage_scrubber
+    - pageserver-physical-gc
+    - --min-age=1week
+
+# -- Annotations for neon-storage-scrubber pods
+podAnnotations: {}
+
+# -- neon-storage-scrubber's pods Security Context
+podSecurityContext:
+  {}
+  # fsGroup: 2000
+
+# -- neon-storage-scrubber's containers Security Context
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 2Gi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# -- Node labels for pod assignment.
+nodeSelector: {}
+
+# -- Tolerations for pod assignment.
+tolerations: []
+
+# -- Affinity for pod assignment
+affinity: {}

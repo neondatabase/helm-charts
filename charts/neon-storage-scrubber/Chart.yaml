@@ -1,0 +1,8 @@
+apiVersion: v2
+name: neon-storage-scrubber
+description: neon-storage-scrubber
+type: application
+version: 1.0.0
+appVersion: "v0.1.0"
+sources:
+  - https://github.com/neondatabase/neon/tree/main/storage_scrubber

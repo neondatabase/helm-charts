@@ -1,0 +1,75 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "neon-storage-scrubber.fullname" . }}
+  labels:
+    {{- include "neon-storage-scrubber.labels" . | nindent 4 }}
+spec:
+  timeZone: {{ .Values.storageScrubber.timeZone }}
+  schedule: {{ .Values.storageScrubber.schedule }}
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid # Only runs one instance
+  jobTemplate:
+    metadata:
+      name: {{ include "neon-storage-scrubber.fullname" . }}
+      labels:
+        {{- include "neon-storage-scrubber.labels" . | nindent 8 }}
+    spec:
+      backoffLimit: 0 # Do not restart if the task fails
+      template:
+        metadata:
+          {{- with .Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels:
+            {{- include "neon-storage-scrubber.selectorLabels" . | nindent 12 }}
+        spec:
+          restartPolicy: Never # Do not restart if the task fails
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "neon-storage-scrubber.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command:
+                {{- toYaml .Values.storageScrubber.command | nindent 16 }}
+              env:
+                - name: BUCKET
+                  value: {{ .Values.storageScrubber.awsBucket }}
+                - name: REGION
+                  value: {{ .Values.storageScrubber.awsRegion }}
+                {{- if .Values.settings }}
+                {{- with .Values.settings.sentryUrl }}
+                - name: SENTRY_DSN
+                  value: {{ . }}
+                {{- end }}
+                {{- with .Values.settings.sentryEnvironment }}
+                - name: SENTRY_ENVIRONMENT
+                  value: {{ . }}
+                {{- end }}
+                {{- with .Values.settings.extraEnvs }}
+                {{- toYaml . | nindent 16 }}
+                {{- end }}
+                {{- end }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
