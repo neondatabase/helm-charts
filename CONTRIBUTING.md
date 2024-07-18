@@ -32,5 +32,5 @@ Charts should start at `1.0.0`. Any breaking (backwards incompatible) changes to
    NB: CI requires specific `helm-docs` version to pass, so if you generate docs with a different one it may still fail
    The easiest way to generate proper `README.md` is to run generation the same way as it's done in CI, i.e.:
    ```bash
-   docker run --rm --volume "$(pwd):/helm-docs" -u "$(id -u)" jnorwood/helm-docs:v1.9.1
+   docker run --rm --volume "$(pwd):/helm-docs" -u "$(id -u)" jnorwood/helm-docs:v1.14.2
    ```
