@@ -1,0 +1,110 @@
+# Default values for neon-storage-broker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  # -- Neondatabase image repository
+  repository: neondatabase/neon
+  # -- image pull policy
+  pullPolicy: Always
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+# -- Specify docker-registry secret names as an array
+imagePullSecrets: []
+
+# -- String to partially override neon-storage-broker.fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override neon-storage-broker.fullname template
+fullnameOverride: ""
+
+# Pageserver settings
+settings:
+  # connection settings for S3
+  s3:
+    enabled: true
+    accessKey:
+      # -- Access key for s3
+      rootUser: minio
+      # -- Access key for s3
+      rootPassword: password
+    # -- s3 service name
+    nameOverride: "neon-minio"
+    fullnameOverride: ""
+    port: "9000"
+    bucket: "neon"
+    region: "eu-north-1"
+  # connection settings for broker
+  broker:
+    enabled: true
+    # -- Storage broker service name
+    nameOverride: "neon-storage-broker"
+    fullnameOverride: ""
+    port: "50051"
+
+serviceAccount:
+  # serviceAccount.create - Specifies whether a service account should be created
+  create: true
+  # serviceAccount.annotations -- Annotations to add to the service account
+  annotations: {}
+  # serviceAccount.name - The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# -- Annotations for neon-storage-broker pods
+podAnnotations: {}
+
+# -- Additional labels for neon-storage-broker pods
+podLabels: {}
+  # neon_service: broker
+  # neon_env: staging
+  # neon_region: us-west-1
+  # neon_region_slug: virginia
+
+# -- neon-storage-broker's pods Security Context
+podSecurityContext: {}
+  # fsGroup: 2000
+
+# -- neon-storage-broker's containers Security Context
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  # service.annotations -- Annotations to add to the service
+  annotations: {}
+  type: ClusterIP
+  # service.port -- pageserver listen port
+  port: 6400
+  httpPort: 9898
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #
+  # resources.limits -- The resources limits for the container
+  # resources.requests The requested resources for the container
+  #
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# -- Node labels for pod assignment.
+nodeSelector: {}
+
+# -- Tolerations for pod assignment.
+tolerations: []
+
+# -- Affinity for pod assignment
+affinity: {}
+
+extraManifests: []

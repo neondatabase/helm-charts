@@ -1,0 +1,19 @@
+apiVersion: v2
+name: neon-pageserver
+description: Neon Pageserver
+type: application
+version: 1.0.0
+appVersion: "0.1.0"
+kubeVersion: "^1.18.x-x"
+home: https://neon.tech
+sources:
+  - https://github.com/neondatabase/neon
+dependencies:
+  - name: neon-storage-broker
+    version: "1.2.*"
+    repository: "https://neondatabase.github.io/helm-charts"
+    condition: settings.s3.enabled
+  - name: neon-minio
+    version: "1.0.*"
+    repository: "https://neondatabase.github.io/helm-charts"
+    condition: settings.broker.enabled

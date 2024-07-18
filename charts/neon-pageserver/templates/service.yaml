@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "neon-pageserver.fullname" . }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  labels:
+    {{- include "neon-pageserver.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: service
+      protocol: TCP
+      name: service
+    - port: {{ .Values.service.httpPort }}
+      targetPort: monitor
+      protocol: TCP
+      name: monitor
+  selector:
+    {{- include "neon-pageserver.selectorLabels" . | nindent 4 }}
