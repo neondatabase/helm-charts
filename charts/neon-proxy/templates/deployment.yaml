@@ -156,6 +156,10 @@ spec:
             - --redis-notifications
             - {{ . }}
             {{- end }}
+            {{- with .Values.settings.redisAuthType}}
+            - --redis-auth-type
+            - {{ . }}
+            {{- end }}
             {{- with .Values.settings.metricBackupCollectionInterval }}
             - --metric-backup-collection-interval={{ . }}
             {{ end }}
