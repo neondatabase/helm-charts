@@ -92,6 +92,7 @@ Kubernetes: `^1.18.x-x`
 | settings.parquetUploadRemoteStorage | string | `""` | (string) Storage location to upload the parquet files to. |
 | settings.parquetUploadRowGroupSize | string | `"8192"` | (string) How many rows to include in a row group |
 | settings.parquetUploadSize | string | `"100000000"` | (string) How large the total parquet file should be in bytes |
+| settings.redisAuthType | string | `"irsa"` | (string) What auth type to use for regional Redis client. "irsa" and "plain" are supported. "plain" means use URI from settings.redisNotifications. "irsa" means AWS IRSA. |
 | settings.redisClusterName | string | `"regional-control-plane-redis"` | (string) Redis cluster name, used in aws elasticache |
 | settings.redisHost | string | `""` | (string) Redis host for streaming connections (might be different from the notifications host) |
 | settings.redisNotifications | string | `""` | (url) Configures redis client |
