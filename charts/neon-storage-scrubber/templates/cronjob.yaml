@@ -40,6 +40,13 @@ spec:
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command:
+                - /usr/local/bin/storage_scrubber
+                {{- if .Values.storageScrubber.enableStorageControllerConnection }}
+                - "--controller-jwt"
+                - "$(STORAGE_CONTROLLER_JWT)"
+                - "--controller-api"
+                - {{ .Values.storageScrubber.storageControllerUrl | quote }}
+                {{- end -}}
                 {{- toYaml .Values.storageScrubber.command | nindent 16 }}
               env:
                 - name: BUCKET
@@ -59,6 +66,9 @@ spec:
                 {{- toYaml . | nindent 16 }}
                 {{- end }}
                 {{- end }}
+              envFrom:
+                - secretRef:
+                    name: {{ include "neon-storage-scrubber.fullname" . }}-env-vars
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
           {{- with .Values.nodeSelector }}

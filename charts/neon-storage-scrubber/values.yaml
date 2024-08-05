@@ -31,7 +31,7 @@ settings:
   sentryUrl: ""
   # settings.sentryEnvironment -- "development" or "production". It will be visible in sentry in order to filter issues
   sentryEnvironment: "development"
-  # -- extra env variables when running the job
+  # settings.extraEnvs -- extra env variables when running the job
   extraEnvs:
     - name: RUST_BACKTRACE
       value: '1'
@@ -49,9 +49,15 @@ storageScrubber:
   schedule: "0 18 * * *"
   # -- The command to run
   command:
-    - /usr/local/bin/storage_scrubber
     - pageserver-physical-gc
     - --min-age=1week
+  # -- Enable storage controller related functionalities
+  enableStorageControllerConnection: false
+  # -- Control plane / storage controller JWT token for connecting to the storage controller 
+  storageControllerJwtToken: ""
+  # -- URL of the storage controller
+  storageControllerUrl: ""
+
 
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}
