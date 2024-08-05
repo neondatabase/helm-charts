@@ -34,9 +34,9 @@ settings:
   # settings.extraEnvs -- extra env variables when running the job
   extraEnvs:
     - name: RUST_BACKTRACE
-      value: '1'
+      value: "1"
     - name: PAGESERVER_DISABLE_FILE_LOGGING
-      value: '1'
+      value: "1"
 
 storageScrubber:
   # -- The AWS region to run the scrubber
@@ -53,11 +53,10 @@ storageScrubber:
     - --min-age=1week
   # -- Enable storage controller related functionalities
   enableStorageControllerConnection: false
-  # -- Control plane / storage controller JWT token for connecting to the storage controller 
+  # -- Control plane / storage controller JWT token for connecting to the storage controller
   storageControllerJwtToken: ""
   # -- URL of the storage controller
   storageControllerUrl: ""
-
 
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}
