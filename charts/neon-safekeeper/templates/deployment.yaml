@@ -1,0 +1,108 @@
+{{- $replicas := int .Values.replicas }}
+{{- range $index, $element := until $replicas }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%d" (include "neon-safekeeper.fullname" $) $index }}
+  labels:
+    {{- include "neon-safekeeper.labels" $ | nindent 4 }}
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  # Which pods the Deployment is managing (duplicates template.metadata.labels).
+  selector:
+    matchLabels:
+      {{- include "neon-safekeeper.selectorLabels" $ | nindent 6 }}
+  # Pod template.
+  template:
+    metadata:
+      {{- with $.Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      # Labels set on created pods.
+      labels:
+        {{- include "neon-safekeeper.selectorLabels" $ | nindent 8 }}
+        safekeeperId: "{{ $index }}"
+      {{- with $.Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- with $.Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "neon-safekeeper.serviceAccountName" $ }}
+      securityContext:
+        {{- toYaml $.Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ $.Chart.Name }}
+          securityContext:
+            {{- toYaml $.Values.securityContext | nindent 12 }}
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          args:
+            - "safekeeper --listen-pg='0.0.0.0:{{ $.Values.service.port }}' --listen-http='0.0.0.0:{{ $.Values.service.httpPort }}' --id=$SAFEKEEPER_ID --broker-endpoint=$BROKER_ENDPOINT -D /data --remote-storage=\"{endpoint='${S3_ENDPOINT}', bucket_name='{{ $.Values.settings.s3.bucket }}', bucket_region='{{ $.Values.settings.s3.region }}', prefix_in_bucket='/safekeeper/'}\""
+          command:
+            - /bin/sh
+            - -c
+          {{- if $.Values.settings }}
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ $.Values.settings.s3.accessKey.rootUser }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ $.Values.settings.s3.accessKey.rootPassword }}
+            - name: BROKER_ENDPOINT
+              value: {{ printf "http://%s:%s" (include "neon-broker.fullname" $) $.Values.settings.broker.port }}
+            - name: S3_ENDPOINT
+              value: {{ printf "http://%s:%s" (include "neon-s3.fullname" $) $.Values.settings.s3.port }} 
+            - name: SAFEKEEPER_ID
+              value: "{{ $index }}"
+          {{- end }}
+          ports:
+            - name: service
+              containerPort: {{ $.Values.service.port }}
+              protocol: TCP
+            - name: monitor
+              containerPort: {{ $.Values.service.httpPort }}
+              protocol: TCP
+          startupProbe:
+            httpGet:
+              path: /metrics
+              port: monitor
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: monitor
+            periodSeconds: 15
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: monitor
+            periodSeconds: 15
+            timeoutSeconds: 10
+          resources:
+            {{- toYaml $.Values.resources | nindent 12 }}
+      {{- with $.Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}
