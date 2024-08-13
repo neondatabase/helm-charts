@@ -55,6 +55,10 @@ spec:
             - --split-threshold
             - {{ .Values.settings.splitThreshold | quote }}
           {{- end }}
+          {{- if .Values.settings.chaosInterval }}
+            - --chaos-interval
+            - {{ .Values.settings.chaosInterval | quote }}
+          {{- end }}
           env:
             - name: LD_LIBRARY_PATH
               value: "/usr/local/v16/lib"

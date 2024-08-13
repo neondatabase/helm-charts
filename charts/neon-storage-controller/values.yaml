@@ -36,6 +36,9 @@ settings:
   computeHookUrl: ""
   # settings.splitThreshold -- Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default)
   splitThreshold: ""
+  # Chaos testing interval
+  chaosInterval: ""
+
 
 # Enable auto register to control plane
 # This will run postinstall job
