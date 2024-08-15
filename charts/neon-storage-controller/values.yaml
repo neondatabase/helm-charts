@@ -36,7 +36,7 @@ settings:
   computeHookUrl: ""
   # settings.splitThreshold -- Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default)
   splitThreshold: ""
-  # Chaos testing interval
+  # -- Chaos testing interval
   chaosInterval: ""
 
 
