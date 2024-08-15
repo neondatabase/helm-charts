@@ -62,6 +62,7 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| settings.chaosInterval | string | `""` | Chaos testing interval. |
 | settings.computeHookUrl | string | `""` |  |
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.databaseUrl | string | `""` |  |
@@ -70,7 +71,6 @@ Kubernetes: `^1.18.x-x`
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
 | settings.splitThreshold | string | `""` | Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default) |
-| settings.chaosInterval | string | `""` | Chaos testing interval. |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------
