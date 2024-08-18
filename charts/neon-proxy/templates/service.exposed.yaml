@@ -9,6 +9,9 @@ metadata:
   labels:
     {{- include "neon-proxy.labels" . | nindent 4 }}
 spec:
+  {{- with .Values.exposedService.ipFamilies }}
+  ipFamilies: {{ . | toYaml | nindent 2 }}
+  {{- end }}
   type: {{ .Values.exposedService.type }}
   ports:
     - port: {{ .Values.exposedService.port }}
