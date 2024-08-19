@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.7.28](https://img.shields.io/badge/Version-1.7.27-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.7.28](https://img.shields.io/badge/Version-1.7.28-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -32,6 +32,7 @@ Kubernetes: `^1.18.x-x`
 | deploymentStrategy | object | `{"type":"Recreate"}` | strategy override for deployment |
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
+| exposedService.ipFamilies | string | `nil` |  |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |
