@@ -187,7 +187,7 @@ spec:
             {{- with .Values.settings.awsRegion }}
             - --aws-region={{ . }}
             {{ end }}
-            
+
 
           {{- if .Values.settings }}
           env:
@@ -211,10 +211,11 @@ spec:
             - name: SENTRY_ENVIRONMENT
               value: {{ . }}
             {{- end }}
-            {{- with .Values.settings.controlplane_token }}
             - name: NEON_PROXY_TO_CONTROLPLANE_TOKEN
-              value: {{ . }}
-            {{- end }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "neon-proxy.fullname" . }}-controlplane-token
+                  key: controlplane_token
             {{- with .Values.settings.awsAccessKeyId }}
             - name: AWS_ACCESS_KEY_ID
               value: {{ . }}
