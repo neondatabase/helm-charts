@@ -28,6 +28,8 @@ settings:
   databaseUrl: ""
   # May be set if AWS Secrets Manager is not being used: JWT token for authentication with pageservers
   jwtToken: ""
+  # JWT token for authentication with other storage controller instances
+  peerJwtToken: ""
   # May be set if AWS Secrets Manager is not being used: public key for authenticating incoming HTTP requests
   publicKey: ""
   # May be set if AWS Secrets Manager is not being used: JWT token for authenticating calls to computeHookUrl
