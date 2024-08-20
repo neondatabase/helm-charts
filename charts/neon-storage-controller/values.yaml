@@ -28,7 +28,7 @@ settings:
   databaseUrl: ""
   # JWT token for authentication with pageservers
   jwtToken: ""
-  # JWT token for authentication with other storage controller instances
+  # -- JWT token for authentication with other storage controller instances
   peerJwtToken: ""
   # public key for authenticating incoming HTTP requests
   publicKey: ""

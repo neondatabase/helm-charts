@@ -67,7 +67,7 @@ Kubernetes: `^1.18.x-x`
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.databaseUrl | string | `""` |  |
 | settings.jwtToken | string | `""` |  |
-| settings.peerJwtToken | string | `""` | JWT token used for communication with other storage controller instances in the region |
+| settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
