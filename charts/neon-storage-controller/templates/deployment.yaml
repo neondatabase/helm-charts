@@ -6,7 +6,14 @@ metadata:
     {{- include "neon-storage-controller.labels" . | nindent 4 }}
 spec:
   strategy:
+  {{- if .Values.settings.startAsCandidate }}
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  {{- else }}
     type: Recreate
+  {{- end }}
   replicas: 1
   # Which pods the Deployment is managing (duplicates template.metadata.labels).
   selector:
@@ -61,6 +68,9 @@ spec:
           {{- end }}
             - --address-for-peers
             - http://$(POD_IP):{{ .Values.service.port }}/
+          {{- if .Values.settings.startAsCandidate }}
+            - --start-as-candidate
+          {{- end }}
           env:
             - name: LD_LIBRARY_PATH
               value: "/usr/local/v16/lib"
