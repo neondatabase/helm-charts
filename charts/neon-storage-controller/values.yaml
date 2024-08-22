@@ -40,6 +40,8 @@ settings:
   splitThreshold: ""
   # -- Chaos testing interval
   chaosInterval: ""
+  # -- When set to True, restart the service gracefully
+  startAsCandidate: false
 
 
 # Enable auto register to control plane
