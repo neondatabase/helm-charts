@@ -32,6 +32,7 @@ Kubernetes: `^1.18.x-x`
 | deploymentStrategy | object | `{"type":"Recreate"}` | strategy override for deployment |
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
+| exposedService.ipFamilies | string | `nil` |  |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |

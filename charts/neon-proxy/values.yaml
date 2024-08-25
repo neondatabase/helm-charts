@@ -166,6 +166,8 @@ service:
   httpPort: 9090
 
 exposedService:
+  # In AKS to provision dual stack LB one needs to set ipFamilies to ["IPv4", "IPv6"]
+  ipFamilies: null
   # exposedService.annotations -- Annotations to add to the exposed service
   annotations: {}
     # service.beta.kubernetes.io/aws-load-balancer-type: external
