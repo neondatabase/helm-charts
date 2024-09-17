@@ -10,6 +10,7 @@ metadata:
     {{- include "neon-proxy.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.exposedService.type }}
+  externalTrafficPolicy: {{ .Values.exposedService.externalTrafficPolicy }}
   ports:
     - port: {{ .Values.exposedService.port }}
       targetPort: proxy
