@@ -119,6 +119,8 @@ settings:
   redisUserId: "neon"
   # settings.awsRegion -- (string) Aws region to retrieve credentials
   awsRegion: ""
+  # settings.extraCmdFlags -- (list) additional arguments to proxy binary
+  extraCmdFlags: []
 
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created

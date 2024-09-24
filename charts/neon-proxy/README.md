@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.8.1](https://img.shields.io/badge/Version-1.8.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -77,6 +77,7 @@ Kubernetes: `^1.18.x-x`
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
 | settings.endpointRpsLimits | list | `[]` | (list) list of rate limiters for connection attempts over different time intervals |
+| settings.extraCmdFlags | list | `[]` | (list) additional arguments to proxy binary |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
 | settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |
