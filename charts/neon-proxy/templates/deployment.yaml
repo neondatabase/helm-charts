@@ -187,7 +187,9 @@ spec:
             {{- with .Values.settings.awsRegion }}
             - --aws-region={{ . }}
             {{ end }}
-
+            {{- with .Values.settings.extraCmdFlags }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
 
           {{- if .Values.settings }}
           env:
