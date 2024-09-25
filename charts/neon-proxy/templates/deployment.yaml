@@ -68,6 +68,9 @@ spec:
             - -a
             - {{ . }}
             {{- end }}
+            {{- if .Values.settings.isAuthBroker }}
+            - --is-auth-broker
+            {{- end }}
             {{- with .Values.settings.authBackend }}
             - --auth-backend
             - {{ . }}

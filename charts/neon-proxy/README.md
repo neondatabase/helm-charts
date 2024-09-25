@@ -80,6 +80,7 @@ Kubernetes: `^1.18.x-x`
 | settings.extraCmdFlags | list | `[]` | (list) additional arguments to proxy binary |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
+| settings.isAuthBroker | bool | `false` | (bool) enable the auth-broker mode |
 | settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |
 | settings.metricBackupCollectionInterval | string | `"10m"` |  |
 | settings.metricBackupCollectionRemoteStorage | string | `""` | (string) Storage location to upload the metric backup files to |
