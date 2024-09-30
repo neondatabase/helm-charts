@@ -119,6 +119,8 @@ settings:
   redisUserId: "neon"
   # settings.awsRegion -- (string) Aws region to retrieve credentials
   awsRegion: ""
+  # settings.proxyProtocolV2 -- (string) Whether to enable or disable the parsing of PROXY protocol V2. "rejected", "supported", or "required" are accepted.
+  proxyProtocolV2: ""
   # settings.extraCmdFlags -- (list) additional arguments to proxy binary
   extraCmdFlags: []
 

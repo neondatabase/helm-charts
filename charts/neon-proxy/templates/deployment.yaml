@@ -187,6 +187,9 @@ spec:
             {{- with .Values.settings.awsRegion }}
             - --aws-region={{ . }}
             {{ end }}
+            {{- with .Values.settings.proxyProtocolV2 }}
+            - --proxy-protocol-v2={{ . }}
+            {{- end }}
             {{- with .Values.settings.extraCmdFlags }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
