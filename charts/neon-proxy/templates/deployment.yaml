@@ -81,6 +81,12 @@ spec:
             - {{ . }}
             {{- end }}
             {{- end }}
+            {{- with .Values.settings.sqlOverHttpMaxRequestSizeBytes }}
+            - --sql-over-http-max-request-size-bytes={{ . }}
+            {{ end }}
+            {{- with .Values.settings.sqlOverHttpMaxResponseSizeBytes }}
+            - --sql-over-http-max-response-size-bytes={{ . }}
+            {{ end }}
             {{- with .Values.settings.sqlOverHttpTimeout }}
             - --sql-over-http-timeout={{ . }}
             {{ end }}

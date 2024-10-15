@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.8.2](https://img.shields.io/badge/Version-1.8.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.9.0](https://img.shields.io/badge/Version-1.9.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -105,6 +105,8 @@ Kubernetes: `^1.18.x-x`
 | settings.rustLog | string | `"INFO"` | Proxy log level |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-proxy |
+| settings.sqlOverHttpMaxRequestSizeBytes | string | `"10485760"` | (string) maximum sql-over-http request payload size in bytes |
+| settings.sqlOverHttpMaxResponseSizeBytes | string | `"10485760"` | (string) maximum sql-over-http response payload size in bytes |
 | settings.sqlOverHttpTimeout | string | `"15s"` | (string) timeout for http connection requests |
 | settings.uri | string | `""` |  |
 | settings.useCertManager | bool | `true` |  |

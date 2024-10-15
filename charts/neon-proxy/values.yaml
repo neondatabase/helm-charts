@@ -67,6 +67,10 @@ settings:
   redisNotifications: ""
   # settings.redisAuthType -- (string) What auth type to use for regional Redis client. "irsa" and "plain" are supported. "plain" means use URI from settings.redisNotifications. "irsa" means AWS IRSA.
   redisAuthType: "irsa"
+  # settings.sqlOverHttpMaxRequestSizeBytes -- (string) maximum sql-over-http request payload size in bytes
+  sqlOverHttpMaxRequestSizeBytes: "10485760"
+  # settings.sqlOverHttpMaxResponseSizeBytes -- (string) maximum sql-over-http response payload size in bytes
+  sqlOverHttpMaxResponseSizeBytes: "10485760"
   # settings.sqlOverHttpTimeout -- (string) timeout for http connection requests
   sqlOverHttpTimeout: "15s"
   # settings.httpPoolOptIn -- (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always
