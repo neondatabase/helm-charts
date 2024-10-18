@@ -57,6 +57,8 @@ storageScrubber:
   storageControllerJwtToken: ""
   # -- URL of the storage controller
   storageControllerUrl: ""
+  # -- Timeout of the cronjob run
+  activeDeadlineSeconds: 86400
 
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}
