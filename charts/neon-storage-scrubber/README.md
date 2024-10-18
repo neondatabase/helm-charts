@@ -1,6 +1,6 @@
 # neon-storage-scrubber
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 neon-storage-scrubber
 
@@ -42,6 +42,7 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | settings.extraEnvs | list | `[{"name":"RUST_BACKTRACE","value":"1"},{"name":"PAGESERVER_DISABLE_FILE_LOGGING","value":"1"}]` | extra env variables when running the job |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in neon-pg-sni-router |
+| storageScrubber.activeDeadlineSeconds | int | `86400` | Timeout of the cronjob run |
 | storageScrubber.awsBucket | string | `""` | The AWS bucket for the pageserver storage |
 | storageScrubber.awsRegion | string | `""` | The AWS region to run the scrubber |
 | storageScrubber.command | list | `["pageserver-physical-gc","--min-age=1week"]` | The command to run |

@@ -16,6 +16,7 @@ spec:
         {{- include "neon-storage-scrubber.labels" . | nindent 8 }}
     spec:
       backoffLimit: 0 # Do not restart if the task fails
+      activeDeadlineSeconds: {{ .Values.storageScrubber.activeDeadlineSeconds }}
       template:
         metadata:
           {{- with .Values.podAnnotations }}
