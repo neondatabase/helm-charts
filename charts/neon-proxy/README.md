@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.9.0](https://img.shields.io/badge/Version-1.9.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.10.0](https://img.shields.io/badge/Version-1.10.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -33,7 +33,7 @@ Kubernetes: `^1.18.x-x`
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.externalTrafficPolicy | string | `"Cluster"` | externalTrafficPolicy (Cluster, Internal) |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
-| exposedService.port | int | `5432` | Exposed Service proxy port |
+| exposedService.port | int | `5432` | Exposed Service proxy port. If null, proxy port will not be exposed. Useful for auth-broker. |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |
 | fullnameOverride | string | `""` | String to fully override neon-proxy.fullname template |

@@ -12,10 +12,12 @@ spec:
   type: {{ .Values.exposedService.type }}
   externalTrafficPolicy: {{ .Values.exposedService.externalTrafficPolicy }}
   ports:
-    - port: {{ .Values.exposedService.port }}
+    {{- with .Values.exposedService.port }}
+    - port: {{ . }}
       targetPort: proxy
       protocol: TCP
       name: proxy
+    {{- end }}
     {{- with .Values.exposedService.httpsPort }}
     - port: {{ . }}
       targetPort: https

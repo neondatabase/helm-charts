@@ -184,7 +184,8 @@ exposedService:
   type: LoadBalancer
   # exposedService.externalTrafficPolicy -- externalTrafficPolicy (Cluster, Internal)
   externalTrafficPolicy: Cluster
-  # exposedService.port -- Exposed Service proxy port
+  # exposedService.port -- Exposed Service proxy port.
+  # If null, proxy port will not be exposed. Useful for auth-broker.
   port: 5432
   # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
   httpsPort: null
