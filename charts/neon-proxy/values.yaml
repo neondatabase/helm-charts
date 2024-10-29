@@ -75,8 +75,6 @@ settings:
   sqlOverHttpTimeout: "15s"
   # settings.httpPoolOptIn -- (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always
   httpPoolOptIn: true
-  # settings.disableDynamicRateLimiter -- (bool) Disable dynamic rate limiter
-  disableDynamicRateLimiter: true
   # settings.endpointRpsLimits -- (list) list of rate limiters for connection attempts over different time intervals
   endpointRpsLimits: []
   # settings.wakeComputeLimits -- (list) list of rate limiters for wake_compute over different time intervals
