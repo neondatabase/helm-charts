@@ -67,13 +67,13 @@ Kubernetes: `^1.18.x-x`
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.databaseUrl | string | `""` |  |
 | settings.jwtToken | string | `""` |  |
+| settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
 | settings.splitThreshold | string | `""` | Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default) |
 | settings.startAsCandidate | bool | `false` | When set to True, restart the service gracefully |
-| settings.startAsCandidate | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------
