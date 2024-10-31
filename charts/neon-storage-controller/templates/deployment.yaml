@@ -71,6 +71,10 @@ spec:
           {{- if .Values.settings.startAsCandidate }}
             - --start-as-candidate
           {{- end }}
+          {{- if .Values.settings.longReconcileThreshold }}
+            - --long-reconcile-threshold
+            - {{ .Values.settings.longReconcileThreshold | quote }}
+          {{- end }}
           env:
             - name: LD_LIBRARY_PATH
               value: "/usr/local/v16/lib"

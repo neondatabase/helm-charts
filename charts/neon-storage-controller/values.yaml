@@ -42,6 +42,8 @@ settings:
   chaosInterval: ""
   # -- When set to True, restart the service gracefully
   startAsCandidate: false
+  # -- If a reconciliation takes longer than this, bump an alerting metric
+  longReconcileThreshold: "30min"
 
 
 # Enable auto register to control plane
