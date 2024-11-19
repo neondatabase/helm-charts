@@ -43,6 +43,8 @@ storageScrubber:
   awsRegion: ""
   # -- The AWS bucket for the pageserver storage
   awsBucket: ""
+  # -- The config object to connect to the remote storage (alternative to previous two vars)
+  remoteStorageConfig: {}
   # -- The timezone for the cron job
   timeZone: "Etc/UTC"
   # -- The schedule for the cron job -- By default runs every day at 6pm

@@ -47,6 +47,7 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | storageScrubber.awsRegion | string | `""` | The AWS region to run the scrubber |
 | storageScrubber.command | list | `["pageserver-physical-gc","--min-age=1week"]` | The command to run |
 | storageScrubber.enableStorageControllerConnection | bool | `false` | Enable storage controller related functionalities |
+| storageScrubber.remoteStorageConfig | object | `{}` | The config object to connect to the remote storage (alternative to previous two vars) |
 | storageScrubber.schedule | string | `"0 18 * * *"` |  |
 | storageScrubber.storageControllerJwtToken | string | `""` | Control plane / storage controller JWT token for connecting to the storage controller |
 | storageScrubber.storageControllerUrl | string | `""` | URL of the storage controller |
