@@ -60,7 +60,8 @@ spec:
                 {{- end }}
                 {{- if .Values.storageScrubber.remoteStorageConfig }}
                 - name: REMOTE_STORAGE_CONFIG
-                  value: {{ toToml .Values.storageScrubber.remoteStorageConfig | nindent 20 }}
+                  value: |
+                    {{- toToml .Values.storageScrubber.remoteStorageConfig | nindent 20 }}
                 {{- end }}
                 {{- if .Values.settings }}
                 {{- with .Values.settings.sentryUrl }}
