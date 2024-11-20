@@ -1214,6 +1214,18 @@ entries:
   neon-storage-scrubber:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2024-11-20T19:57:00.658868191Z"
+    description: neon-storage-scrubber
+    digest: 1bc678f5ddb0a24459ac267c39521c5bd4c7e584d8aecde21e274f5e7be4d46a
+    name: neon-storage-scrubber
+    sources:
+    - https://github.com/neondatabase/neon/tree/main/storage_scrubber
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-storage-scrubber-1.3.0/neon-storage-scrubber-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2024-10-28T17:21:03.152471455Z"
     description: neon-storage-scrubber
     digest: efe67bfb67cd03989ba0b7c045c0a639d6b5e008012f80562114d42214e054ec
@@ -1361,4 +1373,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2024-10-31T18:06:48.210388579Z"
+generated: "2024-11-20T19:57:00.659415032Z"
