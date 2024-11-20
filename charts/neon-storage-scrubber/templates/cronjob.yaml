@@ -50,10 +50,19 @@ spec:
                 {{- end -}}
                 {{- toYaml .Values.storageScrubber.command | nindent 16 }}
               env:
+                {{- if .Values.storageScrubber.awsBucket }}
                 - name: BUCKET
                   value: {{ .Values.storageScrubber.awsBucket }}
+                {{- end }}
+                {{- if .Values.storageScrubber.awsRegion }}
                 - name: REGION
                   value: {{ .Values.storageScrubber.awsRegion }}
+                {{- end }}
+                {{- if .Values.storageScrubber.remoteStorageConfig }}
+                - name: REMOTE_STORAGE_CONFIG
+                  value: |
+                    {{- toToml .Values.storageScrubber.remoteStorageConfig | nindent 20 }}
+                {{- end }}
                 {{- if .Values.settings }}
                 {{- with .Values.settings.sentryUrl }}
                 - name: SENTRY_DSN
