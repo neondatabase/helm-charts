@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 import json
 import logging
 import urllib.request
@@ -15,7 +14,6 @@ HOST = os.environ["HOST"]
 PORT = os.getenv("PORT", 50051)
 
 CPLANE_JWT_TOKEN = os.environ["CONTROL_PLANE_JWT_TOKEN"]
-CONSOLE_API_KEY = os.environ["CONSOLE_API_KEY"]
 
 # To register new pageservers
 URL_PATH = "management/api/v2/pageservers"
@@ -38,6 +36,8 @@ PAYLOAD = dict(
     register_reason="Storage Controller Virtual Pageserver",
     active=False,
     is_storage_controller=True,
+    # Hardcoded because nothing is checking this version.
+    version=0,
 )
 
 
@@ -74,17 +74,6 @@ def get_pageserver_id(url, token):
         return int(data["node_id"])
 
 
-def get_pageserver_version():
-    data = get_data(CONSOLE_URL, CONSOLE_API_KEY)
-    if "data" not in data:
-        return -1
-    for pageserver in data["data"]:
-        region_id = pageserver["region_id"]
-        if region_id == REGION or region_id == f"{REGION}-new":
-            return pageserver["version"]
-    return -1
-
-
 def register(url, token, payload):
     data = str(json.dumps(payload)).encode()
     response = get_data(url, token, data=data, method="POST")
@@ -112,16 +101,6 @@ if __name__ == "__main__":
             indent=4,
         )
     )
-
-    log.info("get version from existing deployed pageserver")
-    version = get_pageserver_version()
-
-    if version == -1:
-        log.error(f"Unable to find pageserver version from {CONSOLE_URL}")
-        sys.exit(1)
-
-    log.info(f"found latest version={version} for region={REGION}")
-    PAYLOAD.update(dict(version=version))
 
     log.info("check if pageserver already registered")
     node_id = get_pageserver_id(
