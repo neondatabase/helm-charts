@@ -63,6 +63,8 @@ spec:
                   value: |
                     {{- toToml .Values.storageScrubber.remoteStorageConfig | nindent 20 }}
                 {{- end }}
+                - name: RUST_LOG
+                  value: "storage_scrubber=debug,info,azure_core::http_client=debug"
                 {{- if .Values.settings }}
                 {{- with .Values.settings.sentryUrl }}
                 - name: SENTRY_DSN
