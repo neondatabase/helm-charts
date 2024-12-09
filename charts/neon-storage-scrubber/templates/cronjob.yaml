@@ -44,7 +44,7 @@ spec:
                 - /usr/local/bin/storage_scrubber
                 {{- if .Values.storageScrubber.enableStorageControllerConnection }}
                 - "--controller-jwt"
-                - "$(STORAGE_CONTROLLER_JWT)"
+                - "$(STORAGE_CONTROLLER_JWT_TOKEN)"
                 - "--controller-api"
                 - {{ .Values.storageScrubber.storageControllerUrl | quote }}
                 {{- end -}}
