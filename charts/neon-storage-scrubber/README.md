@@ -1,6 +1,6 @@
 # neon-storage-scrubber
 
-![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 neon-storage-scrubber
 
@@ -32,6 +32,7 @@ $ helm install neon-storage-scrubber neondatabase/neon-storage-scrubber
 | nameOverride | string | `""` | String to partially override neon-storage-scrubber.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | podAnnotations | object | `{}` | Annotations for neon-storage-scrubber pods |
+| podLabels | object | `{}` | Labels for neon-storage-scrubber pods |
 | podSecurityContext | object | `{}` | neon-storage-scrubber's pods Security Context |
 | resources.limits.cpu | string | `"200m"` |  |
 | resources.limits.memory | string | `"2Gi"` |  |
