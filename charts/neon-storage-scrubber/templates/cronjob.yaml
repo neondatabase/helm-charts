@@ -25,6 +25,9 @@ spec:
           {{- end }}
           labels:
             {{- include "neon-storage-scrubber.selectorLabels" . | nindent 12 }}
+          {{- with .Values.podLabels }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
         spec:
           restartPolicy: Never # Do not restart if the task fails
           {{- with .Values.imagePullSecrets }}

@@ -65,6 +65,9 @@ storageScrubber:
 # -- Annotations for neon-storage-scrubber pods
 podAnnotations: {}
 
+# -- Labels for neon-storage-scrubber pods
+podLabels: {}
+
 # -- neon-storage-scrubber's pods Security Context
 podSecurityContext:
   {}
