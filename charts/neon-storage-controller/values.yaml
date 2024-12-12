@@ -103,6 +103,10 @@ service:
   # service.port -- controller listen port
   port: 50051
 
+# Temporary set "serviceNLB" to keep existing Service with Type LoadBalancer
+# After migration we can set this to false to remove NLB
+serviceNLB: true
+
 resources:
   limits:
     memory: 4Gi
