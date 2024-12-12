@@ -60,3 +60,11 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Returns service name
+This will be use only for internal purpose e.g. ingress connecting to service
+*/}}
+{{- define "neon-storage-controller.serviceName" -}}
+{{- printf "%s-svc" (include "neon-storage-controller.fullname" .) | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
