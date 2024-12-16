@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -34,6 +34,13 @@ Kubernetes: `^1.18.x-x`
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
+| ingress.annotations | object | `{}` | Additional annotations for Ingress resource. |
+| ingress.className | string | `""` | Ingress class for controller |
+| ingress.enabled | bool | `false` | Enable ingress controller resource. |
+| ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
+| ingress.hosts[0].paths[0].protocol | string | `"TCP"` |  |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
 | metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
 | metrics.serviceMonitor.interval | string | `"10s"` | Interval in which prometheus scrapes |
@@ -62,6 +69,7 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| serviceNLB | bool | `true` |  |
 | settings.chaosInterval | string | `""` | Chaos testing interval |
 | settings.computeHookUrl | string | `""` |  |
 | settings.controlPlaneJwtToken | string | `""` |  |
