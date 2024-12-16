@@ -2,6 +2,10 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+These helm charts are used for deploying several services that make up the Neon platform.  Please note that the charts
+do not give you a fully working Neon-like system: they are just for individual services, and are unlikely to be useful
+for you unless you're also deploying other components (e.g. postgres) independently.
+
 This functionality is in beta and is subject to change. The code is provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 
 ## Usage
