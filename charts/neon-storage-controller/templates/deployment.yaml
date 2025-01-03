@@ -76,8 +76,6 @@ spec:
             - {{ .Values.settings.longReconcileThreshold | quote }}
           {{- end }}
           env:
-            - name: LD_LIBRARY_PATH
-              value: "/usr/local/v16/lib"
             - name: RUST_LOG
               value: "INFO"
             - name: RUST_BACKTRACE
