@@ -43,6 +43,8 @@ settings:
   extraDomains: []
   # settings.rustLog -- Proxy log level
   rustLog: "INFO"
+  # settings.logfmt -- Log format to use: "text" (default) or "json".
+  logfmt: null
   # settings.otelExporterOtlpEndpoint -- OpenTelemetry collector URL (will be converted into `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable)
   otelExporterOtlpEndpoint: ""
   # settings.otelExporterDisabled -- Disables OpenTelemetry (will be converted into `OTEL_SDK_DISABLED` environment variable)
