@@ -34,7 +34,7 @@ PAYLOAD = dict(
     availability_zone_id=ZONE,
     instance_type="",
     register_reason="Storage Controller Virtual Pageserver",
-    active=False,
+    active=True,
     is_storage_controller=True,
     # Hardcoded because nothing is checking this version.
     version=0,
