@@ -55,9 +55,9 @@ spec:
             mountPath: /node
         env:
         - name: HOST
-          value: {{ index .Values.service.annotations "external-dns.alpha.kubernetes.io/hostname" | quote }}
+          value: {{ .Values.registerControlPlane.host | quote }}
         - name: PORT
-          value: {{ .Values.service.port | quote }}
+          value: {{ .Values.registerControlPlane.port | quote }}
         - name: CPLANE_URL
           value: {{ .Values.registerControlPlane.cplane_url | quote }}
         - name: CONSOLE_URL
