@@ -1,26 +1,3 @@
-{{- if .Values.serviceNLB -}}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "neon-storage-controller.fullname" . }}
-  {{- with .Values.service.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
-  labels:
-    {{- include "neon-storage-controller.labels" . | nindent 4 }}
-spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: controller
-      protocol: TCP
-      name: controller
-  selector:
-    {{- include "neon-storage-controller.selectorLabels" . | nindent 4 }}
-{{- end }}
----
 apiVersion: v1
 kind: Service
 metadata:
