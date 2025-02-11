@@ -961,6 +961,20 @@ entries:
   neon-storage-controller:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2025-02-11T16:10:02.160246018Z"
+    description: Neon storage controller
+    digest: 29501ef924f36b35de27923fe54a902f87ec06b692bb12487bb1854186c6c6c6
+    home: https://neon.tech
+    kubeVersion: ^1.18.x-x
+    name: neon-storage-controller
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-storage-controller-1.5.0/neon-storage-controller-1.5.0.tgz
+    version: 1.5.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2025-02-05T18:02:25.220657236Z"
     description: Neon storage controller
     digest: 80948aa5c42ecf4006e77f06fa310d04ba28d4ad3f81464014bc619b2b6cceef
@@ -1481,4 +1495,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2025-02-05T18:02:25.221220361Z"
+generated: "2025-02-11T16:10:02.160827518Z"
