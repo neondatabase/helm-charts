@@ -35,7 +35,7 @@ Kubernetes: `^1.18.x-x`
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
 | ingress.annotations | object | `{}` | Additional annotations for Ingress resource. |
-| ingress.className | string | `""` | Ingress class for controller |
+| ingress.className | string | `"nginx-int"` | Ingress class for controller |
 | ingress.enabled | bool | `true` | Enable ingress controller resource. |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
