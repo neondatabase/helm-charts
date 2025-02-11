@@ -21,7 +21,6 @@ URL_PATH = "management/api/v2/pageservers"
 ADMIN_URL_PATH = f"regions/{REGION}/api/v1/admin/pageservers"
 
 CPLANE_MANAGEMENT_URL = f"{os.environ['CPLANE_URL'].strip('/')}/{URL_PATH}"
-CONSOLE_URL = f"{os.environ['CONSOLE_URL']}/{ADMIN_URL_PATH}"
 
 PAYLOAD = dict(
     host=HOST,
@@ -95,7 +94,6 @@ if __name__ == "__main__":
         json.dumps(
             dict(
                 CPLANE_MANAGEMENT_URL=CPLANE_MANAGEMENT_URL,
-                CONSOLE_URL=CONSOLE_URL,
                 **PAYLOAD,
             ),
             indent=4,

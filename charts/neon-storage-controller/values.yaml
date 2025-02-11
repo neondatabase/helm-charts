@@ -52,10 +52,7 @@ registerControlPlane:
   enable: false
   # region_id: "<region-id>"
   controlPlaneJwtToken: ""
-  # Console API key to list existing pageserver to get version
-  apiKey: ""
   # cplane_url: "<control-plane-url>"
-  # console_url: ""
   resources:
     limits:
       cpu: 100m
