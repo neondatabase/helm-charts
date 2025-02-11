@@ -103,15 +103,11 @@ service:
   # service.port -- controller listen port
   port: 50051
 
-# Temporary set "serviceNLB" to keep existing Service with Type LoadBalancer
-# After migration we can set this to false to remove NLB
-serviceNLB: true
-
 ingress:
   # ingress.enabled -- Enable ingress controller resource.
-  enabled: false
+  enabled: true
   # ingress.className -- Ingress class for controller
-  className: ""
+  className: nginx-int
   # ingress.annotations -- Additional annotations for Ingress resource.
   annotations: {}
     # external-dns.alpha.kubernetes.io/hostname: chart-example.local
