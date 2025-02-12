@@ -60,8 +60,6 @@ spec:
           value: {{ .Values.registerControlPlane.port | quote }}
         - name: CPLANE_URL
           value: {{ .Values.registerControlPlane.cplane_url | quote }}
-        - name: CONSOLE_URL
-          value: {{ .Values.registerControlPlane.console_url | quote }}
         - name: REGION_ID
           value: {{ .Values.registerControlPlane.region_id | quote }}
         envFrom:
