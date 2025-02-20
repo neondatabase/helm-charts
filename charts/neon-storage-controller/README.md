@@ -77,7 +77,7 @@ Kubernetes: `^1.18.x-x`
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
-| settings.safekeeperJwtToken | string | `""` |  JWT token for authentication with safekeepers |
+| settings.safekeeperJwtToken | string | `""` | JWT token for authentication with safekeepers |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
 | settings.splitThreshold | string | `""` | Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default) |
