@@ -38,8 +38,10 @@ settings:
   computeHookUrl: ""
   # settings.splitThreshold -- Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default)
   splitThreshold: ""
-  # -- Chaos testing interval
+  # -- Chaos testing for tenant migration interval
   chaosInterval: ""
+  # -- Chaos testing for immediate exit crontab
+  chaosExitCrontab: ""
   # -- When set to True, restart the service gracefully
   startAsCandidate: false
   # -- If a reconciliation takes longer than this, bump an alerting metric
