@@ -66,6 +66,10 @@ spec:
             - --chaos-interval
             - {{ .Values.settings.chaosInterval | quote }}
           {{- end }}
+          {{- if .Values.settings.chaosExitCrontab }}
+            - --chaos-exit-crontab
+            - {{ .Values.settings.chaosExitCrontab | quote }}
+          {{- end }}
             - --address-for-peers
             - http://$(POD_IP):{{ .Values.service.port }}/
           {{- if .Values.settings.startAsCandidate }}
