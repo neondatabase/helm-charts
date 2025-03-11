@@ -59,7 +59,7 @@ spec:
             - {{ .Values.settings.computeHookUrl | quote }}
           {{- else if .Values.settings.controlPlaneUrl }}
             - --compute-hook-url
-            - {{ printf "%snotify-attach" .Values.settings.controlPlaneUrl | quote }}
+            - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
           {{- if .Values.settings.splitThreshold }}
             - --split-threshold

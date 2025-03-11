@@ -72,7 +72,7 @@ Kubernetes: `^1.18.x-x`
 | settings.chaosInterval | string | `""` | Chaos testing for tenant migration interval |
 | settings.computeHookUrl | string | `""` |  |
 | settings.controlPlaneJwtToken | string | `""` |  |
-| settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/) |
+| settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/). This URL should include the trailing slash as it will be used verbatim. |
 | settings.databaseUrl | string | `""` |  |
 | settings.jwtToken | string | `""` |  |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
