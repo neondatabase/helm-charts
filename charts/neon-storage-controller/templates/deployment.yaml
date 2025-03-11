@@ -58,7 +58,7 @@ spec:
             - --compute-hook-url
             - {{ .Values.settings.computeHookUrl | quote }}
           {{- else if .Values.settings.controlPlaneUrl }}
-            - --compute-hook-url
+            - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
           {{- if .Values.settings.splitThreshold }}
