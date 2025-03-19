@@ -10,8 +10,13 @@ jobs:
     name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
 
       - name: Check Docs
         run: |
@@ -22,7 +27,7 @@ jobs:
           fi
 
       - name: Lint Code Base
-        uses: docker://github/super-linter:v3.12.0
+        uses: docker://github/super-linter:v3.12.0@sha256:c30d4a752bbd5997b60bd6b85aeb236e15ba4979acb83e715f2170bb81989767
         env:
           FILTER_REGEX_EXCLUDE: .*(README\.md|Chart\.yaml|NOTES.txt).*
           VALIDATE_ALL_CODEBASE: false
