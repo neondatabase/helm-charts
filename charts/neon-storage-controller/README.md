@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.9.0](https://img.shields.io/badge/Version-1.9.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -74,14 +74,17 @@ Kubernetes: `^1.18.x-x`
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/) |
 | settings.databaseUrl | string | `""` |  |
+| settings.initialSplitShards | string | `""` | Number of shards to use for initial tenant splits. |
+| settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
+| settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
 | settings.safekeeperJwtToken | string | `""` | JWT token for authentication with safekeepers |
 | settings.sentryEnvironment | string | `"development"` | "development" or "production". It will be visible in sentry in order to filter issues |
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
-| settings.splitThreshold | string | `""` | Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default) |
+| settings.splitThreshold | string | `""` | Shard size threshold in bytes for automatically splitting shards.  Omit to disable auto-sharding (default) |
 | settings.startAsCandidate | bool | `false` | When set to True, restart the service gracefully |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 

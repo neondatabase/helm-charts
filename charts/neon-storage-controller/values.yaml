@@ -40,8 +40,14 @@ settings:
   controlPlaneUrl: ""
   # URL for compute notifications
   computeHookUrl: ""
-  # settings.splitThreshold -- Size threshold in bytes for automatically sharding a tenant.  Omit to disable auto-sharding (default)
+  # settings.initialSplitThreshold -- Size threshold in bytes for initial tenant splits.
+  initialSplitThreshold: ""
+  # settings.initialSplitShards -- Number of shards to use for initial tenant splits.
+  initialSplitShards: ""
+  # settings.splitThreshold -- Shard size threshold in bytes for automatically splitting shards.  Omit to disable auto-sharding (default)
   splitThreshold: ""
+  # settings.maxSplitShards -- Maximum number of shards for autosplits.
+  maxSplitShards: ""
   # -- Chaos testing for tenant migration interval
   chaosInterval: ""
   # -- Chaos testing for immediate exit crontab
