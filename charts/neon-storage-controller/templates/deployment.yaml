@@ -61,9 +61,21 @@ spec:
             - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
+          {{- if .Values.settings.initialSplitThreshold }}
+            - --initial-split-threshold
+            - {{ .Values.settings.initialSplitThreshold | quote }}
+          {{- end }}
+          {{- if .Values.settings.initialSplitShards }}
+            - --initial-split-shards
+            - {{ .Values.settings.initialSplitShards | quote }}
+          {{- end }}
           {{- if .Values.settings.splitThreshold }}
             - --split-threshold
             - {{ .Values.settings.splitThreshold | quote }}
+          {{- end }}
+          {{- if .Values.settings.maxSplitShards }}
+            - --max-split-shards
+            - {{ .Values.settings.maxSplitShards | quote }}
           {{- end }}
           {{- if .Values.settings.chaosInterval }}
             - --chaos-interval
