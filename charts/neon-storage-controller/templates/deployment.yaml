@@ -54,10 +54,7 @@ spec:
             */}}
             - 0.0.0.0:{{ .Values.service.port }}
             - --public-key={{ .Values.settings.publicKey | toJson }}
-          {{- if .Values.settings.computeHookUrl }}
-            - --compute-hook-url
-            - {{ .Values.settings.computeHookUrl | quote }}
-          {{- else if .Values.settings.controlPlaneUrl }}
+          {{- if .Values.settings.controlPlaneUrl }}
             - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
