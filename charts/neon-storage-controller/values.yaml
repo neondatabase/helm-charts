@@ -141,6 +141,9 @@ tolerations: []
 # -- Affinity for pod assignment
 affinity: {}
 
+# -- Pod priority class
+priorityClassName: ""
+
 metrics:
   # metrics.enabled -- Enable prometheus metrcis autodiscovery
   enabled: false
