@@ -127,10 +127,11 @@ spec:
             failureThreshold: 30
           livenessProbe:
             httpGet:
-              path: /status
+              path: /live
               port: controller
-            periodSeconds: 15
-            timeoutSeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 1
+            failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /ready
