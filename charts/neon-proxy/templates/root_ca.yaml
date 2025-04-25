@@ -1,8 +1,8 @@
-{{- if .Values.settings.internalCA }}
+{{- if .Values.internalCa }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "neon-proxy.fullname" . }}-internal-ca
 data:
-  neon_root_ca.crt: {{ .Values.settings.internalCA }}
+  neon_root_ca.crt: {{ .Values.internalCa }}
 {{- end }}
