@@ -232,8 +232,12 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               value: {{ . }}
             {{- end }}
+            {{- if .Values.internalCa }}
+            - name: NEON_INTERNAL_CA_FILE
+              value: /root_cert/neon_root_ca.crt
+            {{- end }}
           {{- end }}
-          {{- if .Values.settings.domain }}
+          {{- if or .Values.settings.domain .Values.internalCa }}
           volumeMounts:
             - mountPath: "/certs"
               name: certs
@@ -241,6 +245,11 @@ spec:
             {{- range .Values.settings.extraDomains }}
             - mountPath: '/certs-extra/{{ include "neon-proxy.certificate-name" . }}'
               name: {{ include "neon-proxy.certificate-name" . }}
+              readOnly: true
+            {{- end }}
+            {{- if .Values.internalCa }}
+            - mountPath: "/root_cert"
+              name: internal-ca
               readOnly: true
             {{- end }}
           {{- end }}
@@ -287,7 +296,7 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- if .Values.settings.domain }}
+      {{- if or .Values.settings.domain .Values.internalCa }}
       volumes:
         - name: certs
           secret:
@@ -296,6 +305,11 @@ spec:
         - name: {{ include "neon-proxy.certificate-name" . }}
           secret:
             secretName: {{ include "neon-proxy.certificate-secret" . }}
+        {{- end }}
+        {{- if .Values.internalCa }}
+        - name: internal-ca
+          configMap:
+            name: {{ include "neon-proxy.fullname" . }}-internal-ca
         {{- end }}
       {{ end }}
       {{- with .Values.nodeSelector }}
