@@ -51,6 +51,8 @@ spec:
             - /usr/local/bin/pg_sni_router
             - --listen
             - 0.0.0.0:4432
+            - --listen-tls
+            - 0.0.0.0:4433
             - --destination
             - {{ .Values.settings.destination }}
             {{- with .Values.settings.metricCollectionEndpoint }}
@@ -65,7 +67,7 @@ spec:
             - /certs/tls.key
             - --tls-cert
             - /certs/tls.crt
-          {{- if .Values.settings }}
+          {{- if or .Values.internalCa .Values.settings }}
           env:
             {{- with .Values.settings.sentryUrl }}
             - name: SENTRY_DSN
@@ -75,14 +77,26 @@ spec:
             - name: SENTRY_ENVIRONMENT
               value: {{ . }}
             {{- end }}
+            {{- if .Values.internalCa }}
+            - name: NEON_INTERNAL_CA_FILE
+              value: /root_cert/neon_root_ca.crt
+            {{- end }}
           {{- end }}
           volumeMounts:
             - mountPath: "/certs"
               name: certs
               readOnly: true
+            {{- if .Values.internalCa }}
+            - mountPath: "/root_cert"
+              name: internal-ca
+              readOnly: true
+            {{- end }}
           ports:
             - name: router
               containerPort: 4432
+              protocol: TCP
+            - name: router-tls
+              containerPort: 4433
               protocol: TCP
             - name: http
               containerPort: 9090
@@ -114,6 +128,11 @@ spec:
         - name: certs
           secret:
             secretName: {{ include "neon-pg-sni-router.certificate-secret" . }}
+        {{- if .Values.internalCa }}
+        - name: internal-ca
+          configMap:
+            name: {{ include "neon-pg-sni-router.fullname" . }}-internal-ca
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -29,6 +29,9 @@ image:
 # -- Specify docker-registry secret names as an array
 imagePullSecrets: []
 
+# -- (string) The root certificate(s) that neon-proxy should use to validate compute TLS certificates.
+internalCa: null
+
 # -- String to partially override neon-pg-sni-router.fullname template (will maintain the release name)
 nameOverride: ""
 # -- String to fully override neon-pg-sni-router.fullname template
@@ -113,6 +116,8 @@ exposedService:
   type: LoadBalancer
   # exposedService.port -- Exposed Service proxy port
   port: 5432
+  # exposedService.portTls -- Exposed Service proxy port that uses TLS to computes
+  portTls: 5433
   # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
   httpsPort: null
 

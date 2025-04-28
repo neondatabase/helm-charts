@@ -1,6 +1,6 @@
 # neon-pg-sni-router
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Postgres SNI Router
 
@@ -34,6 +34,7 @@ Kubernetes: `^1.18.x-x`
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
+| exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |
 | fullnameOverride | string | `""` | String to fully override neon-pg-sni-router.fullname template |
@@ -41,6 +42,7 @@ Kubernetes: `^1.18.x-x`
 | image.repository | string | `"neondatabase/neon"` | Neondatabase image repository |
 | image.tag | string | `"latest"` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Specify docker-registry secret names as an array |
+| internalCa | string | `nil` | The root certificate(s) that neon-proxy should use to validate compute TLS certificates. |
 | metrics.enabled | bool | `false` | Enable prometheus metrcis autodiscovery |
 | metrics.serviceMonitor.enabled | bool | `false` | Create ServiceMonitor resource |
 | metrics.serviceMonitor.interval | string | `"10s"` | Interval in which prometheus scrapes |
