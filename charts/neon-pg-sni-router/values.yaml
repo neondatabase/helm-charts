@@ -116,6 +116,8 @@ exposedService:
   type: LoadBalancer
   # exposedService.port -- Exposed Service proxy port
   port: 5432
+  # exposedService.portTls -- Exposed Service proxy port that uses TLS to computes
+  portTls: 5433
   # exposedService.httpsPort -- (int) Exposed Service https port. If null, https server will not be exposed.
   httpsPort: null
 

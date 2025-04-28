@@ -15,5 +15,9 @@ spec:
       targetPort: router
       protocol: TCP
       name: proxy
+    - port: {{ .Values.exposedService.portTls }}
+      targetPort: router-tls
+      protocol: TCP
+      name: proxy-tls
   selector:
     {{- include "neon-pg-sni-router.selectorLabels" . | nindent 4 }}

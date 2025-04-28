@@ -51,6 +51,8 @@ spec:
             - /usr/local/bin/pg_sni_router
             - --listen
             - 0.0.0.0:4432
+            - --listen-tls
+            - 0.0.0.0:4433
             - --destination
             - {{ .Values.settings.destination }}
             {{- with .Values.settings.metricCollectionEndpoint }}
@@ -92,6 +94,9 @@ spec:
           ports:
             - name: router
               containerPort: 4432
+              protocol: TCP
+            - name: router-tls
+              containerPort: 4433
               protocol: TCP
             - name: http
               containerPort: 9090

@@ -34,6 +34,7 @@ Kubernetes: `^1.18.x-x`
 | exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | exposedService.httpsPort | int | `nil` | Exposed Service https port. If null, https server will not be exposed. |
 | exposedService.port | int | `5432` | Exposed Service proxy port |
+| exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |
 | exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | extraManifests | list | `[]` | Additional manifests that are created with the chart |
 | fullnameOverride | string | `""` | String to fully override neon-pg-sni-router.fullname template |
