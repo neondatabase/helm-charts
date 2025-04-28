@@ -4,5 +4,6 @@ kind: ConfigMap
 metadata:
   name: {{ include "neon-pg-sni-router.fullname" . }}-internal-ca
 data:
-  neon_root_ca.crt: {{ .Values.internalCa }}
+  neon_root_ca.crt: |
+{{- .Values.internalCa | nindent 4 }}
 {{- end }}
