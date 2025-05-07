@@ -1,0 +1,10 @@
+apiVersion: v2
+name: neon-endpoint-storage
+description: Neon Endpoint Storage
+type: application
+version: 1.0.0
+appVersion: "0.1.0"
+kubeVersion: "^1.18.x-x"
+home: https://neon.com
+sources:
+  - https://github.com/neondatabase/neon

@@ -1,0 +1,45 @@
+# Default values for neon-endpoint-storage.
+image:
+  repository: neondatabase/neon
+  pullPolicy: Always
+  tag: latest
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  annotations: {}
+  type: ClusterIP
+  port: 80
+settings:
+  bucket_name: ""
+  bucket_region: ""
+  pemfile: ""
+  listen: "0.0.0.0:80"
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+priorityClassName: ""
+
+metrics:
+  enabled: false
+  serviceMonitor:
+    enabled: false
+    namespace: ""
+    interval: 10s
+    scrapeTimeout: 10s
+    selector: {}
+
+extraManifests: []
