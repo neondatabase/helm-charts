@@ -15,6 +15,7 @@ spec:
     metadata:
       annotations:
         checksum/config: |
+          # restart the binary on settings change
           {{ .Values.settings | toJson | sha256sum }}
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
