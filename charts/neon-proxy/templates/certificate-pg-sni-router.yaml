@@ -1,0 +1,17 @@
+{{- if and .Values.pg-sni-router.domain .Values.settings.useCertManager }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "neon-proxy.certificate-name" .Values.pg-sni-router.domain }}
+spec:
+  commonName: {{ .Values.pg-sni-router.domain | quote }}
+  dnsNames:
+  - {{ .Values.pg-sni-router.domain | quote }}
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: cert-manager-clusterissuer
+  secretName: {{ include "neon-proxy.certificate-secret" .Values.pg-sni-router.domain }}
+  privateKey:
+    encoding: PKCS8
+{{- end }}
