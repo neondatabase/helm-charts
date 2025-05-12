@@ -50,12 +50,12 @@ Kubernetes: `^1.18.x-x`
 | metrics.serviceMonitor.selector | object | `{}` | Additional labels to attach (used by Prometheus operator) |
 | nameOverride | string | `""` | String to partially override neon-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
-| pg-sni-router.destination | string | `"svc.cluster.local"` | append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local" |
-| pg-sni-router.domain | string | `"dummy"` | domain used in TLS cert for client postgres connections |
-| pg-sni-router.exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
-| pg-sni-router.exposedService.port | int | `5432` | Exposed Service proxy port |
-| pg-sni-router.exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |
-| pg-sni-router.exposedService.type | string | `"LoadBalancer"` | Exposed service type |
+| pgSniRouter.destination | string | `"svc.cluster.local"` | append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local" |
+| pgSniRouter.domain | string | `"dummy"` | domain used in TLS cert for client postgres connections |
+| pgSniRouter.exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
+| pgSniRouter.exposedService.port | int | `5432` | Exposed Service proxy port |
+| pgSniRouter.exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |
+| pgSniRouter.exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | podAnnotations | object | `{}` | Annotations for neon-proxy pods |
 | podLabels | object | `{}` | Additional labels for neon-proxy pods |
 | podSecurityContext | object | `{}` | neon-proxy's pods Security Context |

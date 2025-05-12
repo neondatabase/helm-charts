@@ -115,7 +115,7 @@ spec:
             - --sni-router-listen-tls
             - 0.0.0.0:4433
             - --sni-router-destination
-            - {{ .Values.pg-sni-router.destination }}
+            - {{ .Values.pgSniRouter.destination }}
             - --sni-router-tls-key
             - /certs-sni-router/tls.key
             - --sni-router-tls-cert
@@ -325,7 +325,7 @@ spec:
             secretName: {{ include "neon-proxy.certificate-secret" .Values.settings.domain }}
         - name: certs-sni-router
           secret:
-            secretName: {{ include "neon-proxy.certificate-secret" .Values.pg-sni-router.domain }}
+            secretName: {{ include "neon-proxy.certificate-secret" .Values.pgSniRouter.domain }}
         {{- range .Values.settings.extraDomains }}
         - name: {{ include "neon-proxy.certificate-name" . }}
           secret:
