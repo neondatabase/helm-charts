@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.12.2](https://img.shields.io/badge/Version-1.12.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.13.0](https://img.shields.io/badge/Version-1.13.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -50,6 +50,12 @@ Kubernetes: `^1.18.x-x`
 | metrics.serviceMonitor.selector | object | `{}` | Additional labels to attach (used by Prometheus operator) |
 | nameOverride | string | `""` | String to partially override neon-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
+| pgSniRouter.destination | string | `"svc.cluster.local"` | append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local" |
+| pgSniRouter.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| pgSniRouter.exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
+| pgSniRouter.exposedService.port | int | `5432` | Exposed Service proxy port |
+| pgSniRouter.exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |
+| pgSniRouter.exposedService.type | string | `"LoadBalancer"` | Exposed service type |
 | podAnnotations | object | `{}` | Annotations for neon-proxy pods |
 | podLabels | object | `{}` | Additional labels for neon-proxy pods |
 | podSecurityContext | object | `{}` | neon-proxy's pods Security Context |

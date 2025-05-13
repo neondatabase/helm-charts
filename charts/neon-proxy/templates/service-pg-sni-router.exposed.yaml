@@ -1,0 +1,25 @@
+{{ if .Values.pgSniRouter.domain }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "neon-proxy.fullname" . }}-pg-sni-router-exposed
+  {{- with .Values.pgSniRouter.exposedService.annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  labels:
+    {{- include "neon-proxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.pgSniRouter.exposedService.type }}
+  ports:
+    - port: {{ .Values.pgSniRouter.exposedService.port }}
+      targetPort: sni-router
+      protocol: TCP
+      name: sni-router
+    - port: {{ .Values.pgSniRouter.exposedService.portTls }}
+      targetPort: sni-router-tls
+      protocol: TCP
+      name: sni-router-tls
+  selector:
+    {{- include "neon-proxy.selectorLabels" . | nindent 4 }}
+{{ end }}

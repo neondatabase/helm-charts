@@ -131,6 +131,26 @@ settings:
   # settings.extraCmdFlags -- (list) additional arguments to proxy binary
   extraCmdFlags: []
 
+pgSniRouter:
+  # pgSniRouter.destination -- append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local"
+  destination: "svc.cluster.local"
+  # pgSniRouter.domain -- domain used in TLS cert for client postgres connections
+  domain: ""
+
+  exposedService:
+    # pgSniRouter.exposedService.annotations -- Annotations to add to the exposed service
+    annotations: {}
+      # service.beta.kubernetes.io/aws-load-balancer-type: external
+      # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+      # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+      # external-dns.alpha.kubernetes.io/hostname: chart-example.local
+    # pgSniRouter.exposedService.type -- Exposed service type
+    type: LoadBalancer
+    # pgSniRouter.exposedService.port -- Exposed Service proxy port
+    port: 5432
+    # pgSniRouter.exposedService.portTls -- Exposed Service proxy port that uses TLS to computes
+    portTls: 5433
+
 serviceAccount:
   # serviceAccount.create - Specifies whether a service account should be created
   create: true

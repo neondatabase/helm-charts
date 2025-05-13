@@ -110,6 +110,18 @@ spec:
             - --certs-dir
             - /certs-extra
             {{- end }}
+            {{- if .Values.pgSniRouter.domain }}
+            - --sni-router-listen
+            - 0.0.0.0:4432
+            - --sni-router-listen-tls
+            - 0.0.0.0:4433
+            - --sni-router-destination
+            - {{ .Values.pgSniRouter.destination }}
+            - --sni-router-tls-key
+            - /certs-sni-router/tls.key
+            - --sni-router-tls-cert
+            - /certs-sni-router/tls.crt
+            {{- end }}
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}
@@ -245,6 +257,9 @@ spec:
             - mountPath: "/certs"
               name: certs
               readOnly: true
+            - mountPath: "/certs-sni-router"
+              name: certs-sni-router
+              readOnly: true
             {{- range .Values.settings.extraDomains }}
             - mountPath: '/certs-extra/{{ include "neon-proxy.certificate-name" . }}'
               name: {{ include "neon-proxy.certificate-name" . }}
@@ -266,6 +281,14 @@ spec:
             - name: http
               containerPort: 9090
               protocol: TCP
+            {{- if .Values.pgSniRouter.domain }}
+            - name: sni-router
+              containerPort: 4432
+              protocol: TCP
+            - name: sni-router-tls
+              containerPort: 4433
+              protocol: TCP
+            {{- end }}
             {{- if .Values.settings }}
             {{- with .Values.settings.wssPort }}
             - name: https
@@ -304,6 +327,9 @@ spec:
         - name: certs
           secret:
             secretName: {{ include "neon-proxy.certificate-secret" .Values.settings.domain }}
+        - name: certs-sni-router
+          secret:
+            secretName: {{ include "neon-proxy.certificate-secret" .Values.pgSniRouter.domain }}
         {{- range .Values.settings.extraDomains }}
         - name: {{ include "neon-proxy.certificate-name" . }}
           secret:
