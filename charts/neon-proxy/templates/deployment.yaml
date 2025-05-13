@@ -110,6 +110,7 @@ spec:
             - --certs-dir
             - /certs-extra
             {{- end }}
+            {{- if .Values.pgSniRouter.domain }}
             - --sni-router-listen
             - 0.0.0.0:4432
             - --sni-router-listen-tls
@@ -120,6 +121,7 @@ spec:
             - /certs-sni-router/tls.key
             - --sni-router-tls-cert
             - /certs-sni-router/tls.crt
+            {{- end }}
             {{- range .Values.settings.endpointRpsLimits }}
             - --endpoint-rps-limit={{ . }}
             {{- end }}

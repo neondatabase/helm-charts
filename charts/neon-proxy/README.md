@@ -51,7 +51,7 @@ Kubernetes: `^1.18.x-x`
 | nameOverride | string | `""` | String to partially override neon-proxy.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | pgSniRouter.destination | string | `"svc.cluster.local"` | append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local" |
-| pgSniRouter.domain | string | `"dummy"` | domain used in TLS cert for client postgres connections |
+| pgSniRouter.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | pgSniRouter.exposedService.annotations | object | `{}` | Annotations to add to the exposed service |
 | pgSniRouter.exposedService.port | int | `5432` | Exposed Service proxy port |
 | pgSniRouter.exposedService.portTls | int | `5433` | Exposed Service proxy port that uses TLS to computes |

@@ -135,7 +135,7 @@ pgSniRouter:
   # pgSniRouter.destination -- append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local"
   destination: "svc.cluster.local"
   # pgSniRouter.domain -- domain used in TLS cert for client postgres connections
-  domain: "dummy"
+  domain: ""
 
   exposedService:
     # pgSniRouter.exposedService.annotations -- Annotations to add to the exposed service
@@ -143,7 +143,7 @@ pgSniRouter:
       # service.beta.kubernetes.io/aws-load-balancer-type: external
       # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
       # service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-    # external-dns.alpha.kubernetes.io/hostname: chart-example.local
+      # external-dns.alpha.kubernetes.io/hostname: chart-example.local
     # pgSniRouter.exposedService.type -- Exposed service type
     type: LoadBalancer
     # pgSniRouter.exposedService.port -- Exposed Service proxy port
