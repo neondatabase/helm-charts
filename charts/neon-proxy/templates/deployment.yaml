@@ -275,18 +275,20 @@ spec:
             - name: proxy
               containerPort: 5432
               protocol: TCP
-            - name: sni-router
-              containerPort: 4432
-              protocol: TCP
-            - name: sni-router-tls
-              containerPort: 4433
-              protocol: TCP
             - name: mgmt
               containerPort: 7000
               protocol: TCP
             - name: http
               containerPort: 9090
               protocol: TCP
+            {{- if .Values.pgSniRouter.domain }}
+            - name: sni-router
+              containerPort: 4432
+              protocol: TCP
+            - name: sni-router-tls
+              containerPort: 4433
+              protocol: TCP
+            {{- end }}
             {{- if .Values.settings }}
             {{- with .Values.settings.wssPort }}
             - name: https

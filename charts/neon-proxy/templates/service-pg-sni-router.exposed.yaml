@@ -1,3 +1,4 @@
+{{ if .Values.pgSniRouter.domain }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -21,3 +22,4 @@ spec:
       name: sni-router-tls
   selector:
     {{- include "neon-proxy.selectorLabels" . | nindent 4 }}
+{{ end }}
