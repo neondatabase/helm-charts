@@ -252,14 +252,16 @@ spec:
               value: /root_cert/neon_root_ca.crt
             {{- end }}
           {{- end }}
-          {{- if or .Values.settings.domain .Values.internalCa }}
+          {{- if or .Values.settings.domain .Values.pgSniRouter.domain .Values.internalCa }}
           volumeMounts:
             - mountPath: "/certs"
               name: certs
               readOnly: true
+            {{- if .Values.pgSniRouter.domain }}
             - mountPath: "/certs-sni-router"
               name: certs-sni-router
               readOnly: true
+            {{- end }}
             {{- range .Values.settings.extraDomains }}
             - mountPath: '/certs-extra/{{ include "neon-proxy.certificate-name" . }}'
               name: {{ include "neon-proxy.certificate-name" . }}
