@@ -33,6 +33,10 @@ spec:
       serviceAccountName: {{ include "neon-endpoint-storage.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: pemfile-volume
+          secret:
+            secretName: neon-endpoint-storage-cert
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -45,6 +49,11 @@ spec:
           env:
             - name: RUST_BACKTRACE
               value: "1"
+          volumeMounts:
+            - name: pemfile-volume
+              readOnly: true
+              mountPath: "/certs/pemfile.pem"
+              subPath: "pemfile.pem"
           ports:
             - name: endpstorage
               containerPort: {{ .Values.service.port }}

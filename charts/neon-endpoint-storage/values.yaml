@@ -21,10 +21,14 @@ service:
   annotations: {}
   type: ClusterIP
   port: 80
+
 settings:
+  # settings.bucket_name -- (string) AWS bucket name
   bucket_name: ""
+  # settings.bucket_region -- (string) AWS bucket region
   bucket_region: ""
-  pemfile: ""
+  # dummy certificate to make tests pass, see secret.yaml
+  pemfile: "/certs/dummy.pem"
   listen: "0.0.0.0:80"
 
 nodeSelector: {}
