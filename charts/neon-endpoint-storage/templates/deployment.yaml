@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: pemfile-volume
           secret:
-            secretName: neon-endpoint-storage-cert
+            secretName: {{ include "neon-endpoint-storage.fullname" . }}-cert
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
