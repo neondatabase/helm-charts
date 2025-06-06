@@ -46,17 +46,14 @@ spec:
           command:
             - endpoint_storage
             - --config={{ .Values.settings | toJson }}
+            - --no-s3-check-on-startup
           env:
             - name: RUST_BACKTRACE
               value: "1"
           volumeMounts:
             - name: pemfile-volume
               readOnly: true
-            {{- if eq .Values.settings.pemfile "/certs/dummy.pem" }}
-              mountPath: "/certs/dummy.pem"
-            {{- else }}
-              mountPath: "/certs/pemfile.pem"
-            {{- end }}
+              mountPath: {{ .Values.settings.pemfile }}
               subPath: "pemfile.pem"
           ports:
             - name: endpstorage

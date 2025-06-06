@@ -27,8 +27,12 @@ settings:
   bucket_name: ""
   # settings.bucket_region -- (string) AWS bucket region
   bucket_region: ""
-  # dummy certificate to make tests pass, see secret.yaml
+  # public key as a Secret with pemfile.pem to validate JWT requests.
+  # If /certs/dummy.pem, helm chart uses a dummy Secret for tests to pass,
+  # otherwise secret will be mounted at this place and passed to config, so choose
+  # any name
   pemfile: "/certs/dummy.pem"
+  # port must match .Values.service.port
   listen: "0.0.0.0:80"
 
 nodeSelector: {}
