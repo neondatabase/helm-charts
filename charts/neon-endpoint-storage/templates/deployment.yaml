@@ -52,7 +52,11 @@ spec:
           volumeMounts:
             - name: pemfile-volume
               readOnly: true
+            {{- if eq .Values.settings.pemfile "/certs/dummy.pem" }}
+              mountPath: "/certs/dummy.pem"
+            {{- else }}
               mountPath: "/certs/pemfile.pem"
+            {{- end }}
               subPath: "pemfile.pem"
           ports:
             - name: endpstorage
