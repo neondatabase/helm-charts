@@ -46,7 +46,9 @@ spec:
           command:
             - endpoint_storage
             - --config={{ .Values.settings | toJson }}
+            {{- if .Values.skipS3Check }}
             - --no-s3-check-on-startup
+            {{- end }}
           env:
             - name: RUST_BACKTRACE
               value: "1"
