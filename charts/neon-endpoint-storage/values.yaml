@@ -1,0 +1,52 @@
+# Default values for neon-endpoint-storage.
+image:
+  repository: neondatabase/neon
+  pullPolicy: Always
+  tag: latest
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  annotations: {}
+  type: ClusterIP
+  port: 80
+
+skipS3Check: true
+settings:
+  # settings.bucket_name -- (string) AWS bucket name
+  bucket_name: ""
+  # settings.bucket_region -- (string) AWS bucket region
+  bucket_region: ""
+  # public key as a Secret with pemfile.pem to validate JWT requests.
+  # If /certs/dummy.pem, helm chart uses a dummy Secret for tests to pass,
+  # otherwise secret will be mounted at this place and passed to config, so choose
+  # any name
+  pemfile: "/certs/dummy.pem"
+  # port must match .Values.service.port
+  listen: "0.0.0.0:80"
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+priorityClassName: ""
+
+metrics:
+  enabled: false
+  serviceMonitor:
+    enabled: false
+    namespace: ""
+    interval: 10s
+    scrapeTimeout: 10s
+    selector: {}

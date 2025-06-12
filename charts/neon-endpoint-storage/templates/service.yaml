@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "neon-endpoint-storage.fullname" . }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  labels:
+    {{- include "neon-endpoint-storage.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: endpstorage
+      protocol: TCP
+      name: endpstorage
+  selector:
+    {{- include "neon-endpoint-storage.selectorLabels" . | nindent 4 }}
