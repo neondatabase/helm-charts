@@ -24,9 +24,10 @@ service:
 
 skipS3Check: true
 settings:
-  # If you use S3:
-  # bucket_name: ""
-  # bucket_region: ""
+  # If you use S3 (we need at least one variant to start service in tests,
+  # so uncomment this variant)
+  bucket_name: ""
+  bucket_region: ""
   #
   # If you use Azure:
   # container_name: ""
