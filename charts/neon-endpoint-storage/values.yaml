@@ -24,10 +24,15 @@ service:
 
 skipS3Check: true
 settings:
-  # settings.bucket_name -- (string) AWS bucket name
-  bucket_name: ""
-  # settings.bucket_region -- (string) AWS bucket region
-  bucket_region: ""
+  # If you use S3:
+  #bucket_name: ""
+  #bucket_region: ""
+  #
+  # If you use Azure:
+  #container_name: ""
+  #container_region: ""
+  #storage_account: ""
+
   # public key as a Secret with pemfile.pem to validate JWT requests.
   # If /certs/dummy.pem, helm chart uses a dummy Secret for tests to pass,
   # otherwise secret will be mounted at this place and passed to config, so choose
