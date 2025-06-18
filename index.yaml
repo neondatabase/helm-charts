@@ -28,6 +28,20 @@ entries:
   neon-endpoint-storage:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2025-06-18T16:20:48.1150362Z"
+    description: Neon Endpoint Storage
+    digest: a425b7b60942d114754d5caf8e3e55abd363c8b1227dcf47f2e3f0da72b256e0
+    home: https://neon.com
+    kubeVersion: ^1.18.x-x
+    name: neon-endpoint-storage
+    sources:
+    - https://github.com/neondatabase/neon
+    type: application
+    urls:
+    - https://github.com/neondatabase/helm-charts/releases/download/neon-endpoint-storage-1.0.2/neon-endpoint-storage-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2025-06-17T17:56:33.283185632Z"
     description: Neon Endpoint Storage
     digest: af7b13b981339e7786cf2b77a9e191a32f0fe7c7b68c571ca163e658e73e3bd5
@@ -1749,4 +1763,4 @@ entries:
     urls:
     - https://github.com/zenithdb/helm-charts/releases/download/zenith-proxy-1.0.1/zenith-proxy-1.0.1.tgz
     version: 1.0.1
-generated: "2025-06-17T17:56:33.283764129Z"
+generated: "2025-06-18T16:20:48.115680279Z"
