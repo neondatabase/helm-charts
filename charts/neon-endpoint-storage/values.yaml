@@ -26,10 +26,12 @@ skipS3Check: true
 settings:
   # If you use S3 (we need at least one variant to start service in tests,
   # so uncomment this variant)
+  type: "AwsS3"
   bucket_name: ""
   bucket_region: ""
   #
   # If you use Azure:
+  # type: "AzureContainer"
   # container_name: ""
   # container_region: ""
   # storage_account: ""
