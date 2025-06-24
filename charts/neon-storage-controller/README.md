@@ -78,7 +78,7 @@ Kubernetes: `^1.18.x-x`
 | settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
-| settings.maxOfflinePeriod | string | `""` | Grace period before marking unresponsive pageserver offline. |
+| settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |

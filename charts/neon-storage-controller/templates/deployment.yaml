@@ -58,9 +58,9 @@ spec:
             - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
-          {{- if .Values.settings.maxOfflinePeriod }}
-            - --max-offline-period
-            - {{ .Values.settings.maxOfflinePeriod | quote }}
+          {{- if .Values.settings.maxOfflineInterval}}
+            - --max-offline-interval
+            - {{ .Values.settings.maxOfflineInterval | quote }}
           {{- end }}
           {{- if .Values.settings.initialSplitThreshold }}
             - --initial-split-threshold
