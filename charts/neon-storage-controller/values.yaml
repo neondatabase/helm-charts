@@ -38,6 +38,8 @@ settings:
   controlPlaneJwtToken: ""
   # -- Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/)
   controlPlaneUrl: ""
+  # settings.maxOfflinePeriod -- Grace period before marking unresponsive pageserver offline.
+  maxOfflinePeriod: ""
   # settings.initialSplitThreshold -- Size threshold in bytes for initial tenant splits.
   initialSplitThreshold: ""
   # settings.initialSplitShards -- Number of shards to use for initial tenant splits.

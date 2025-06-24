@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.11.0](https://img.shields.io/badge/Version-1.11.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.12.0](https://img.shields.io/badge/Version-1.12.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -78,6 +78,7 @@ Kubernetes: `^1.18.x-x`
 | settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
+| settings.maxOfflinePeriod | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
