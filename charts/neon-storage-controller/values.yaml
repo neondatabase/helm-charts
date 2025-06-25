@@ -38,6 +38,14 @@ settings:
   controlPlaneJwtToken: ""
   # -- Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/)
   controlPlaneUrl: ""
+  # settings.heartbeatInterval -- Period with which to send heartbeats to registered nodes.
+  heartbeatInterval: ""
+  # settings.maxOfflineInterval -- Grace period before marking unresponsive pageserver offline.
+  maxOfflineInterval: ""
+  # settings.maxWarmingUpInterval -- Extended grace period within which pageserver may not respond
+  # to heartbeats. Kicks in after the node has been drained for restart and/or upon handling the
+  # re-attach request from a node.
+  maxWarmingUpInterval: ""
   # settings.initialSplitThreshold -- Size threshold in bytes for initial tenant splits.
   initialSplitThreshold: ""
   # settings.initialSplitShards -- Number of shards to use for initial tenant splits.
