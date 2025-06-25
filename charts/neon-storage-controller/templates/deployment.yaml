@@ -58,9 +58,17 @@ spec:
             - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
-          {{- if .Values.settings.maxOfflineInterval}}
+          {{- if .Values.settings.heartbeatInterval }}
+            - --heartbeat-interval
+            - {{ .Values.settings.heartbeatInterval | quote }}
+          {{- end }}
+          {{- if .Values.settings.maxOfflineInterval }}
             - --max-offline-interval
             - {{ .Values.settings.maxOfflineInterval | quote }}
+          {{- end }}
+          {{- if .Values.settings.maxWarmingUpInterval }}
+            - --max-warming-up-interval
+            - {{ .Values.settings.maxWarmingUpInterval | quote }}
           {{- end }}
           {{- if .Values.settings.initialSplitThreshold }}
             - --initial-split-threshold

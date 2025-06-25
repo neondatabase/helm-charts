@@ -74,12 +74,14 @@ Kubernetes: `^1.18.x-x`
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/) |
 | settings.databaseUrl | string | `""` |  |
+| settings.heartbeatInterval | string | `""` | Period with which to send heartbeats to registered nodes. |
 | settings.initialSplitShards | string | `""` | Number of shards to use for initial tenant splits. |
 | settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
+| settings.maxWarmingUpInterval | string | `""` | Extended grace period within which pageserver may not respond to heartbeats. Kicks in after the node has been drained for restart and/or upon handling the re-attach request from a node. |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.publicKey | string | `""` |  |
 | settings.safekeeperJwtToken | string | `""` | JWT token for authentication with safekeepers |
