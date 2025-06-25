@@ -62,6 +62,8 @@ settings:
   startAsCandidate: false
   # -- If a reconciliation takes longer than this, bump an alerting metric
   longReconcileThreshold: "30min"
+  # -- Posthog config
+  posthogConfig: {}
 
 
 # Enable auto register to control plane
