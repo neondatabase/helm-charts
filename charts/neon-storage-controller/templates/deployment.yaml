@@ -121,6 +121,10 @@ spec:
             - name: SENTRY_ENVIRONMENT
               value: {{ . | quote }}
             {{- end }}
+            {{- with .Values.settings.posthogConfig }}
+            - name: POSTHOG_CONFIG
+              value: {{ . | toJson | quote }}
+            {{- end }}
           {{- end }}
           envFrom:
           - secretRef:
