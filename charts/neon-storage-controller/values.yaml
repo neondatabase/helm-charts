@@ -60,6 +60,8 @@ settings:
   chaosExitCrontab: ""
   # -- When set to True, restart the service gracefully
   startAsCandidate: false
+  # -- Whether to create timelines on safekeepers as well
+  timelinesOntoSafekeepers: false
   # -- If a reconciliation takes longer than this, bump an alerting metric
   longReconcileThreshold: "30min"
   # -- Posthog config

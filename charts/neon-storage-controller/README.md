@@ -90,6 +90,7 @@ Kubernetes: `^1.18.x-x`
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
 | settings.splitThreshold | string | `""` | Shard size threshold in bytes for automatically splitting shards.  Omit to disable auto-sharding (default) |
 | settings.startAsCandidate | bool | `false` | When set to True, restart the service gracefully |
+| settings.timelinesOntoSafekeepers | bool | `false` | Whether to create timelines on safekeepers as well |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------
