@@ -103,6 +103,9 @@ spec:
             - --long-reconcile-threshold
             - {{ .Values.settings.longReconcileThreshold | quote }}
           {{- end }}
+          {{- if .Values.settings.timelinesOntoSafekeepers }}
+            - --timelines-onto-safekeepers
+          {{- end }}
           env:
             - name: RUST_LOG
               value: "INFO"

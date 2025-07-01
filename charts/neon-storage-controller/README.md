@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.12.1](https://img.shields.io/badge/Version-1.12.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.12.2](https://img.shields.io/badge/Version-1.12.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -90,6 +90,7 @@ Kubernetes: `^1.18.x-x`
 | settings.sentryUrl | string | `""` | url (will be converted into `SENTRY_DSN` environment variable) used by sentry to collect error/panic events in storage-controller |
 | settings.splitThreshold | string | `""` | Shard size threshold in bytes for automatically splitting shards.  Omit to disable auto-sharding (default) |
 | settings.startAsCandidate | bool | `false` | When set to True, restart the service gracefully |
+| settings.timelinesOntoSafekeepers | bool | `false` | Whether to create timelines on safekeepers as well |
 | tolerations | list | `[]` | Tolerations for pod assignment. |
 
 ----------------------------------------------
