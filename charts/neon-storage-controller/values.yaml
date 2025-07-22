@@ -138,11 +138,14 @@ ingress:
           pathType: Prefix
           protocol: TCP
 resources:
+  # limits == requests to achieve `Guaranteed` QoS class
+  # => https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#guaranteed
   limits:
+    cpu: "2"
     memory: 4Gi
   requests:
-    cpu: "1"
-    memory: 1Gi
+    cpu: "2"
+    memory: 4Gi
 
 # -- Node labels for pod assignment.
 nodeSelector: {}
