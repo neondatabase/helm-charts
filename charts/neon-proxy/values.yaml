@@ -130,6 +130,8 @@ settings:
   proxyProtocolV2: ""
   # settings.extraCmdFlags -- (list) additional arguments to proxy binary
   extraCmdFlags: []
+  # settings.neonMotd -- (string) Welcome message to show in psql client with session_id
+  neonMotd: "Welcome to Neon!"
 
 pgSniRouter:
   # pgSniRouter.destination -- append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local"
