@@ -251,10 +251,6 @@ spec:
             - name: NEON_INTERNAL_CA_FILE
               value: /root_cert/neon_root_ca.crt
             {{- end }}
-            {{- with .Values.settings.neonMotd }}
-            - name: NEON_MOTD
-              value: {{ . }}
-            {{- end }}
           {{- end }}
           {{- if or .Values.settings.domain .Values.pgSniRouter.domain .Values.internalCa }}
           volumeMounts:
