@@ -128,12 +128,6 @@ spec:
             {{- range .Values.settings.wakeComputeLimits }}
             - --wake-compute-limit={{ . }}
             {{- end }}
-            {{- if .Values.settings.authRateLimitsEnabled }}
-            - --auth-rate-limit-enabled
-            {{- end }}
-            {{- range .Values.settings.authRateLimits }}
-            - --auth-rate-limit={{ . }}
-            {{- end }}
             {{- with .Values.settings.region }}
             - --region={{ . }}
             {{ end }}
@@ -166,8 +160,8 @@ spec:
             - --connect-compute-lock
             - {{ . | quote }}
             {{- end }}
-            {{- with .Values.settings.redisNotifications}}
-            - --redis-notifications
+            {{- with or .Values.settings.redisPlain .Values.settings.redisNotifications}}
+            - --redis-plain
             - {{ . }}
             {{- end }}
             {{- with .Values.settings.redisAuthType}}
@@ -182,9 +176,6 @@ spec:
             {{ end }}
             {{- with .Values.settings.metricBackupCollectionChunkSize }}
             - --metric-backup-collection-chunk-size={{ . }}
-            {{ end }}
-            {{- with .Values.settings.endpointCacheConfig }}
-            - --endpoint-cache-config={{ . }}
             {{ end }}
             {{- with .Values.settings.redisHost }}
             - --redis-host={{ . }}
