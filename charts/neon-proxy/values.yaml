@@ -114,8 +114,6 @@ settings:
   metricBackupCollectionInterval: "10m"
   # settings.metricBackupCollectionChunkSize -- (string) How large each chunk of the metric backup files should be in bytes
   metricBackupCollectionChunkSize: "4194304"
-  # settings.endpointCacheConfig -- (string) Config for cache for all valid endpoints
-  endpointCacheConfig: ""
   # settings.redisHost -- (string) Redis host for streaming connections (might be different from the notifications host)
   redisHost: ""
   # settings.redisPort -- (string) Redis port for streaming connections

@@ -183,9 +183,6 @@ spec:
             {{- with .Values.settings.metricBackupCollectionChunkSize }}
             - --metric-backup-collection-chunk-size={{ . }}
             {{ end }}
-            {{- with .Values.settings.endpointCacheConfig }}
-            - --endpoint-cache-config={{ . }}
-            {{ end }}
             {{- with .Values.settings.redisHost }}
             - --redis-host={{ . }}
             {{ end }}
