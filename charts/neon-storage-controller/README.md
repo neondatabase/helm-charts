@@ -79,6 +79,7 @@ Kubernetes: `^1.18.x-x`
 | settings.initialSplitShards | string | `""` | Number of shards to use for initial tenant splits. |
 | settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
+| settings.lazyDrainsFills | string | `""` | If true, use lazy attaches for node drains and fills. |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |

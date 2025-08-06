@@ -54,6 +54,8 @@ settings:
   splitThreshold: ""
   # settings.maxSplitShards -- Maximum number of shards for autosplits.
   maxSplitShards: ""
+  # settings.lazyDrainsFills -- If true, use lazy attaches for node drains and fills.
+  lazyDrainsFills: ""
   # -- Chaos testing for tenant migration interval
   chaosInterval: ""
   # -- Chaos testing for immediate exit crontab
