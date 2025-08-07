@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.13.3](https://img.shields.io/badge/Version-1.13.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.14.0](https://img.shields.io/badge/Version-1.14.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -73,15 +73,12 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.name | string | `""` |  |
 | settings.authBackend | string | `"link"` | auth method used (console|link|postgres) |
 | settings.authEndpoint | string | `""` | auth endpoint, e.g. "http://console.neon/authenticate_proxy_request/" |
-| settings.authRateLimits | string | `nil` |  |
-| settings.authRateLimitsEnabled | bool | `nil` | Whether to enable the authentication rate limiter |
 | settings.awsAccessKeyId | string | `""` | (string) AWS Access Key ID |
 | settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
 | settings.connectComputeLock | string | `""` | (string) Configures the locking of connect_compute per compute |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
-| settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
 | settings.endpointRpsLimits | list | `[]` | (list) list of rate limiters for connection attempts over different time intervals |
 | settings.extraCmdFlags | list | `[]` | (list) additional arguments to proxy binary |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
@@ -105,7 +102,8 @@ Kubernetes: `^1.18.x-x`
 | settings.redisAuthType | string | `"irsa"` | (string) What auth type to use for regional Redis client. "irsa" and "plain" are supported. "plain" means use URI from settings.redisNotifications. "irsa" means AWS IRSA. |
 | settings.redisClusterName | string | `"regional-control-plane-redis"` | (string) Redis cluster name, used in aws elasticache |
 | settings.redisHost | string | `""` | (string) Redis host for streaming connections (might be different from the notifications host) |
-| settings.redisNotifications | string | `""` | (url) Configures redis client |
+| settings.redisNotifications | string | `""` | (url) Configures redis plain client |
+| settings.redisPlain | string | `""` | (url) Configures redis plain client |
 | settings.redisPort | string | `""` | (string) Redis port for streaming connections |
 | settings.redisUserId | string | `"neon"` | (string) Redis user_id, used in aws elasticache |
 | settings.region | string | `""` | (string) Region this proxy service is deployed into |
