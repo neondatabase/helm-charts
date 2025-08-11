@@ -98,6 +98,10 @@ spec:
             - --chaos-exit-crontab
             - {{ .Values.settings.chaosExitCrontab | quote }}
           {{- end }}
+          {{- if .Values.settings.chaosSafekeeperInterval }}
+            - --chaos-safekeeper-interval
+            - {{ .Values.settings.chaosSafekeeperInterval | quote }}
+          {{- end }}
             - --address-for-peers
             - http://$(POD_IP):{{ .Values.service.port }}/
           {{- if .Values.settings.startAsCandidate }}

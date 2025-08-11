@@ -60,6 +60,8 @@ settings:
   chaosInterval: ""
   # -- Chaos testing for immediate exit crontab
   chaosExitCrontab: ""
+  # -- Chaos testing for timeline safekeeper migration interval
+  chaosSafekeeperInterval: ""
   # -- When set to True, restart the service gracefully
   startAsCandidate: false
   # -- Whether to create timelines on safekeepers as well
