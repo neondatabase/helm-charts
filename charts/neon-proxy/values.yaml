@@ -68,8 +68,10 @@ settings:
   wakeComputeLock: "permits=0"
   # settings.connectComputeLock -- (string) Configures the locking of connect_compute per compute
   connectComputeLock: ""
-  # settings.redisNotifications -- (url) Configures redis client
+  # settings.redisNotifications -- (url) Configures redis plain client
   redisNotifications: ""
+  # settings.redisPlain -- (url) Configures redis plain client
+  redisPlain: ""
   # settings.redisAuthType -- (string) What auth type to use for regional Redis client. "irsa" and "plain" are supported. "plain" means use URI from settings.redisNotifications. "irsa" means AWS IRSA.
   redisAuthType: "irsa"
   # settings.sqlOverHttpMaxRequestSizeBytes -- (string) maximum sql-over-http request payload size in bytes
@@ -84,10 +86,6 @@ settings:
   endpointRpsLimits: []
   # settings.wakeComputeLimits -- (list) list of rate limiters for wake_compute over different time intervals
   wakeComputeLimits: []
-  # settings.authRateLimitsEnabled -- (bool) Whether to enable the authentication rate limiter
-  authRateLimitsEnabled: null
-  # settings.authRateLimit -- (list) list of rate limiters over different time intervals for authentication hash iterations per IP,EP
-  authRateLimits: null
   # settings.parquetUploadRemoteStorage -- (string) Storage location to upload the parquet files to.
   parquetUploadRemoteStorage: ""
   # settings.parquetUploadDisconnectEventsRemoteStorage -- (string) Storage location to upload the parquet files with disconnect events to.
@@ -114,8 +112,6 @@ settings:
   metricBackupCollectionInterval: "10m"
   # settings.metricBackupCollectionChunkSize -- (string) How large each chunk of the metric backup files should be in bytes
   metricBackupCollectionChunkSize: "4194304"
-  # settings.endpointCacheConfig -- (string) Config for cache for all valid endpoints
-  endpointCacheConfig: ""
   # settings.redisHost -- (string) Redis host for streaming connections (might be different from the notifications host)
   redisHost: ""
   # settings.redisPort -- (string) Redis port for streaming connections
