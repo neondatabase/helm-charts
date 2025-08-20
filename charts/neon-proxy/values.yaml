@@ -229,6 +229,9 @@ tolerations: []
 # -- Affinity for pod assignment
 affinity: {}
 
+# -- Topology spread constraints for pod assignment.
+topologySpreadConstraints: {}
+
 metrics:
   # metrics.enabled -- Enable prometheus metrcis autodiscovery
   enabled: false
