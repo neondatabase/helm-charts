@@ -79,6 +79,7 @@ Kubernetes: `^1.18.x-x`
 | settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
 | settings.connectComputeLock | string | `""` | (string) Configures the locking of connect_compute per compute |
+| settings.consoleJwtPublicKey | string | `""` | (string) Public key for console JWT verification |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
