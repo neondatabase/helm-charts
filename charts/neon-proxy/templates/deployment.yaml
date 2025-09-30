@@ -252,6 +252,10 @@ spec:
               value: /root_cert/neon_root_ca.crt
             {{- end }}
           {{- end }}
+          {{- with .Values.settings.consoleJwtPublicKey }}
+          - name: NEON_CONSOLE_JWT_PUBLIC_KEY
+            value: {{ . }}
+          {{- end }}
           {{- if or .Values.settings.domain .Values.pgSniRouter.domain .Values.internalCa }}
           volumeMounts:
             - mountPath: "/certs"
