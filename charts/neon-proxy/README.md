@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.13.4](https://img.shields.io/badge/Version-1.13.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.13.5](https://img.shields.io/badge/Version-1.13.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -79,6 +79,7 @@ Kubernetes: `^1.18.x-x`
 | settings.awsRegion | string | `""` | (string) Aws region to retrieve credentials |
 | settings.awsSecretAccessKey | string | `""` | (string) AWS Secret Access Key |
 | settings.connectComputeLock | string | `""` | (string) Configures the locking of connect_compute per compute |
+| settings.consoleJwtPublicKey | string | `""` | (string) Public key for console JWT verification |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
 | settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
