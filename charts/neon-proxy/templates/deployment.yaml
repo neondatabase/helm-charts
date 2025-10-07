@@ -255,6 +255,10 @@ spec:
             - name: NEON_CONSOLE_JWT_PUBLIC_KEY
               value: {{ . | quote }}
             {{- end }}
+            {{- if .Values.settings.enable_neonMotd }}
+            - name: NEON_MOTD
+              value: "Welcome to Neon!"
+            {{- end }}
           {{- end }}
           {{- if or .Values.settings.domain .Values.pgSniRouter.domain .Values.internalCa }}
           volumeMounts:
