@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.13.5](https://img.shields.io/badge/Version-1.13.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.13.6](https://img.shields.io/badge/Version-1.13.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -82,6 +82,7 @@ Kubernetes: `^1.18.x-x`
 | settings.consoleJwtPublicKey | string | `""` | (string) Public key for console JWT verification |
 | settings.controlplane_token | string | `""` | (string) JWT token to pass to control plane management API |
 | settings.domain | string | `""` | domain used in TLS cert for client postgres connections |
+| settings.enable_neonMotd | bool | `false` |  |
 | settings.endpointCacheConfig | string | `""` | (string) Config for cache for all valid endpoints |
 | settings.endpointRpsLimits | list | `[]` | (list) list of rate limiters for connection attempts over different time intervals |
 | settings.extraCmdFlags | list | `[]` | (list) additional arguments to proxy binary |

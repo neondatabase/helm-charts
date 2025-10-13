@@ -132,6 +132,8 @@ settings:
   extraCmdFlags: []
   # settings.consoleJwtPublicKey -- (string) Public key for console JWT verification
   consoleJwtPublicKey: ""
+  # settings.neonMotd -- (boolean) Do we need to show welcome message with session_id?
+  enable_neonMotd: false
 
 pgSniRouter:
   # pgSniRouter.destination -- append this domain zone to the transformed SNI hostname to get the destination address, e.g. "svc.cluster.local"
