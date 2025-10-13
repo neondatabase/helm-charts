@@ -6,8 +6,9 @@ metadata:
     {{- include "neon-storage-broker.labels" . | nindent 4 }}
 spec:
   # When using RollingUpdate strategy, ensure at least 1 pod is available
-  # This works with maxSurge: 1, maxUnavailable: 0 to ensure new pod is created
-  # and healthy before the old pod is terminated during node drainage
+  # This works with the Deployment's RollingUpdate strategy
+  # that sets (maxSurge: 1, maxUnavailable: 0) to ensure new pod is created
+  # and healthy before the old pod is terminated during node drainage.
   minAvailable: 1
   selector:
     matchLabels:
