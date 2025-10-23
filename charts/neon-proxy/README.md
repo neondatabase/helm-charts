@@ -1,6 +1,6 @@
 # neon-proxy
 
-![Version: 1.13.6](https://img.shields.io/badge/Version-1.13.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.13.7](https://img.shields.io/badge/Version-1.13.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon Proxy
 
@@ -87,6 +87,7 @@ Kubernetes: `^1.18.x-x`
 | settings.endpointRpsLimits | list | `[]` | (list) list of rate limiters for connection attempts over different time intervals |
 | settings.extraCmdFlags | list | `[]` | (list) additional arguments to proxy binary |
 | settings.extraDomains | list | `[]` | domains used in extra TLS certs for client postgres connections |
+| settings.extraEnvVars | list | `[]` | (list) additional environment variables to proxy binary |
 | settings.httpPoolOptIn | bool | `true` | (bool) Sets the SQL over HTTP Pool to opt-in-only mode if true. Set false to enable it always |
 | settings.logfmt | string | `nil` | Log format to use: "text" (default) or "json". |
 | settings.metricBackupCollectionChunkSize | string | `"4194304"` | (string) How large each chunk of the metric backup files should be in bytes |

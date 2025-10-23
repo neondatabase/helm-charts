@@ -130,6 +130,8 @@ settings:
   proxyProtocolV2: ""
   # settings.extraCmdFlags -- (list) additional arguments to proxy binary
   extraCmdFlags: []
+  # settings.extraEnvVars -- (list) additional environment variables to proxy binary
+  extraEnvVars: []
   # settings.consoleJwtPublicKey -- (string) Public key for console JWT verification
   consoleJwtPublicKey: ""
   # settings.neonMotd -- (boolean) Do we need to show welcome message with session_id?
