@@ -259,6 +259,9 @@ spec:
             - name: NEON_MOTD
               value: "Welcome to Neon!"
             {{- end }}
+            {{- with .Values.settings.extraEnvVars }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           {{- end }}
           {{- if or .Values.settings.domain .Values.pgSniRouter.domain .Values.internalCa }}
           volumeMounts:
