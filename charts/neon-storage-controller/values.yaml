@@ -62,6 +62,8 @@ settings:
   chaosExitCrontab: ""
   # -- Chaos testing for timeline safekeeper migration interval
   chaosSafekeeperInterval: ""
+  # -- Interval for the background consistency check
+  consistencyCheckInterval: ""
   # -- When set to True, restart the service gracefully
   startAsCandidate: false
   # -- Whether to create timelines on safekeepers as well

@@ -73,6 +73,7 @@ Kubernetes: `^1.18.x-x`
 | settings.chaosExitCrontab | string | `""` | Chaos testing for immediate exit crontab |
 | settings.chaosInterval | string | `""` | Chaos testing for tenant migration interval |
 | settings.chaosSafekeeperInterval | string | `""` | Chaos testing for timeline safekeeper migration interval |
+| settings.consistencyCheckInterval | string | `""` | Interval for the background consistency check |
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/) |
 | settings.databaseUrl | string | `""` |  |

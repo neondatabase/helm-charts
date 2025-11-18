@@ -86,6 +86,10 @@ spec:
             - --max-split-shards
             - {{ .Values.settings.maxSplitShards | quote }}
           {{- end }}
+          {{- if .Values.settings.consistencyCheckInterval }}
+            - --consistency-check-interval
+            - {{ .Values.settings.consistencyCheckInterval | quote }}
+          {{- end }}
           {{- if .Values.settings.lazyDrainsFills }}
             - --lazy-drains-fills
             - {{ .Values.settings.lazyDrainsFills | quote }}
