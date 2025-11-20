@@ -62,6 +62,8 @@ settings:
   chaosExitCrontab: ""
   # -- Chaos testing for timeline safekeeper migration interval
   chaosSafekeeperInterval: ""
+  # -- When set, in small (<20GB) shard splits trigger and wait for a reference timeline digest, then split, then trigger a post-digest and check that it equals the reference.
+  checkTimelineDigestAcrossSmallShardSplits: false
   # -- Interval for the background consistency check
   consistencyCheckInterval: ""
   # -- When set to True, restart the service gracefully

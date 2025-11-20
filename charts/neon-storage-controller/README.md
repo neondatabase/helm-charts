@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.15.1](https://img.shields.io/badge/Version-1.15.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.15.2](https://img.shields.io/badge/Version-1.15.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -73,6 +73,7 @@ Kubernetes: `^1.18.x-x`
 | settings.chaosExitCrontab | string | `""` | Chaos testing for immediate exit crontab |
 | settings.chaosInterval | string | `""` | Chaos testing for tenant migration interval |
 | settings.chaosSafekeeperInterval | string | `""` | Chaos testing for timeline safekeeper migration interval |
+| settings.checkTimelineDigestAcrossSmallShardSplits | bool | `false` | When set, in small (<20GB) shard splits trigger and wait for a reference timeline digest, then split, then trigger a post-digest and check that it equals the reference. |
 | settings.consistencyCheckInterval | string | `""` | Interval for the background consistency check |
 | settings.controlPlaneJwtToken | string | `""` |  |
 | settings.controlPlaneUrl | string | `""` | Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/) |
