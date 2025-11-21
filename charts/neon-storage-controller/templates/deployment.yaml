@@ -118,6 +118,9 @@ spec:
           {{- if .Values.settings.timelinesOntoSafekeepers }}
             - --timelines-onto-safekeepers
           {{- end }}
+          {{- if .Values.settings.checkTimelineDigestAcrossSmallShardSplits }}
+            - --check-timeline-digest-across-small-shard-splits
+          {{- end }}
           env:
             - name: RUST_LOG
               value: "INFO"
