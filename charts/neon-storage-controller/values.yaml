@@ -38,6 +38,10 @@ settings:
   controlPlaneJwtToken: ""
   # -- Base URL for control plane API endpoints (e.g., https://control-plane.example.com/storage/api/v1/)
   controlPlaneUrl: ""
+  # -- Base URL for control plane management API (e.g., https://control-plane.example.com:1000/)
+  lbmManagementUrl: ""
+  # -- Base URL for control plane storage API (e.g., https://control-plane.example.com:1002/storage/api/v1/)
+  lbmStorageUrl: ""
   # settings.heartbeatInterval -- Period with which to send heartbeats to registered nodes.
   heartbeatInterval: ""
   # settings.maxOfflineInterval -- Grace period before marking unresponsive pageserver offline.

@@ -58,6 +58,14 @@ spec:
             - --control-plane-url
             - {{ .Values.settings.controlPlaneUrl | quote }}
           {{- end }}
+          {{- if .Values.settings.lbmManagementUrl }}
+            - --lbm-management-url
+            - {{ .Values.settings.lbmManagementUrl | quote }}
+          {{- end }}
+          {{- if .Values.settings.lbmStorageUrl }}
+            - --lbm-storage-url
+            - {{ .Values.settings.lbmStoragetUrl | quote }}
+          {{- end }}
           {{- if .Values.settings.heartbeatInterval }}
             - --heartbeat-interval
             - {{ .Values.settings.heartbeatInterval | quote }}

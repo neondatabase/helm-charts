@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.15.2](https://img.shields.io/badge/Version-1.15.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.16.0](https://img.shields.io/badge/Version-1.16.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -83,6 +83,8 @@ Kubernetes: `^1.18.x-x`
 | settings.initialSplitThreshold | string | `""` | Size threshold in bytes for initial tenant splits. |
 | settings.jwtToken | string | `""` |  |
 | settings.lazyDrainsFills | string | `""` | If true, use lazy attaches for node drains and fills. |
+| settings.lbmManagementUrl | string | `""` | Base URL for control plane management API (e.g., https://control-plane.example.com:1000/) |
+| settings.lbmStorageUrl | string | `""` | Base URL for control plane storage API (e.g., https://control-plane.example.com:1002/storage/api/v1/) |
 | settings.longReconcileThreshold | string | `"30min"` | If a reconciliation takes longer than this, bump an alerting metric |
 | settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
