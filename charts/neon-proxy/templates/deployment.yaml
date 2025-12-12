@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "neon-proxy.fullname" . }}
+  name: {{ include "neon-proxy.deploymentName" . }}
   labels:
     {{- include "neon-proxy.labels" . | nindent 4 }}
 spec:
@@ -375,11 +375,13 @@ spec:
 {{- end }}
 
 {{- if .Values.zones }}
-  {{- range $zone := .Values.zones }}
+  {{- range $suffix, $zone := .Values.zones }}
     {{- /* Append `topology.kubernetes.io/zone: $zone` to `.Values.nodeSelector` */}}
+    {{- /* Set `.Values.deploymentName` to `$fullname-$suffix` */}}
+    {{- $name := printf "%s-%s" (include "neon-proxy.fullname" $ ) $suffix }}
     {{- $nodeSelector := mergeOverwrite $.Values.nodeSelector (dict "topology.kubernetes.io/zone" $zone) }}
-    {{- $values := mergeOverwrite $.Values (dict "nodeSelector" $nodeSelector) }}
-    {{- $root := mergeOverwrite $ (dict "Values" $values) }}
+    {{- $values := mergeOverwrite $.Values (dict "nodeSelector" $nodeSelector "deploymentName" $name) }}
+    {{- $root := mergeOverwrite $ (dict "Values" $values "zone" $zone) }}
     {{- include "deployment" $root }}
   {{- end }}
 {{- else }}
