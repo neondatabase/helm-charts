@@ -1,3 +1,4 @@
+{{- define "deployment" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -370,3 +371,17 @@ spec:
       topologySpreadConstraints:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+---
+{{- end }}
+
+{{- if .Values.zones }}
+  {{- range $zone := .Values.zones }}
+    {{- /* Append `topology.kubernetes.io/zone: $zone` to `.Values.nodeSelector` */}}
+    {{- $nodeSelector := mergeOverwrite $.Values.nodeSelector (dict "topology.kubernetes.io/zone" $zone) }}
+    {{- $values := mergeOverwrite $.Values (dict "nodeSelector" $nodeSelector) }}
+    {{- $root := mergeOverwrite $ (dict "Values" $values) }}
+    {{- include "deployment" $root }}
+  {{- end }}
+{{- else }}
+  {{- include "deployment" $ }}
+{{- end }}

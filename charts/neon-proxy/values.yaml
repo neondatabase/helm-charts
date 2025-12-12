@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+# -- The zones to deploy in. If empty, 1 deployment goes to all zones. If non-empty then each zone has one deployment.
+zones: []
+
 # -- strategy override for deployment
 deploymentStrategy:
   type: Recreate
