@@ -32,7 +32,7 @@ If release name contains chart name it will be used as a full name.
 {{- if .Values.deploymentName }}
 {{- .Values.deploymentName | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- include "neon-proxy.fullname" }}
+{{- include "neon-proxy.fullname" . }}
 {{- end }}
 {{- end }}
 
