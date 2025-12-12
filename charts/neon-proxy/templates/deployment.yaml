@@ -355,9 +355,14 @@ spec:
             name: {{ include "neon-proxy.fullname" . }}-internal-ca
         {{- end }}
       {{ end }}
-      {{- with .Values.nodeSelector }}
+      {{- if or .zone .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
+        {{- with .zone }}
+        topology.kubernetes.io/zone: {{ . }}
+        {{- end }}
+        {{- range $label, $value := .Values.nodeSelector }}
+        {{ $label }}: {{ toYaml $value }}
+        {{- end }}
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
@@ -376,12 +381,7 @@ spec:
 
 {{- if .Values.zones }}
   {{- range $suffix, $zone := .Values.zones }}
-    {{- /* Append `topology.kubernetes.io/zone: $zone` to `.Values.nodeSelector` */}}
-    {{- /* Set `.Values.deploymentName` to `$fullname-$suffix` */}}
-    {{- $name := printf "%s-%s" (include "neon-proxy.fullname" $ ) $suffix }}
-    {{- $nodeSelector := mergeOverwrite $.Values.nodeSelector (dict "topology.kubernetes.io/zone" $zone) }}
-    {{- $values := mergeOverwrite $.Values (dict "nodeSelector" $nodeSelector "deploymentName" $name) }}
-    {{- $root := mergeOverwrite $ (dict "Values" $values "zone" $zone) }}
+    {{- $root := merge (dict "zone" $zone "zoneSuffix" $suffix) $ }}
     {{- include "deployment" $root }}
   {{- end }}
 {{- else }}

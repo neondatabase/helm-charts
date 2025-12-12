@@ -29,8 +29,9 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 If release name contains chart name it will be used as a full name.
 */}}
 {{- define "neon-proxy.deploymentName" -}}
-{{- if .Values.deploymentName }}
-{{- .Values.deploymentName | trunc 63 | trimSuffix "-" }}
+{{- if .zoneSuffix }}
+{{- $truncname := (include "neon-proxy.fullname" .) | trunc (len .zoneSuffix | sub 63 | int) | trimSuffix "-" }}
+{{- printf "%s%s" $truncname .zoneSuffix }}
 {{- else }}
 {{- include "neon-proxy.fullname" . }}
 {{- end }}
