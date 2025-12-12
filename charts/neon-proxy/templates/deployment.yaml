@@ -355,9 +355,9 @@ spec:
             name: {{ include "neon-proxy.fullname" . }}-internal-ca
         {{- end }}
       {{ end }}
-      {{- if or .zone .Values.nodeSelector }}
+      {{- if or ._zone .Values.nodeSelector }}
       nodeSelector:
-        {{- with .zone }}
+        {{- with ._zone }}
         topology.kubernetes.io/zone: {{ . }}
         {{- end }}
         {{- range $label, $value := .Values.nodeSelector }}
@@ -381,7 +381,7 @@ spec:
 
 {{- if .Values.zones }}
   {{- range $suffix, $zone := .Values.zones }}
-    {{- $root := merge (dict "zone" $zone "zoneSuffix" $suffix) $ }}
+    {{- $root := merge (dict "_zone" $zone "_zoneSuffix" $suffix) $ }}
     {{- include "deployment" $root }}
   {{- end }}
 {{- else }}
