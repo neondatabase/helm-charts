@@ -24,6 +24,20 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{/*
+Create a default fully qualified deployment name.
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+If release name contains chart name it will be used as a full name.
+*/}}
+{{- define "neon-proxy.deploymentName" -}}
+{{- if ._zoneSuffix }}
+{{- $truncname := (include "neon-proxy.fullname" .) | trunc (len ._zoneSuffix | sub 63 | int) | trimSuffix "-" }}
+{{- printf "%s%s" $truncname ._zoneSuffix }}
+{{- else }}
+{{- include "neon-proxy.fullname" . }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "neon-proxy.chart" -}}
@@ -48,6 +62,9 @@ Selector labels
 {{- define "neon-proxy.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "neon-proxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- with ._zone }}
+topology.kubernetes.io/zone: {{ . }}
+{{- end }}
 {{- end }}
 
 {{/*
