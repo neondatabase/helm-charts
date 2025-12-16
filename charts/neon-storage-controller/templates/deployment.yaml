@@ -64,7 +64,7 @@ spec:
           {{- end }}
           {{- if .Values.settings.lbmStorageUrl }}
             - --lbm-storage-url
-            - {{ .Values.settings.lbmStoragetUrl | quote }}
+            - {{ .Values.settings.lbmStorageUrl | quote }}
           {{- end }}
           {{- if .Values.settings.heartbeatInterval }}
             - --heartbeat-interval
