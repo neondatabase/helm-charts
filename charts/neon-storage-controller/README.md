@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.16.1](https://img.shields.io/badge/Version-1.16.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.17.0](https://img.shields.io/badge/Version-1.17.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -89,6 +89,8 @@ Kubernetes: `^1.18.x-x`
 | settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
 | settings.maxWarmingUpInterval | string | `""` | Extended grace period within which pageserver may not respond to heartbeats. Kicks in after the node has been drained for restart and/or upon handling the re-attach request from a node. |
+| settings.neonCloud | string | `""` | The neon_cloud label as it would be set in the neon.com observability stack. |
+| settings.neonRegion | string | `""` | The neon_region label as it would be set in the neon.com observability stack. |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.posthogConfig | object | `{}` | Posthog config |
 | settings.publicKey | string | `""` |  |

@@ -76,6 +76,10 @@ settings:
   timelinesOntoSafekeepers: false
   # -- If a reconciliation takes longer than this, bump an alerting metric
   longReconcileThreshold: "30min"
+  # -- The neon_region label as it would be set in the neon.com observability stack.
+  neonRegion: ""
+  # -- The neon_cloud label as it would be set in the neon.com observability stack.
+  neonCloud: ""
   # -- Posthog config
   posthogConfig: {}
 
