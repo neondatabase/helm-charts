@@ -129,6 +129,14 @@ spec:
           {{- if .Values.settings.checkTimelineDigestAcrossSmallShardSplits }}
             - --check-timeline-digest-across-small-shard-splits
           {{- end }}
+          {{- if .Values.settings.neonRegion }}
+            - --neon-region
+            - {{ .Values.settings.neonRegion | quote }}
+          {{- end }}
+          {{- if .Values.settings.neonCloud }}
+            - --neon-cloud
+            - {{ .Values.settings.neonCloud | quote }}
+          {{- end }}
           env:
             - name: RUST_LOG
               value: "INFO"

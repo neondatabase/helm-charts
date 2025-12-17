@@ -89,6 +89,8 @@ Kubernetes: `^1.18.x-x`
 | settings.maxOfflineInterval | string | `""` | Grace period before marking unresponsive pageserver offline. |
 | settings.maxSplitShards | string | `""` | Maximum number of shards for autosplits. |
 | settings.maxWarmingUpInterval | string | `""` | Extended grace period within which pageserver may not respond to heartbeats. Kicks in after the node has been drained for restart and/or upon handling the re-attach request from a node. |
+| settings.neonCloud | string | `""` | Neon cloud identifier |
+| settings.neonRegion | string | `""` | Neon region identifier |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.posthogConfig | object | `{}` | Posthog config |
 | settings.publicKey | string | `""` |  |
