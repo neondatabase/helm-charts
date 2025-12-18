@@ -80,6 +80,8 @@ settings:
   neonRegion: ""
   # -- The neon_cloud label as it would be set in the neon.com observability stack.
   neonCloud: ""
+  # -- When set, enable location_updates subsystem
+  enableLocationUpdates: false
   # -- Posthog config
   posthogConfig: {}
 

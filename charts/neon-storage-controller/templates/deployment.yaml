@@ -129,6 +129,9 @@ spec:
           {{- if .Values.settings.checkTimelineDigestAcrossSmallShardSplits }}
             - --check-timeline-digest-across-small-shard-splits
           {{- end }}
+          {{- if .Values.settings.enableLocationUpdates }}
+            - --enable-location-updates
+          {{- end }}
           {{- if .Values.settings.neonRegion }}
             - --neon-region
             - {{ .Values.settings.neonRegion | quote }}
