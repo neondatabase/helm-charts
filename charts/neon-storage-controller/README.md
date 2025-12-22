@@ -73,6 +73,9 @@ Kubernetes: `^1.18.x-x`
 | settings.chaosExitCrontab | string | `""` | Chaos testing for immediate exit crontab |
 | settings.chaosInterval | string | `""` | Chaos testing for tenant migration interval |
 | settings.chaosSafekeeperInterval | string | `""` | Chaos testing for timeline safekeeper migration interval |
+| settings.antiEntropyJobDelay | string | `""` | Delay between two individual tenants in anti-entropy job, to not exhaust the LBM with API requests |
+| settings.antiEntropyJobEnact | bool | `false` | If true, actually act on the mismatches in anti-entropy job, correcting storcon entries (detach if needed, adjust tenant config if needed) |
+| settings.antiEntropyJobInterval | string | `""` | Interval at which to run the anti entropy background job (e.g., once per day, hour, week) |
 | settings.checkTimelineDigestAcrossSmallShardSplits | bool | `false` | When set, in small (<20GB) shard splits trigger and wait for a reference timeline digest, then split, then trigger a post-digest and check that it equals the reference. |
 | settings.consistencyCheckInterval | string | `""` | Interval for the background consistency check |
 | settings.controlPlaneJwtToken | string | `""` |  |
