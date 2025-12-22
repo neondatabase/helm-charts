@@ -66,6 +66,17 @@ spec:
             - --lbm-storage-url
             - {{ .Values.settings.lbmStorageUrl | quote }}
           {{- end }}
+          {{- if .Values.settings.antiEntropyJobInterval }}
+            - --anti-entropy-job-interval
+            - {{ .Values.settings.antiEntropyJobInterval | quote }}
+          {{- end }}
+          {{- if .Values.settings.antiEntropyJobDelay }}
+            - --anti-entropy-job-delay
+            - {{ .Values.settings.antiEntropyJobDelay | quote }}
+          {{- end }}
+          {{- if .Values.settings.antiEntropyJobEnact }}
+            - --anti-entropy-job-enact
+          {{- end }}
           {{- if .Values.settings.heartbeatInterval }}
             - --heartbeat-interval
             - {{ .Values.settings.heartbeatInterval | quote }}
