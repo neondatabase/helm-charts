@@ -70,8 +70,8 @@ Kubernetes: `^1.18.x-x`
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| settings.antiEntropyJobDelay | string | `""` | Delay between two individual tenants in anti-entropy job, to not exhaust the LBM with API requests |
-| settings.antiEntropyJobEnact | bool | `false` | If true, actually act on the mismatches in anti-entropy job, correcting storcon entries (detach if needed, adjust tenant config if needed) |
+| settings.antiEntropyJobDelay | string | `""` | Delay between two individual tenants, to not exhaust the LBM with API requests |
+| settings.antiEntropyJobEnact | bool | `false` | If true, actually act on the mismatches, correcting storcon entries (detach if needed, adjust tenant config if needed) |
 | settings.antiEntropyJobInterval | string | `""` | Interval at which to run the anti entropy background job (e.g., once per day, hour, week) |
 | settings.chaosExitCrontab | string | `""` | Chaos testing for immediate exit crontab |
 | settings.chaosInterval | string | `""` | Chaos testing for tenant migration interval |
