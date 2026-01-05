@@ -42,6 +42,12 @@ settings:
   lbmManagementUrl: ""
   # -- Base URL for control plane storage API (e.g., https://control-plane.example.com:1002/storage/api/v1/)
   lbmStorageUrl: ""
+  # -- Interval at which to run the anti entropy background job (e.g., once per day, hour, week)
+  antiEntropyJobInterval: ""
+  # -- Delay between two individual tenants, to not exhaust the LBM with API requests
+  antiEntropyJobDelay: ""
+  # -- If true, actually act on the mismatches, correcting storcon entries (detach if needed, adjust tenant config if needed)
+  antiEntropyJobEnact: false
   # settings.heartbeatInterval -- Period with which to send heartbeats to registered nodes.
   heartbeatInterval: ""
   # settings.maxOfflineInterval -- Grace period before marking unresponsive pageserver offline.
