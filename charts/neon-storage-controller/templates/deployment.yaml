@@ -143,6 +143,33 @@ spec:
           {{- if .Values.settings.enableLocationUpdates }}
             - --enable-location-updates
           {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationEnabled }}
+            - --pageserver-auto-migration-enabled
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationMaxMigrationsPerDestination }}
+            - --pageserver-auto-migration-max-migrations-per-destination
+            - {{ .Values.settings.pageserverAutoMigrationMaxMigrationsPerDestination | quote }}
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationDiskUtilizationSourceMin }}
+            - --pageserver-auto-migration-disk-utilization-source-min
+            - {{ .Values.settings.pageserverAutoMigrationDiskUtilizationSourceMin | quote }}
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationDiskActualUsageSourceMin }}
+            - --pageserver-auto-migration-disk-actual-usage-source-min
+            - {{ .Values.settings.pageserverAutoMigrationDiskActualUsageSourceMin | quote }}
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationDiskUtilizationSourceTarget }}
+            - --pageserver-auto-migration-disk-utilization-source-target
+            - {{ .Values.settings.pageserverAutoMigrationDiskUtilizationSourceTarget | quote }}
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationDiskUtilizationDestinationMax }}
+            - --pageserver-auto-migration-disk-utilization-destination-max
+            - {{ .Values.settings.pageserverAutoMigrationDiskUtilizationDestinationMax | quote }}
+          {{- end }}
+          {{- if .Values.settings.pageserverAutoMigrationMaxShardSizeLimit }}
+            - --pageserver-auto-migration-max-shard-size-limit
+            - {{ .Values.settings.pageserverAutoMigrationMaxShardSizeLimit | quote }}
+          {{- end }}
           {{- if .Values.settings.neonRegion }}
             - --neon-region
             - {{ .Values.settings.neonRegion | quote }}

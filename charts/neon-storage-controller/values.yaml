@@ -90,6 +90,20 @@ settings:
   enableLocationUpdates: false
   # -- Posthog config
   posthogConfig: {}
+  # -- Whether to enable automatic pageserver tenant shard migrations
+  pageserverAutoMigrationEnabled: false
+  # -- Maximum number of concurrent migrations per destination node
+  pageserverAutoMigrationMaxMigrationsPerDestination: ""
+  # -- Minimum disk utilization percentage on source node to trigger migration
+  pageserverAutoMigrationDiskUtilizationSourceMin: ""
+  # -- Minimum actual disk usage percentage on source node to trigger migration
+  pageserverAutoMigrationDiskActualUsageSourceMin: ""
+  # -- Target disk utilization percentage for source node after migration
+  pageserverAutoMigrationDiskUtilizationSourceTarget: ""
+  # -- Maximum disk utilization percentage on destination node
+  pageserverAutoMigrationDiskUtilizationDestinationMax: ""
+  # -- Maximum shard size limit for migration
+  pageserverAutoMigrationMaxShardSizeLimit: ""
 
 
 # Enable auto register to control plane

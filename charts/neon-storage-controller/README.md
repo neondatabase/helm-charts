@@ -1,6 +1,6 @@
 # neon-storage-controller
 
-![Version: 1.18.1](https://img.shields.io/badge/Version-1.18.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
+![Version: 1.19.0](https://img.shields.io/badge/Version-1.19.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![Lint and Test Charts](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml/badge.svg)](https://github.com/neondatabase/helm-charts/actions/workflows/lint-test.yaml)
 
 Neon storage controller
 
@@ -95,6 +95,13 @@ Kubernetes: `^1.18.x-x`
 | settings.maxWarmingUpInterval | string | `""` | Extended grace period within which pageserver may not respond to heartbeats. Kicks in after the node has been drained for restart and/or upon handling the re-attach request from a node. |
 | settings.neonCloud | string | `""` | The neon_cloud label as it would be set in the neon.com observability stack. |
 | settings.neonRegion | string | `""` | The neon_region label as it would be set in the neon.com observability stack. |
+| settings.pageserverAutoMigrationDiskActualUsageSourceMin | string | `""` | Minimum actual disk usage percentage on source node to trigger migration |
+| settings.pageserverAutoMigrationDiskUtilizationDestinationMax | string | `""` | Maximum disk utilization percentage on destination node |
+| settings.pageserverAutoMigrationDiskUtilizationSourceMin | string | `""` | Minimum disk utilization percentage on source node to trigger migration |
+| settings.pageserverAutoMigrationDiskUtilizationSourceTarget | string | `""` | Target disk utilization percentage for source node after migration |
+| settings.pageserverAutoMigrationEnabled | bool | `false` | Whether to enable automatic pageserver tenant shard migrations |
+| settings.pageserverAutoMigrationMaxMigrationsPerDestination | string | `""` | Maximum number of concurrent migrations per destination node |
+| settings.pageserverAutoMigrationMaxShardSizeLimit | string | `""` | Maximum shard size limit for migration |
 | settings.peerJwtToken | string | `""` | JWT token for authentication with other storage controller instances |
 | settings.posthogConfig | object | `{}` | Posthog config |
 | settings.publicKey | string | `""` |  |
