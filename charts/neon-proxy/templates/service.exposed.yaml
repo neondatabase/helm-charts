@@ -1,7 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
+  {{- if .Values.exposedService.name }}
+  name: {{ .Values.exposedService.name }}
+  {{- else }}
   name: {{ include "neon-proxy.fullname" . }}-exposed
+  {{- end }}
   {{- with .Values.exposedService.annotations }}
   annotations:
     {{- toYaml . | nindent 8 }}
