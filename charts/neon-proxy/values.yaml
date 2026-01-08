@@ -147,6 +147,8 @@ pgSniRouter:
   domain: ""
 
   exposedService:
+    # pgSniRouter.exposedService.name -- The name to give this service
+    name: ""
     # pgSniRouter.exposedService.annotations -- Annotations to add to the exposed service
     annotations: {}
       # service.beta.kubernetes.io/aws-load-balancer-type: external
@@ -206,6 +208,8 @@ service:
   httpPort: 9090
 
 exposedService:
+  # exposedService.name -- The name to give this service
+  name: ""
   # exposedService.annotations -- Annotations to add to the exposed service
   annotations: {}
     # service.beta.kubernetes.io/aws-load-balancer-type: external
