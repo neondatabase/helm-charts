@@ -314,22 +314,26 @@ spec:
             httpGet:
               path: /v1/status
               port: http
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            periodSeconds: 10
-            failureThreshold: 30
+            periodSeconds: 1
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 120
           livenessProbe:
             httpGet:
               path: /v1/status
               port: http
-            periodSeconds: 15
-            timeoutSeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /v1/status
+              path: /v1/ready
               port: http
-            periodSeconds: 15
-            timeoutSeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 1
           {{- if .Values.containerLifecycle }}
           lifecycle:
             {{- toYaml .Values.containerLifecycle | nindent 12 }}
