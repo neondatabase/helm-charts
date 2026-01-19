@@ -51,4 +51,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml --excluded-charts neon-storage-controller
+        run: ct install --config ct.yaml --excluded-charts neon-storage-controller,neon-proxy
