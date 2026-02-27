@@ -182,7 +182,16 @@ podLabels: {}
   # neon_region_slug: virginia
 
 # -- neon-proxy's pods Security Context
-podSecurityContext: {}
+podSecurityContext:
+  sysctls:
+  - name: net.ipv4.tcp_keepalive_time
+    value: "60"
+  - name: net.ipv4.tcp_keepalive_intvl
+    value: "10"
+  - name: net.ipv4.tcp_keepalive_probes
+    value: "3"
+  - name: net.ipv4.ip_local_port_range
+    value: "1024 65535"
   # fsGroup: 2000
 
 # -- container lifecycle hooks specification for neon-proxy container

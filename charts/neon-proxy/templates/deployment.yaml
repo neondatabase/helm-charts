@@ -34,16 +34,6 @@ spec:
       serviceAccountName: {{ include "neon-proxy.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-      - name: sysctl
-        image: busybox:1.35.0
-        imagePullPolicy: IfNotPresent
-        securityContext:
-          privileged: true
-        args:
-        - /bin/sh
-        - -c
-        - 'sysctl -w net.ipv4.tcp_keepalive_time=60; sysctl -w net.ipv4.tcp_keepalive_intvl=10; sysctl -w net.ipv4.tcp_keepalive_probes=3; sysctl -w net.ipv4.ip_local_port_range="1024 65535"'
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       containers:
         - name: {{ .Chart.Name }}
